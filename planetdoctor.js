@@ -29,7 +29,7 @@ exports.Doctor = class {
   // doctors speciality modules
   Speciality;
 
-  //DOctor hospital no.
+  //Doctor hospital no.
   Hospital_no;
   
 
@@ -41,14 +41,18 @@ exports.Doctor = class {
   }
 }
 
-exports.Module = class {
-  // Module code
-  code;
-  // Module name
-  name;
+exports.Pharmacist = class {
+  // pharmacist id
+  ID;
+  // pharmacist name
+  Name;
+  // pharmacist hospital no.
+  Hospital_no;
 
-  constructor(code, name) {
-    this.code = code;
-    this.name = name;
+
+  constructor(ID, Name, Hospital_no) {
+    this.ID = ID;
+    this.Name = Name;
+    this.Hospital_no = Hospital_no;
   }
 }
