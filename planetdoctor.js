@@ -21,17 +21,23 @@ exports.Patient = class {
   }
 }
 
-exports.Programme = class {
-  // Programme code
-  code;
-  // Programme name
-  name;
-  // Programme modules
-  modules = [];
+exports.Doctor = class {
+  // doctors id
+  ID;
+  // doctors name
+  Name;
+  // doctors speciality modules
+  Speciality;
 
-  constructor(code, name) {
-    this.code = code;
-    this.name = name;
+  //DOctor hospital no.
+  Hospital_no;
+  
+
+  constructor(ID, Name, Speciality, Hospital_no) {
+    this.ID = ID;
+    this.Name = Name;
+    this.Speciality = Speciality;
+    this.Hospital_no = Hospital_no;
   }
 }
 
