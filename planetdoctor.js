@@ -7,16 +7,17 @@ exports.Patient = class {
   first_name;
   // Patient surname
   last_name;
-  // Student programme
-  programme;
-  // Student modules and grades
-  modules = [];
+  //Gender
+  gender;
+  // Date of Birth
+  dob;
 
-  constructor(id, first_name, last_name, programme) {
+  constructor(id, first_name, last_name, gender,dob ) {
     this.id = id;
     this.first_name = first_name;
     this.last_name = last_name;
-    this.programme = programme;
+    this.gender = gender;
+    this.dob = dob; 
   }
 }
 
