@@ -1,0 +1,24 @@
+{
+  "name": "hsbs",
+  "version": "1.0.0",
+  "description": "App development",
+  "main": "iha.js",
+  "scripts": {
+    "start": "node iha.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sannya256/HSBS.git"
+  },
+  "author": "HSBSteam",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sannya256/HSBS/issues"
+  },
+  "homepage": "https://github.com/sannya256/HSBS#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.2"
+  }
+}
