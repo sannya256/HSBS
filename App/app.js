@@ -26,3 +26,17 @@ app.get("/patients", function(req, res) {
   // Return "All modules"
   res.send("All patients");
 });
+
+
+// FIX THIS CODE TOMORROW...MUST
+// This code will Add /doctor endpoint
+app.get("/doctor/:ID", function(req, res) {
+  // This code will return "Doctor <code>"
+  res.send("Doctor" + req.params.ID);//fix this tomorow
+});
+
+// this code will Add /doctors endpoint
+app.get("/doctors", function(req, res) {
+  // Return "All modules"
+  res.send("All Doctors");
+});
