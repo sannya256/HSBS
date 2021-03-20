@@ -53,7 +53,7 @@ exports.Patients = class {
     this.Medications = Medications;
   }
 }
-exports.Prescriptions = class {
+exports.Perscriptions = class {
   // Name of medication
   Drug_name;
   // Stock levels
@@ -67,5 +67,26 @@ exports.Prescriptions = class {
     this.Drug_name = Drug_name;
     this.Stock_ID = Stock_ID;
     this.Patient_ID = Patient_ID;
+  } 
+}
+
+exports.Volunteers = class {
+  // ID
+  ID;
+  // Volunteers first name
+  First_Name;
+  // Volunteers last name
+  Last_Name;
+  //Profession of Volunteers
+  Profession;
+  //Nationality
+  Nationality;
+
+  constructor(ID,First_Name,Last_Name,Profession,Nationality) {
+    this.ID = ID;
+    this.First_Name = First_Name;
+    this.Last_Name = Last_Name;
+    this.Profession = Profession;
+    this.Nationality = Nationality;
   } 
 }
