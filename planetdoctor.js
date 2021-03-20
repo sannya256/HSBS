@@ -53,7 +53,7 @@ exports.Patients = class {
     this.Medications = Medications;
   }
 }
-exports.Perscriptions = class {
+exports.Prescriptions = class {
   // Name of medication
   Drug_name;
   // Stock levels
