@@ -53,4 +53,19 @@ exports.Patients = class {
     this.Medications = Medications;
   }
 }
-    
+exports.Perscriptions = class {
+  // Name of medication
+  Drug_name;
+  // Stock levels
+  Stock_ID;
+  // Patient Identification
+  Patient_ID;
+  
+ 
+
+  constructor(Drug_name, Stock_ID, Patient_ID) {
+    this.Drug_name = Drug_name;
+    this.Stock_ID = Stock_ID;
+    this.Patient_ID = Patient_ID;
+  } 
+}
