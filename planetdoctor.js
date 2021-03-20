@@ -107,5 +107,6 @@ exports.Doctors = class {
     this.ID = ID;
     this.Gender = Gender;
     this.Availability = Availability;
-    
+
   } 
+}
