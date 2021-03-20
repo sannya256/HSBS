@@ -18,11 +18,11 @@ app.use(express.static("static"));
 // Add /module endpoint
 app.get("/patient/:Patient_ID", function(req, res) {
   // Return "Module <code>"
-  res.send("patient " + req.params.Patient_ID);
+  res.send("Patient " + req.params.Patient_ID);
 });
 
 // Add /modules endpoint
-app.get("/Patients", function(req, res) {
+app.get("/patients", function(req, res) {
   // Return "All modules"
-  res.send("All Patients");
+  res.send("All patients");
 });
