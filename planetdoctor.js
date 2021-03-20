@@ -90,3 +90,22 @@ exports.Volunteers = class {
     this.Nationality = Nationality;
   } 
 }
+
+exports.Doctors = class {
+  // This is the doctors full name
+  Name;
+  // This is the doctors identification
+  ID;
+  // this shows the doctors gender
+  Gender;
+  // This is the doctors avalability date
+  Availability;
+  
+ 
+  constructor(Name, ID, Gender, Availability) {
+    this.Name = Name;
+    this.ID = ID;
+    this.Gender = Gender;
+    this.Availability = Availability;
+    
+  } 
