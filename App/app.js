@@ -16,9 +16,9 @@ var app = express();
 app.use(express.static("static"));
 
 // Add /module endpoint
-app.get("/patient/:ID", function(req, res) {
+app.get("/patient/:Patient_ID", function(req, res) {
   // Return "Module <code>"
-  res.send("patient " + req.params.ID);
+  res.send("patient " + req.params.Patient_ID);
 });
 
 // Add /modules endpoint
