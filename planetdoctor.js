@@ -103,9 +103,9 @@ exports.Doctors = class {
   Name;
   // This is the doctors identification
   Doctor_ID;
-  // this shows the doctors gender
+  // This shows the doctors gender
   Gender;
-  // This is the doctors avalability date
+  // This is the doctors availability date
   Availability;
   
  
