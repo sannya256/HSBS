@@ -40,3 +40,15 @@ app.get("/doctors" , function(req, res) {
   // Return "All modules"
   res.send("All Doctors");
 });
+
+// To add Diagnosis endpoint
+app.get("/diagnosis/:Diagnosis", function(req, res) {
+    // Return "Module <code>"
+    res.send("Diagnosis " + req.params.Patient_ID);
+  });
+  
+  // To add Diagnosis endpoint to the front end
+  app.get("/diagnosis", function(req, res) {
+    // Return "All modules"
+    res.send("All Diagnosis");
+  });
