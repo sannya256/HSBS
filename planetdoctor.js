@@ -74,7 +74,7 @@ exports.Prescriptions = class {
 }
 
 exports.Volunteers = class {
-  // ID
+  // ID of volunteers
   ID;
   // Volunteers first name
   First_Name;
@@ -82,15 +82,19 @@ exports.Volunteers = class {
   Last_Name;
   //Profession of Volunteers
   Profession;
-  //Nationality
+  //Nationality of the volunteers
   Nationality;
+  //The location of the healthcare camps
+  camp_loc;
 
-  constructor(ID,First_Name,Last_Name,Profession,Nationality) {
+
+  constructor(ID,First_Name,Last_Name,Profession,Nationality, camp_loc) {
     this.ID = ID;
     this.First_Name = First_Name;
     this.Last_Name = Last_Name;
     this.Profession = Profession;
     this.Nationality = Nationality;
+    this.camp_loc = camp_loc;
   } 
 }
 
