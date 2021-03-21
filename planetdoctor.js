@@ -54,24 +54,27 @@ exports.Patients = class {
   }
 }
 exports.Prescriptions = class {
-  // Name of medication
+  // Name of medications
   Drug_name;
-  // Stock levels
-  Stock_ID;
-  // Patient Identification
+  // Stock levels of medications
+  Stock;
+  //Drug identification number
+  Drug_ID;
+  // Patient Identification number
   Patient_ID;
   
  
 
-  constructor(Drug_name, Stock_ID, Patient_ID) {
+  constructor(Drug_name, Stock, Drug_ID, Patient_ID) {
     this.Drug_name = Drug_name;
-    this.Stock_ID = Stock_ID;
+    this.Stock = Stock;
+    this.Drug_ID = Drug_ID;
     this.Patient_ID = Patient_ID;
   } 
 }
 
 exports.Volunteers = class {
-  // ID
+  // ID of volunteers
   ID;
   // Volunteers first name
   First_Name;
@@ -79,15 +82,19 @@ exports.Volunteers = class {
   Last_Name;
   //Profession of Volunteers
   Profession;
-  //Nationality
+  //Nationality of the volunteers
   Nationality;
+  //The location of the healthcare camps
+  camp_loc;
 
-  constructor(ID,First_Name,Last_Name,Profession,Nationality) {
+
+  constructor(ID,First_Name,Last_Name,Profession,Nationality, camp_loc) {
     this.ID = ID;
     this.First_Name = First_Name;
     this.Last_Name = Last_Name;
     this.Profession = Profession;
     this.Nationality = Nationality;
+    this.camp_loc = camp_loc;
   } 
 }
 
