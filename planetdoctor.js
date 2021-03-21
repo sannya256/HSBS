@@ -1,34 +1,34 @@
 "use strict";
 
 exports.Diagnosis = class {
-  // Patient ID
-  P_ID;
-  // Patient first name
+  // This is the patient ID number
+  Patient_ID;
+  // This is Patient's first name
   P_First_Name;
-  // Patient last name 
+  // This is Patient's last name 
   P_Last_Name;
-  //Diagnostics
+  //This will show Patient's medical diagnosis
   Diagnostics;
-  // Medications
-  Medications;
-  // Tests
+  //This will show all drug names prescribed to Patients
+  Drug_name;
+  //This will show tests carried out for Patients
   Tests;
-  // Referal
+  //This will show the Doctors patients are referred to
   Referal;
 
-  constructor(P_ID, P_First_Name, P_Last_Name, Diagnostics, Medications, Tests, Referal) {
-    this.P_ID = P_ID;
+  constructor(Patient_ID, P_First_Name, P_Last_Name, Diagnostics, Drug_name, Tests, Referal) {
+    this.Patient_ID = Patient_ID;
     this.P_First_Name = P_First_Name;
     this.P_Last_Name = P_Last_Name;
     this.Diagnostics = Diagnostics;
-    this.Medications = Medications;
+    this.Drug_name = Drug_name;
     this.Tests = Tests;
     this.Referal = Referal;
   }
 } 
 exports.Patients = class {
   // Patient ID
-  P_ID;
+  Patient_ID;
   // Patient first name
   P_First_Name;
   // Patient last name 
@@ -37,20 +37,15 @@ exports.Patients = class {
   DOB;
   //Gender of patients
   Gender;
-  //Diagnostics
-  Diagnostics;
-  // Medications
-  Medications;
+
  
 
-  constructor(P_ID, P_First_Name, P_Last_Name, DOB, Gender, Diagnostics, Medications) {
+  constructor(P_ID, P_First_Name, P_Last_Name, DOB, Gender) {
     this.P_ID = P_ID;
     this.P_First_Name = P_First_Name;
     this.P_Last_Name = P_Last_Name;
     this.DOB = DOB;
     this.Gender= Gender;
-    this.Diagnostics = Diagnostics;
-    this.Medications = Medications;
   }
 }
 exports.Prescriptions = class {

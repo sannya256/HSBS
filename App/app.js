@@ -1,29 +1,29 @@
 "use strict";
 
-// The application layer uses student classes
+// Planet doctor classes are used in the application layer 
 const planetdoctor = require("../planetdoctor.js");
 
-// The application layer talks to the data layer
+// Establishing communication between the application layer and the data layer
 const data = require("../data/data.js");
 
-// Import express library.
+// This code is going to import express from the npm library
 const express = require("express");
 
-// Create express application
+// Express application is created 
 var app = express();
 
-// Add static files location
+// Location of the static files are added 
 app.use(express.static("static"));
 
-// Add /module endpoint
+// This code will create /patient endpoints
 app.get("/patient/:Patient_ID", function(req, res) {
-  // Return "Module <code>"
-  res.send("Patient " + req.params.Patient_ID);
+  // This code will only display one patient and their ID 
+  res.send("Patients" + req.params.Patient_ID);
 });
 
-// Add /modules endpoint
+// This code will create /patients endpoint
 app.get("/patients", function(req, res) {
-  // Return "All modules"
+  // This code will display 'All patients' as a response 
   res.send("All patients");
 });
 
