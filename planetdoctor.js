@@ -10,7 +10,7 @@ exports.Diagnostics = class {
   //This will show Patient's medical diagnosis
   Diagnosis;
   //This will show Drug_ID
-  Drug_ID
+  Drug_ID;
   //This will show all drug names prescribed to Patients
   Drug_name;
   //This will show tests carried out for Patients
@@ -23,32 +23,34 @@ exports.Diagnostics = class {
     this.P_First_Name = P_First_Name;
     this.P_Last_Name = P_Last_Name;
     this.Diagnosis = Diagnosis;
-    this.Drug_ID = Drug_ID
+    this.Drug_ID = Drug_ID;
     this.Drug_name = Drug_name;
     this.Tests = Tests;
     this.Referal = Referal;
   }
 } 
 exports.Patients = class {
-  // Patient ID
+  // This is Patient's ID number
   Patient_ID;
-  // Patient first name
+  // This is Patient's first name
   P_First_Name;
-  // Patient last name 
+  // This is Patient's last name 
   P_Last_Name;
-  //Date of birth
+  //This is Patient's Date of birth
   DOB;
-  //Gender of patients
+  //This is Patient's Gender
   Gender;
+  //This will show Patient's current symptoms 
+  Symptoms;
 
  
-
-  constructor(P_ID, P_First_Name, P_Last_Name, DOB, Gender) {
-    this.P_ID = P_ID;
+  constructor(Patient_ID, P_First_Name, P_Last_Name, DOB, Gender, Symptoms) {
+    this.Patient_ID = Patient_ID;
     this.P_First_Name = P_First_Name;
     this.P_Last_Name = P_Last_Name;
     this.DOB = DOB;
-    this.Gender= Gender;
+    this.Gender = Gender;
+    this.Symptoms = Symptoms;
   }
 }
 exports.Prescriptions = class {
