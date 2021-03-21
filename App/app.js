@@ -30,13 +30,13 @@ app.get("/patients", function(req, res) {
 
 // FIX THIS CODE TOMORROW...MUST
 // This code will Add /doctor endpoint
-app.get("/doctor/:ID", function(req, res) {
+app.get("/doctor/:Doctor_ID", function(req, res) {
   // This code will return "Doctor <code>"
-  res.send("Doctor" + req.params.ID);//fix this tomorow
+  res.send("Doctors" + req.params.Doctor_ID);//fixed - changed ID to Doctor_ID
 });
 
-// this code will Add /doctors endpoint
-app.get("/doctors", function(req, res) {
+// this code will Add /doctors endpoint to the front end
+app.get("/doctors" , function(req, res) {
   // Return "All modules"
   res.send("All Doctors");
 });

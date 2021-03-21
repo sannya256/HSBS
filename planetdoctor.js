@@ -95,16 +95,16 @@ exports.Doctors = class {
   // This is the doctors full name
   Name;
   // This is the doctors identification
-  ID;
+  Doctor_ID;
   // this shows the doctors gender
   Gender;
   // This is the doctors avalability date
   Availability;
   
  
-  constructor(Name, ID, Gender, Availability) {
+  constructor(Name, Doctor_ID, Gender, Availability) {
     this.Name = Name;
-    this.ID = ID;
+    this.Doctor_ID = Doctor_ID;
     this.Gender = Gender;
     this.Availability = Availability;
 
