@@ -2,7 +2,7 @@
 "use strict";
 
 // This code will import app.js into iha.js and run the code in app.js
-const app = require("./app/app");
+const app = require("./App/app");
 
 
 
