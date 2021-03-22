@@ -39,6 +39,7 @@ app.get("/doctors" , function(req, res) {
   res.send("All Doctors");
 });
 
+
 // To add Diagnosis endpoint
 app.get("/diagnosis/:Diagnosis", function(req, res) {
     // Return "Module <code>"
@@ -50,3 +51,20 @@ app.get("/diagnosis/:Diagnosis", function(req, res) {
     // Return "All modules"
     res.send("All Diagnosis");
   });
+
+
+
+
+
+
+
+// To start the server
+// This code will allow the application layer to listen communication from the front end on port 3000
+app.listen(3000, function(err) {
+  // In case of an error
+  if (err) {
+    return console.error(err.message);
+  }
+  //When theres no error
+  console.log("You have launched the Server.");
+});
