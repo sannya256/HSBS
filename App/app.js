@@ -27,12 +27,10 @@ app.get("/patients", function(req, res) {
   res.send("All patients");
 });
 
-
-// FIX THIS CODE TOMORROW...MUST
 // This code will Add /doctor endpoint
 app.get("/doctor/:Doctor_ID", function(req, res) {
-  // This code will return "Doctor <code>"
-  res.send("Doctors" + req.params.Doctor_ID);//fixed - changed ID to Doctor_ID
+  // This code will return "Doctor along with the id"
+  res.send("Doctors" + req.params.Doctor_ID);
 });
 
 // this code will Add /doctors endpoint to the front end
