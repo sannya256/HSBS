@@ -27,12 +27,10 @@ app.get("/patients", function(req, res) {
   res.send("All patients");
 });
 
-
-// FIX THIS CODE TOMORROW...MUST
 // This code will Add /doctor endpoint
 app.get("/doctor/:Doctor_ID", function(req, res) {
-  // This code will return "Doctor <code>"
-  res.send("Doctors" + req.params.Doctor_ID);//fixed - changed ID to Doctor_ID
+  // This code will return "Doctor along with the id"
+  res.send("Doctors" + req.params.Doctor_ID);
 });
 
 // this code will Add /doctors endpoint to the front end
@@ -40,6 +38,7 @@ app.get("/doctors" , function(req, res) {
   // Return "All modules"
   res.send("All Doctors");
 });
+
 
 // To add Diagnosis endpoint
 app.get("/diagnosis/:Diagnosis", function(req, res) {
@@ -52,3 +51,20 @@ app.get("/diagnosis/:Diagnosis", function(req, res) {
     // Return "All modules"
     res.send("All Diagnosis");
   });
+
+
+
+
+
+
+
+// To start the server
+// This code will allow the application layer to listen communication from the front end on port 3000
+app.listen(3000, function(err) {
+  // In case of an error
+  if (err) {
+    return console.error(err.message);
+  }
+  //When theres no error
+  console.log("You have launched the Server.");
+});
