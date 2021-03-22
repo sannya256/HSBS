@@ -53,18 +53,24 @@ app.get("/diagnosis/:Diagnosis", function(req, res) {
   });
 
 // This code is adding prescriptions endpoint
-app.get("/prescriptions/:Prescriptions", function(req, res) {
+app.get("/prescriptions/:Drug_name", function(req, res) {
   // Return "Module <code>"
-  res.send("Prescriptions " + req.params.Drug_ID);
+  res.send("Prescriptions " + req.params.Drug_name);
 });
 
 // This code is adding prescriptions endpoint to the front end
-app.get("/prescriptions", function(req, res) {
+//app.get("/prescriptions", function(req, res) {
   // Return "All modules"
-  res.send("All Prescriptions");
+  //res.send("All Prescriptions");
+//});
+
+// Add /student endpoint
+app.get("/Prescriptions", function(req, res) {
+  // Call getPrescriptions on data
+  data.getPrescriptions(function(Prescriptions) {
+      res.json(Prescriptions);
+  });
 });
-
-
 
 
 
