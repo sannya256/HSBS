@@ -144,6 +144,25 @@ db.all(sql, function(err, rows) {
     });
 };
 
+// This code will getDiagnostics function
+exports.getDiagnostics = function(code, callback) {
+    // To create SQL statements
+    var sql = `
+        SELECT * FROM Diagnostics
+        WHERE Drug_ID = '${code}'`;
+    // This code will execute return of only one row from the query
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // This code will create a module object
+        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+        // This code will return diagnostics
+        callback(diagnostic);
+    });
+};
+
+
 //NEW CODE
 // This will Export getPatients function
 exports.getPatients = function(callback) {
@@ -168,5 +187,23 @@ exports.getPatients = function(callback) {
         }
         // Execute callback function
         callback(patients);
+    });
+};
+
+// Export getVolunteer function
+exports.getVolunteer = function(ddd, callback) {
+    // Create SQL statement
+    var sql = `
+        SELECT * FROM volunteers
+        WHERE ID = '${ddd}'`;
+    // Execute query. Only one row returned.
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create a volunteer object
+        var volunteer = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
+        // Return module
+        callback(volunteer);
     });
 };

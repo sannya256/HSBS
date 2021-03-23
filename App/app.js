@@ -67,6 +67,15 @@ app.get("/doctor/:doc", function(req, res) {
   });
 });
 
+// This code will add /diagnostics endpoint
+app.get("/diagnostics/:code", function(req, res) {
+  // This code will call getDiagnostics on data
+  data.getDiagnostics(req.params.code, function(diagnostic) {
+      res.json(diagnostic);
+  });
+});
+
+
     //res.send("All Diagnostics");
   //});
 
@@ -95,6 +104,14 @@ app.get("/volunteering", function(req, res) {
   // Call getVolunteers on data
   data.getVolunteers(function(volunteering) {
       res.json(volunteering);
+  });
+});
+
+// Add /volunteer endpoint
+app.get("/volunteer/:ddd", function(req, res) {
+  // Call get on data
+  data.getVolunteer(req.params.ddd, function(volunteer) {
+      res.json(volunteer);
   });
 });
 
