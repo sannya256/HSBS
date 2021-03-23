@@ -107,44 +107,41 @@ exports.getDoctor = function(doc, callback) {
 };
 // Communication with the doctors data stops here
 
+//The following code will broadcast Diagnostics data
 
-
-// Export getProgrammes function
+// This code will allow to export getDiagnostics function
 exports.getDiagnostics = function(callback) {
-    // Create SQL statement
+    // This code will create SQL statement
     var sql = `SELECT * FROM Diagnostics` 
-    //`SELECT Patient_ID, P_First_name, P_Last_name, Diagnosis, Drug_ID, Drug_name, Tests, Referal
-    //From Diagnostics, Patients
-    //WHERE Diagnostics.Patient_ID = Patients.Patient_ID`;
- // Execute query. Return all
+
+ // This code will allow to execute queries and return data from Diagnostics class 
 db.all(sql, function(err, rows) {
     // Check if error
     if (err) {
         return console.error(err.message);
     }
-    // Create programme array
+    // This code will create programme array
         var diagnosting = [];
-        // Loop through rows creating programme objects
+        //This code will allow to loop through rows creating programme objects
         for (var row of rows) {
-            // creating patient object
-            //var pats = new planetdoctor.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
-            // Create programme object
+            
+            // This code will create Diagnostics object
             var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
-            // Add object to array
+            // This code will add Diagnostics object to array
             diagnosting.push(diag);
         }
-        // Execute callback function
+        // This code will execute callback function
         callback(diagnosting);
     });
 };
 
-// This code will getDiagnostics function
+// This code will export getDiagnostics function
 exports.getDiagnostic = function(code, callback) {
-    // To create SQL statements
+    // This code will allow to create SQL statements
     var sql = `
         SELECT * FROM Diagnostics
         WHERE Drug_ID = '${code}'`;
-    // This code will execute return of only one row from the query
+    // This code will execute return of only one row from the sql query
     db.get(sql, function(err, row) {
         if (err) {
             return console.error(err.message);
@@ -155,6 +152,8 @@ exports.getDiagnostic = function(code, callback) {
         callback(diagnostic);
     });
 };
+
+// Diagnostics data broadcasting ends here
 
 // This will Export getPatients function
 exports.getPatients = function(callback) {

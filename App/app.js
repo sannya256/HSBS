@@ -52,7 +52,7 @@ app.get("/doctor/:doc", function(req, res) {
 // Doctor endpoints stop here
 
   
-  // To add Diagnostics endpoint to the front end
+  // This code will add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
     // This code will return the endpoint to the frontend
     data.getDiagnostics(function(diagnosting) {

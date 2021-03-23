@@ -18,6 +18,7 @@ exports.Diagnostics = class {
   //This will show the Doctors patients are referred to
   Referal;
 
+  // To definie constructor
   constructor(Patient_ID, P_First_Name, P_Last_Name, Diagnosis, Drug_ID, Drug_name, Tests, Referal) {
     this.Patient_ID = Patient_ID;
     this.P_First_Name = P_First_Name;
@@ -29,6 +30,7 @@ exports.Diagnostics = class {
     this.Referal = Referal;
   }
 } 
+
 exports.Patients = class {
   // This is Patient's ID number
   Patient_ID;
@@ -53,6 +55,7 @@ exports.Patients = class {
     this.Symptoms = Symptoms;
   }
 }
+
 exports.Prescriptions = class {
   // Name of medications
   Drug_name;
