@@ -21,14 +21,6 @@ app.use(express.static("static"));
   //res.send("All Patients");
 //});
 
-// This code will create /patients endpoint
-app.get("/patients", function(req, res) {
-  // Call getPatients on data
-  data.getPatients(function(patients) {
-    res.json(patients);
-  });
-});
-
 // Add /patient endpoint
 app.get("/patient/:Patient_ID", function(req, res) {
   // Call getPatient on data
@@ -37,35 +29,26 @@ app.get("/patient/:Patient_ID", function(req, res) {
   });
 });
 
-// This code will Add /doctor endpoint
-//app.get("/doctor/:Doctor_ID", function(req, res) {
-  // This code will return "Doctor along with the id"
-  //res.send("Doctors" + req.params.Doctor_ID);
-//});
+// This is the start for doctor endpoints
 
-// this code will Add /doctors endpoint to the front end
+//This code will Add /doctors endpoint
 app.get("/doctors" , function(req, res) {
-  // Return "All modules"
+  // This code will return "all doctors" from the doctors table 
   data.getDoctors(function(doctors) {
     res.json(doctors);
   });
   
 });
 
-// Add /module endpoint
+// This is the code for Adding a single /doctor endpoint
 app.get("/doctor/:doc", function(req, res) {
-  // Call getModule on data
+  // tTis code will Call getDoctor on data
   data.getDoctor(req.params.doc, function(doc) {
       res.json(doc);
   });
 });
+// Doctor endpoints stop here
 
-
-// To add Diagnosis endpoint
-//app.get("/diagnostics", function(req, res) {
-    // 
-    //res.send("All Diagnostics");
-  //});
   
   // To add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
@@ -84,14 +67,7 @@ app.get("/diagnostic/:code", function(req, res) {
 });
 
 
-    //res.send("All Diagnostics");
-  //});
 
-// This code is adding prescriptions endpoint
-//app.get("/prescriptions/:Prescriptions", function(req, res) {
-  // Return "Module <code>"
-  //res.send("Prescriptions " + req.params.Drug_ID);
-//});
 
 // This code is adding prescriptions endpoint to the front end
 app.get("/prescriptions", function(req, res) {
@@ -101,7 +77,7 @@ app.get("/prescriptions", function(req, res) {
     });
 });
 
-// Add /module endpoint
+// Add /Prescription endpoint
 app.get("/SinglePrescription/:code", function(req, res) {
   // Call getModule on data
   data.getSinglePrescription(req.params.code, function(singleprescription) {
@@ -109,12 +85,6 @@ app.get("/SinglePrescription/:code", function(req, res) {
   });
 });
 
-
-// This code is adding prescriptions endpoint to the front end
-//app.get("/volunteers", function(req, res) {
-  // Return "All modules"
-  //res.send("All Volunteers");
-//});
 
 //This code is adding volunteers endpoint to the front end
 app.get("/volunteering", function(req, res) {
@@ -132,11 +102,6 @@ app.get("/volunteer/:code", function(req, res) {
   });
 });
 
-// This code is adding prescriptions endpoint
-//app.get("/volunteers/:Volunteers", function(req, res) {
-//  // Return "Module <code>"
-//  res.send("volunteers " + req.params.ID);
-//});
 
 // To start the server
 // This code will allow the application layer to listen communication from the front end on port 3000
