@@ -15,11 +15,13 @@ var app = express();
 // Location of the static files are added 
 app.use(express.static("static"));
 
-// This code will create /patient endpoints
-//app.get("/patients", function(req, res) {
-  // This code will only display one patient and their ID 
-  //res.send("All Patients");
-//});
+// This code will create /patients endpoint
+app.get("/patients", function(req, res) {
+  // Call getPatients on data
+  data.getPatients(function(patients) {
+    res.json(patients);
+  });
+});
 
 // Add /patient endpoint
 app.get("/patient/:Patient_ID", function(req, res) {
