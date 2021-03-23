@@ -23,10 +23,8 @@ app.get("/patient/:Patient_ID", function(req, res) {
 
 // This code will create /patients endpoint
 app.get("/patients", function(req, res) {
-  // Call getPatients on data
-  data.getPatients(function(patienting) {
-    res.json(patienting);
-  });
+  // This code will display 'All patients' as a response 
+  res.send("All patients");
 });
 
 // This code will Add /doctor endpoint
@@ -38,7 +36,10 @@ app.get("/doctor/:Doctor_ID", function(req, res) {
 // this code will Add /doctors endpoint to the front end
 app.get("/doctors" , function(req, res) {
   // Return "All modules"
-  res.send("All Doctors");
+  data.getDoctors(function(doctors) {
+    res.json(doctors);
+  });
+  
 });
 
 
@@ -101,3 +102,4 @@ app.listen(3000, function(err) {
   //When theres no error
   console.log("You have launched the Server.");
 });
+
