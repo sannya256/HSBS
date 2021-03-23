@@ -90,16 +90,16 @@ app.get("/SinglePrescription/:code", function(req, res) {
 
 
 //This code is adding volunteers endpoint to the front end
-app.get("/volunteering", function(req, res) {
+app.get("/volunteers", function(req, res) {
   // Call getVolunteers on data
-  data.getVolunteers(function(volunteering) {
-      res.json(volunteering);
+  data.getVolunteers(function(volunteers) {
+      res.json(volunteers);
   });
 });
 
 // Add /volunteer endpoint
 app.get("/volunteer/:code", function(req, res) {
-  // Call get on data
+  // Call getVolunteer on data
   data.getVolunteer(req.params.code, function(volunteer) {
       res.json(volunteer);
   });

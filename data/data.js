@@ -201,7 +201,7 @@ exports.getPatient = function(Patient_ID, callback) {
 
 
 //volunteering code starts here 
-// Export getProgrammes function
+// Export getVolunteers function
 exports.getVolunteers = function(callback) {
     // Create SQL statement
     var sql = `SELECT * FROM volunteers`;
@@ -211,17 +211,17 @@ db.all(sql, function(err, rows) {
     if (err) {
         return console.error(err.message);
     }
-    // Create programme array
-        var volunteering = [];
-        // Loop through rows creating programme objects
+    // Create volunteer array
+        var volunteers = [];
+        // Loop through rows creating volunteer objects
         for (var row of rows) {
-            // Create programme object
+            // Create new volunteer  object
             var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
             // Add object to array
-            volunteering.push(volunt);
+            volunteers.push(volunt);
         }
         // Execute callback function
-        callback(volunteering);
+        callback(volunteers);
     });
 };
 
@@ -238,7 +238,7 @@ exports.getVolunteer = function(code, callback) {
         }
         // Create a volunteer object
         var volunteer = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
-        // Return module
+        // Return single instance of volunteer using ID in the URL
         callback(volunteer);
     });
 }; 
