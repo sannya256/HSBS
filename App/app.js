@@ -38,7 +38,10 @@ app.get("/doctor/:Doctor_ID", function(req, res) {
 // this code will Add /doctors endpoint to the front end
 app.get("/doctors" , function(req, res) {
   // Return "All modules"
-  res.send("All Doctors");
+  data.getDoctors(function(doctors) {
+    res.json(doctors);
+  });
+  
 });
 
 
@@ -103,3 +106,4 @@ app.listen(3000, function(err) {
   //When theres no error
   console.log("You have launched the Server.");
 });
+
