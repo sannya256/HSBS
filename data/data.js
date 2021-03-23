@@ -127,7 +127,7 @@ db.all(sql, function(err, rows) {
         return console.error(err.message);
     }
     // Create programme array
-        var diagnosting = [];
+        var diagnosisdata = [];
         // Loop through rows creating programme objects
         for (var row of rows) {
             // creating patient object
@@ -135,10 +135,10 @@ db.all(sql, function(err, rows) {
             // Create programme object
             var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
             // Add object to array
-            diagnosting.push(diag);
+            diagnosisdata.push(diag);
         }
         // Execute callback function
-        callback(diagnosting);
+        callback(diagnosisdata);
     });
 };
 
@@ -154,7 +154,7 @@ exports.getPatients = function(callback) {
             return console.error(err.message);
         }
         // Create an array of Patients
-        var patienting = [];
+        var patientdata = [];
         // Loop through rows creating Patient objects
         for (var row of rows) {
             // Create programme object
@@ -162,9 +162,9 @@ exports.getPatients = function(callback) {
             // Create patient object
             var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_name, row.P_Last_name, row.DOB, row,Gender);
             // Add patients to array
-            patienting.push(pat);
+            patientdata.push(pat);
         }
         // Execute callback function
-        callback(patienting);
+        callback(patientdata);
     });
 };

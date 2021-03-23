@@ -16,16 +16,16 @@ var app = express();
 app.use(express.static("static"));
 
 // This code will create /patient endpoints
-app.get("/patient/:Patient_ID", function(req, res) {
+app.get("/patients", function(req, res) {
   // This code will only display one patient and their ID 
-  res.send("Patients" + req.params.Patient_ID);
+  res.send("All Patients");
 });
 
 // This code will create /patients endpoint
 app.get("/patients", function(req, res) {
   // Call getPatients on data
-  data.getPatients(function(patienting) {
-    res.json(patienting);
+  data.getPatients(function(patientdata) {
+    res.json(patientdata);
   });
 });
 
@@ -51,8 +51,8 @@ app.get("/diagnostics", function(req, res) {
   // To add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
     // Return "All modules"
-    data.getDiagnostics(function(diagnosting) {
-    res.json(diagnosting);
+    data.getDiagnostics(function(diagnosisdata) {
+    res.json(diagnosisdata);
   });
 });
 
