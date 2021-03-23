@@ -56,3 +56,33 @@ exports.getPrescriptions = function(callback) {
         callback(prescriptions);
     });
 };
+
+// NEW CODE
+
+// Export getStudents function
+exports.getDoctors = function(callback) {
+    // Create SQL statement
+    var sql = `
+        SELECT * FROM Doctors`;
+    // Execute query. Return all
+    db.all(sql, function(err, rows) {
+        // Check if error
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create an array of Students
+        var doctors = [];
+        // Loop through rows creating Student objects
+        for (var row of rows) {
+            // Create programme object
+            //var vols = new doctor.Volunteers(row., row.name);
+            // Create student object
+            var doc = new doctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
+            // Add student to array
+            doctors.push(doc);
+        }
+        // Execute callback function
+        callback(doctors);
+    });
+};
+// ENDS HERE
