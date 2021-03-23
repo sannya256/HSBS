@@ -77,7 +77,7 @@ exports.getDoctors = function(callback) {
             // Create programme object
             //var vols = new doctor.Volunteers(row., row.name);
             // Create student object
-            var doc = new doctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
+            var doc = new planetdoctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
             // Add student to array
             doctors.push(doc);
         }
