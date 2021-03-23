@@ -63,9 +63,9 @@ app.get("/diagnostic/:Drug_ID", function(req, res) {
     // This code will diaplay the diagnostics of all patients as a response
     res.send("All Diagnostics");
   });
-
+//Need to edit this code
 // This code is adding prescriptions endpoint
-app.get("/prescriptions/:Drug_name", function(req, res) {
+app.get("/prescription/:Drug_name", function(req, res) {
   // Return "Module <code>"
   res.send("Prescriptions " + req.params.Drug_name);
 });
