@@ -152,3 +152,21 @@ exports.getPatients = function(callback) {
         callback(patients);
     });
 };
+
+// Export getPatient function
+exports.getPatient = function(Patient_ID, callback) {
+    // Create SQL statement
+    var sql = `
+        SELECT * FROM Patients
+        WHERE Patient_ID = '${Patient_ID}'`;
+    // Execute query. Only one row returned.
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create a patient object
+        var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
+        // Return patient
+        callback(patient);
+    });
+};
