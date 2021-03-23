@@ -76,9 +76,9 @@ app.get("/doctor/:doc", function(req, res) {
 });
 
 // This code will add /diagnostics endpoint
-app.get("/diagnostics/:code", function(req, res) {
+app.get("/diagnostic/:code", function(req, res) {
   // This code will call getDiagnostics on data
-  data.getDiagnostics(req.params.code, function(diagnostic) {
+  data.getDiagnostic(req.params.code, function(diagnostic) {
       res.json(diagnostic);
   });
 });

@@ -145,7 +145,7 @@ db.all(sql, function(err, rows) {
 };
 
 // This code will getDiagnostics function
-exports.getDiagnostics = function(code, callback) {
+exports.getDiagnostic = function(code, callback) {
     // To create SQL statements
     var sql = `
         SELECT * FROM Diagnostics
@@ -156,7 +156,7 @@ exports.getDiagnostics = function(code, callback) {
             return console.error(err.message);
         }
         // This code will create a module object
-        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
         // This code will return diagnostics
         callback(diagnostic);
     });
