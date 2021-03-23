@@ -34,10 +34,22 @@ app.get("/doctor/:Doctor_ID", function(req, res) {
 });
 
 // this code will Add /doctors endpoint to the front end
-app.get("/doctors" , function(req, res) {
+//app.get("/doctors" , function(req, res) {
   // Return "All modules"
-  res.send("All Doctors");
+ // res.send("All Doctors");
+    
+//});
+
+//NEW CODE
+
+// Add /students endpoint
+app.get("/doctors", function(req, res) {
+  // Call getStudents on data
+  data.getDoctors(function(doctors) {
+    res.json(doctors);
+  });
 });
+// ends here
 
 
 // To add Diagnosis endpoint
