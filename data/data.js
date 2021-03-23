@@ -126,6 +126,25 @@ db.all(sql, function(err, rows) {
     });
 };
 
+// This code will getDiagnostics function
+exports.getDiagnostics = function(code, callback) {
+    // To create SQL statements
+    var sql = `
+        SELECT * FROM Diagnostics
+        WHERE Drug_ID = '${code}'`;
+    // This code will execute return of only one row from the query
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // This code will create a module object
+        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+        // This code will return diagnostics
+        callback(diagnostic);
+    });
+};
+
+
 //NEW CODE
 // This will Export getPatients function
 exports.getPatients = function(callback) {

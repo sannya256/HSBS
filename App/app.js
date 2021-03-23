@@ -59,6 +59,15 @@ app.get("/doctors" , function(req, res) {
   });
 });
 
+// This code will add /diagnostics endpoint
+app.get("/diagnostics/:code", function(req, res) {
+  // This code will call getDiagnostics on data
+  data.getDiagnostics(req.params.code, function(diagnostic) {
+      res.json(diagnostic);
+  });
+});
+
+
     //res.send("All Diagnostics");
   //});
 
