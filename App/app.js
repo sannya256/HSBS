@@ -16,15 +16,22 @@ var app = express();
 app.use(express.static("static"));
 
 // This code will create /patient endpoints
-app.get("/patient/:Patient_ID", function(req, res) {
+//app.get("/patients", function(req, res) {
   // This code will only display one patient and their ID 
-  res.send("Patients" + req.params.Patient_ID);
-});
+  //res.send("All Patients");
+//});
 
 // This code will create /patients endpoint
 app.get("/patients", function(req, res) {
+<<<<<<< HEAD
   // This code will display 'All patients' as a response 
   res.send("All patients");
+=======
+  // Call getPatients on data
+  data.getPatients(function(patients) {
+    res.json(patients);
+  });
+>>>>>>> 567df300eadb2f8fbf8e64005aa7776dd769cd56
 });
 
 // This code will Add /doctor endpoint
@@ -44,16 +51,16 @@ app.get("/doctors" , function(req, res) {
 
 
 // To add Diagnosis endpoint
-app.get("/diagnostic/:Drug_ID", function(req, res) {
-    // Return "Module <code>"
-    res.send("Diagnostics " + req.params.Drug_ID);
-  });
+//app.get("/diagnostics", function(req, res) {
+    // 
+    //res.send("All Diagnostics");
+  //});
   
   // To add Diagnostics endpoint to the front end
-  app.get("/diagnostics", function(req, res) {
-    // Return "All modules"
-    data.getDiagnostics(function(diagnostics) {
-    res.json(diagnostics);
+  app.get("/diagnosting", function(req, res) {
+    // This code will return the endpoint to the frontend
+    data.getDiagnostics(function(diagnosisting) {
+    res.json(diagnosisting);
   });
 });
 
@@ -61,26 +68,28 @@ app.get("/diagnostic/:Drug_ID", function(req, res) {
   //});
 
 // This code is adding prescriptions endpoint
-app.get("/prescriptions/:Prescriptions", function(req, res) {
+//app.get("/prescriptions/:Prescriptions", function(req, res) {
   // Return "Module <code>"
-  res.send("Prescriptions " + req.params.Drug_ID);
-});
+  //res.send("Prescriptions " + req.params.Drug_ID);
+//});
 
 // This code is adding prescriptions endpoint to the front end
 app.get("/prescriptions", function(req, res) {
-  // Return "All modules"
-  res.send("All Prescriptions");
+  // Call getPrescriptons on data
+  data.getPrescriptions(function(prescriptions){
+      res.json(prescriptions)
+    });
 });
-
 
 // This code is adding prescriptions endpoint to the front end
-app.get("/volunteers", function(req, res) {
+//app.get("/volunteers", function(req, res) {
   // Return "All modules"
-  res.send("All Volunteers");
-});
+  //res.send("All Volunteers");
+//});
 
+//This code is adding volunteers endpoint to the front end
 app.get("/volunteering", function(req, res) {
-  // Call getProgrammes on data
+  // Call getVolunteers on data
   data.getVolunteers(function(volunteering) {
       res.json(volunteering);
   });

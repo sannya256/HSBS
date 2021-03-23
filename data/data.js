@@ -19,20 +19,8 @@ var db = new sqlite3.Database("data/PlanetDoctor.db", function(err) {
 exports.getPrescriptions = function(callback) {
     // Creating SQL statement for Prescriptions and connecting foreign keys
     var sql = `
-        SELECT 
-            Prescriptions.Drug_name, 
-            Prescriptions.Stock, 
-            Prescriptions.Drug_ID, 
-            Prescriptions.Patient_ID
-        FROM
-            Prescriptions, 
-            Diagnostics,
-            Patients
-        WHERE
-            Prescriptions.Drug_ID = Diagnostics.Drug_ID 
-            
-        
-        `;
+        SELECT * FROM Prescriptions `;
+
     // Execute query. Return all
     db.all(sql, function(err, rows) {
         // Check if there is an error
@@ -43,12 +31,8 @@ exports.getPrescriptions = function(callback) {
         var prescriptions = [];
         // Loop through rows creating Prescriptions objects
         for (var row of rows) {
-            // Create Diagnostics object
-            var tests = new prescriptions.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name,row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
-             // Create Patients object
-             //var pats = new prescriptions.Patients(row.Patient_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
             // Create Prescriptions object
-            var Meds = new prescriptions.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
+            var Meds = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
             // Add prescriptions to array
             prescriptions.push(Meds);
         }
@@ -103,7 +87,7 @@ db.all(sql, function(err, rows) {
         // Loop through rows creating programme objects
         for (var row of rows) {
             // Create programme object
-            var volunt = new planetdoctor.Volunteer(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
+            var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
             // Add object to array
             volunteering.push(volunt);
         }
@@ -116,9 +100,10 @@ db.all(sql, function(err, rows) {
 // Export getProgrammes function
 exports.getDiagnostics = function(callback) {
     // Create SQL statement
-    var sql = `SELECT Patient_ID, P_First_name, P_Last_name, Diagnosis, Drug_ID, Drug_name, Tests, Referal
-    From Diagnostics, Patients
-    WHERE Diagnostics.Patient_ID = Patients.Patient_ID`;
+    var sql = `SELECT * FROM Diagnostics` 
+    //`SELECT Patient_ID, P_First_name, P_Last_name, Diagnosis, Drug_ID, Drug_name, Tests, Referal
+    //From Diagnostics, Patients
+    //WHERE Diagnostics.Patient_ID = Patients.Patient_ID`;
  // Execute query. Return all
 db.all(sql, function(err, rows) {
     // Check if error
@@ -126,18 +111,18 @@ db.all(sql, function(err, rows) {
         return console.error(err.message);
     }
     // Create programme array
-        var diagnostics = [];
+        var diagnosisting = [];
         // Loop through rows creating programme objects
         for (var row of rows) {
             // creating patient object
-            var pats = new planetdoctor.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
+            //var pats = new planetdoctor.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
             // Create programme object
-            var diag = new planetdoctor.diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+            var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
             // Add object to array
-            diagnostics.push(pats,diag);
+            diagnosisting.push(diag);
         }
         // Execute callback function
-        callback(diagnostics);
+        callback(diagnosisting);
     });
 };
 
@@ -153,17 +138,17 @@ exports.getPatients = function(callback) {
             return console.error(err.message);
         }
         // Create an array of Patients
-        var patienting = [];
+        var patients= [];
         // Loop through rows creating Patient objects
         for (var row of rows) {
             // Create programme object
             //var prog = new student.Programme(row.programme, row.name);
             // Create patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_name, row.P_Last_name, row.DOB, row,Gender);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
             // Add patients to array
-            patienting.push(pat);
+            patients.push(pat);
         }
         // Execute callback function
-        callback(patienting);
+        callback(patients);
     });
 };
