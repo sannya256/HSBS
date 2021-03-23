@@ -11,7 +11,3 @@ const app = require("./App/app");
 
 
 
-// This is a tester code
-//this code appears after running npm start = everything working as expected
-
-//console.log("Hello world!, this is the HSBS App dev team");
