@@ -43,14 +43,14 @@ app.get("/doctors" , function(req, res) {
 
 
 // To add Diagnosis endpoint
-app.get("/diagnostics", function(req, res) {
-    // Return "Module <code>"
-    res.send("All Diagnostics");
-  });
+//app.get("/diagnostics", function(req, res) {
+    // 
+    //res.send("All Diagnostics");
+  //});
   
   // To add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
-    // Return "All modules"
+    // This code will return the endpoint to the frontend
     data.getDiagnostics(function(diagnosisting) {
     res.json(diagnosisting);
   });
@@ -60,26 +60,28 @@ app.get("/diagnostics", function(req, res) {
   //});
 
 // This code is adding prescriptions endpoint
-app.get("/prescriptions/:Prescriptions", function(req, res) {
+//app.get("/prescriptions/:Prescriptions", function(req, res) {
   // Return "Module <code>"
-  res.send("Prescriptions " + req.params.Drug_ID);
-});
+  //res.send("Prescriptions " + req.params.Drug_ID);
+//});
 
 // This code is adding prescriptions endpoint to the front end
 app.get("/prescriptions", function(req, res) {
-  // Return "All modules"
-  res.send("All Prescriptions");
+  // Call getPrescriptons on data
+  data.getPrescriptions(function(prescriptions){
+      res.json(prescriptions)
+    });
 });
-
 
 // This code is adding prescriptions endpoint to the front end
-app.get("/volunteers", function(req, res) {
+//app.get("/volunteers", function(req, res) {
   // Return "All modules"
-  res.send("All Volunteers");
-});
+  //res.send("All Volunteers");
+//});
 
+//This code is adding volunteers endpoint to the front end
 app.get("/volunteering", function(req, res) {
-  // Call getProgrammes on data
+  // Call getVolunteers on data
   data.getVolunteers(function(volunteering) {
       res.json(volunteering);
   });
