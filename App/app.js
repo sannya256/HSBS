@@ -21,6 +21,7 @@ app.use(express.static("static"));
   //res.send("All Patients");
 //});
 
+
 // Add /patient endpoint
 app.get("/patient/:Patient_ID", function(req, res) {
   // Call getPatient on data
