@@ -91,9 +91,9 @@ app.get("/volunteering", function(req, res) {
 });
 
 // Add /volunteer endpoint
-app.get("/volunteer/:ddd", function(req, res) {
+app.get("/volunteer/:code", function(req, res) {
   // Call get on data
-  data.getVolunteer(req.params.ddd, function(volunteer) {
+  data.getVolunteer(req.params.code, function(volunteer) {
       res.json(volunteer);
   });
 });
