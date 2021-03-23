@@ -154,17 +154,17 @@ exports.getPatients = function(callback) {
             return console.error(err.message);
         }
         // Create an array of Patients
-        var patienting = [];
+        var patients= [];
         // Loop through rows creating Patient objects
         for (var row of rows) {
             // Create programme object
             //var prog = new student.Programme(row.programme, row.name);
             // Create patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_name, row.P_Last_name, row.DOB, row,Gender);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
             // Add patients to array
-            patienting.push(pat);
+            patients.push(pat);
         }
         // Execute callback function
-        callback(patienting);
+        callback(patients);
     });
 };

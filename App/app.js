@@ -16,16 +16,16 @@ var app = express();
 app.use(express.static("static"));
 
 // This code will create /patient endpoints
-app.get("/patients", function(req, res) {
+//app.get("/patients", function(req, res) {
   // This code will only display one patient and their ID 
-  res.send("All Patients");
-});
+  //res.send("All Patients");
+//});
 
 // This code will create /patients endpoint
 app.get("/patients", function(req, res) {
   // Call getPatients on data
-  data.getPatients(function(patienting) {
-    res.json(patienting);
+  data.getPatients(function(patients) {
+    res.json(patients);
   });
 });
 
