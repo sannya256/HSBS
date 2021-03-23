@@ -22,40 +22,40 @@ exports.getPrescriptions = function(callback) {
     var sql = `
         SELECT * FROM Prescriptions `;
 
-    // Execute query. Return all
+    // This will execute the query and return all prescriptions
     db.all(sql, function(err, rows) {
-        // Check if there is an error
+        // This will check if there is an error within the code
         if (err) {
             return console.error(err.message);
         }
         // Create an array of Prescriptions
         var prescriptions = [];
-        // Loop through rows creating Prescriptions objects
+        // Loop through rows to create Prescriptions objects
         for (var row of rows) {
             // Create Prescriptions object
             var Meds = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
-            // Add prescriptions to array
+            // This code will push prescriptions to array created above
             prescriptions.push(Meds);
         }
-        // Execute callback function
+        // Execute callback function on prescriptions 
         callback(prescriptions);
     });
 };
 
-// Export getModule function
+// Export getSinglePrescription function
 exports.getSinglePrescription = function(code, callback) {
-    // Create SQL statement
+    // Create SQL statement for prescriptions 
     var sql = `
         SELECT * FROM Prescriptions
         WHERE Drug_ID = '${code}'`;
-    // Execute query. Only one row returned.
+    // Execute query, this will return only one row of data
     db.get(sql, function(err, row) {
         if (err) {
             return console.error(err.message);
         }
-        // Create a module object
+        // Create a singleprescription object
         var singleprescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
-        // Return module
+        // Return singleprescription 
         callback(singleprescription);
     });
 };

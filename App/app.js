@@ -82,7 +82,7 @@ app.get("/prescriptions", function(req, res) {
 
 // Add /Prescription endpoint
 app.get("/SinglePrescription/:code", function(req, res) {
-  // Call getModule on data
+  // This code will call prescriptions on data
   data.getSinglePrescription(req.params.code, function(singleprescription) {
       res.json(singleprescription);
   });
