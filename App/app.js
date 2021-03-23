@@ -43,16 +43,16 @@ app.get("/doctors" , function(req, res) {
 
 
 // To add Diagnosis endpoint
-app.get("/diagnostic/:Drug_ID", function(req, res) {
+app.get("/diagnostics", function(req, res) {
     // Return "Module <code>"
-    res.send("Diagnostics " + req.params.Drug_ID);
+    res.send("All Diagnostics");
   });
   
   // To add Diagnostics endpoint to the front end
-  app.get("/diagnostics", function(req, res) {
+  app.get("/diagnosting", function(req, res) {
     // Return "All modules"
-    data.getDiagnostics(function(diagnostics) {
-    res.json(diagnostics);
+    data.getDiagnostics(function(diagnosting) {
+    res.json(diagnosting);
   });
 });
 

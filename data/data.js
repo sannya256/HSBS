@@ -103,7 +103,7 @@ db.all(sql, function(err, rows) {
         // Loop through rows creating programme objects
         for (var row of rows) {
             // Create programme object
-            var volunt = new planetdoctor.Volunteer(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
+            var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
             // Add object to array
             volunteering.push(volunt);
         }
@@ -116,9 +116,10 @@ db.all(sql, function(err, rows) {
 // Export getProgrammes function
 exports.getDiagnostics = function(callback) {
     // Create SQL statement
-    var sql = `SELECT Patient_ID, P_First_name, P_Last_name, Diagnosis, Drug_ID, Drug_name, Tests, Referal
-    From Diagnostics, Patients
-    WHERE Diagnostics.Patient_ID = Patients.Patient_ID`;
+    var sql = `SELECT * FROM Diagnostics` 
+    //`SELECT Patient_ID, P_First_name, P_Last_name, Diagnosis, Drug_ID, Drug_name, Tests, Referal
+    //From Diagnostics, Patients
+    //WHERE Diagnostics.Patient_ID = Patients.Patient_ID`;
  // Execute query. Return all
 db.all(sql, function(err, rows) {
     // Check if error
@@ -126,18 +127,18 @@ db.all(sql, function(err, rows) {
         return console.error(err.message);
     }
     // Create programme array
-        var diagnostics = [];
+        var diagnosting = [];
         // Loop through rows creating programme objects
         for (var row of rows) {
             // creating patient object
-            var pats = new planetdoctor.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
+            //var pats = new planetdoctor.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
             // Create programme object
-            var diag = new planetdoctor.diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+            var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
             // Add object to array
-            diagnostics.push(pats,diag);
+            diagnosting.push(diag);
         }
         // Execute callback function
-        callback(diagnostics);
+        callback(diagnosting);
     });
 };
 
