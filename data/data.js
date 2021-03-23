@@ -59,54 +59,52 @@ exports.getSinglePrescription = function(code, callback) {
     });
 };
 
+//Code here will expose doctor data information
 
-// NEW CODE
-
-// Export getStudents function
+// This codde will export getStudents function 
 exports.getDoctors = function(callback) {
-    // Create SQL statement
+    // SQL statement for showing all doctors created
     var sql = `
         SELECT * FROM Doctors`;
-    // Execute query. Return all
+    // To execute th SQL quer and the return all doctors
     db.all(sql, function(err, rows) {
-        // Check if error
+        // This code will check for any errors and if any run the code
         if (err) {
             return console.error(err.message);
         }
-        // Create an array of Students
+        // Create an array for Doctors
         var doctors = [];
-        // Loop through rows creating Student objects
+        // This code will Loop through each row  to create Doctor objects
         for (var row of rows) {
-            // Create programme object
-            //var vols = new doctor.Volunteers(row., row.name);
-            // Create student object
+            // To create a doctor object
             var doc = new planetdoctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
-            // Add student to array
+            // This code will push each doctor to the array created above
             doctors.push(doc);
         }
-        // Execute callback function
+        // callback function will be excuted with this code
         callback(doctors);
     });
 };
 
-// Export getModule function
+// This code will export getDoctor function
 exports.getDoctor = function(doc, callback) {
-    // Create SQL statement
+    // SQL statement for showing a single doctor created
     var sql = `
         SELECT * FROM Doctors
         WHERE Doctor_ID = '${doc}'`;
-    // Execute query. Only one row returned.
+    // The code below will execute the query above and return just a row of data.
     db.get(sql, function(err, row) {
+        // To check for errors, this code will be excuted and if any the error msg will be displayed
         if (err) {
             return console.error(err.message);
         }
-        // Create a module object
+        // This code will create a doctor object
         var doctor = new planetdoctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
-        // Return module
+        // After the code above is excuted then this code will return a doctor
         callback(doctor);
     });
 };
-// ENDS HERE
+// Communication with the doctors data stops here
 
 //volunteering code starts here 
 // Export getProgrammes function
