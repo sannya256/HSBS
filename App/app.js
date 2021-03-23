@@ -23,6 +23,7 @@ app.get("/patients", function(req, res) {
   });
 });
 
+
 // Add /patient endpoint
 app.get("/patient/:Patient_ID", function(req, res) {
   // Call getPatient on data
