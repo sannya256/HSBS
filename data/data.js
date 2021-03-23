@@ -111,7 +111,7 @@ db.all(sql, function(err, rows) {
         return console.error(err.message);
     }
     // Create programme array
-        var diagnosisting = [];
+        var diagnosting = [];
         // Loop through rows creating programme objects
         for (var row of rows) {
             // creating patient object
@@ -119,10 +119,10 @@ db.all(sql, function(err, rows) {
             // Create programme object
             var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
             // Add object to array
-            diagnosisting.push(diag);
+            diagnosting.push(diag);
         }
         // Execute callback function
-        callback(diagnosisting);
+        callback(diagnosting);
     });
 };
 

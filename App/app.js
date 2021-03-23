@@ -51,8 +51,8 @@ app.get("/doctors" , function(req, res) {
   // To add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
     // This code will return the endpoint to the frontend
-    data.getDiagnostics(function(diagnosisting) {
-    res.json(diagnosisting);
+    data.getDiagnostics(function(diagnosting) {
+    res.json(diagnosting);
   });
 });
 
