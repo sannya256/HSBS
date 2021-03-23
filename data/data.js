@@ -118,7 +118,7 @@ exports.getDiagnostics = function(callback) {
     // Create SQL statement
     var sql = `SELECT Patient_ID, P_First_name, P_Last_name, Diagnosis, Drug_ID, Drug_name, Tests, Referal
     From Diagnostics, Patients
-    WHERE Diagnostics.Patient_ID = Patients.Patient_ID`
+    WHERE Diagnostics.Patient_ID = Patients.Patient_ID`;
  // Execute query. Return all
 db.all(sql, function(err, rows) {
     // Check if error
