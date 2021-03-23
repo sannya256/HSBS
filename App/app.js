@@ -99,6 +99,14 @@ app.get("/volunteering", function(req, res) {
   });
 });
 
+// Add /volunteer endpoint
+app.get("/volunteer/:ddd", function(req, res) {
+  // Call get on data
+  data.getVolunteer(req.params.ddd, function(volunteer) {
+      res.json(volunteer);
+  });
+});
+
 // This code is adding prescriptions endpoint
 //app.get("/volunteers/:Volunteers", function(req, res) {
 //  // Return "Module <code>"
