@@ -228,11 +228,11 @@ exports.getPatient = function(Patient_ID, callback) {
 };
 
 // Export getVolunteer function
-exports.getVolunteer = function(ddd, callback) {
+exports.getVolunteer = function(code, callback) {
     // Create SQL statement
     var sql = `
         SELECT * FROM volunteers
-        WHERE ID = '${ddd}'`;
+        WHERE ID = '${code}'`;
     // Execute query. Only one row returned.
     db.get(sql, function(err, row) {
         if (err) {
@@ -243,4 +243,4 @@ exports.getVolunteer = function(ddd, callback) {
         // Return module
         callback(volunteer);
     });
-};
+}; 
