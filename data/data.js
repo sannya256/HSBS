@@ -7,7 +7,7 @@ const sqlite3 = require("sqlite3").verbose();
 const planetdoctor = require("../planetdoctor.js");
 
 // This code will connect to the planetdocotor database.
-var db = new sqlite3.Database("data/planetDoctor.db", function(err) {
+var db = new sqlite3.Database("data/PlanetDoctor.db", function(err) {
     // this code will run in case of an error
     if (err) {
         return console.error(err.message);
@@ -130,7 +130,7 @@ db.all(sql, function(err, rows) {
         // Loop through rows creating programme objects
         for (var row of rows) {
             // creating patient object
-            var pats = new planetdocotr.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
+            var pats = new planetdoctor.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
             // Create programme object
             var diag = new planetdoctor.diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
             // Add object to array
