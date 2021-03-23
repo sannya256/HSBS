@@ -152,3 +152,21 @@ exports.getPatients = function(callback) {
         callback(patients);
     });
 };
+
+// Export getVolunteer function
+exports.getVolunteer = function(ddd, callback) {
+    // Create SQL statement
+    var sql = `
+        SELECT * FROM volunteers
+        WHERE ID = '${ddd}'`;
+    // Execute query. Only one row returned.
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create a volunteer object
+        var volunteer = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
+        // Return module
+        callback(volunteer);
+    });
+};
