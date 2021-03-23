@@ -23,15 +23,10 @@ app.use(express.static("static"));
 
 // This code will create /patients endpoint
 app.get("/patients", function(req, res) {
-<<<<<<< HEAD
-  // This code will display 'All patients' as a response 
-  res.send("All patients");
-=======
   // Call getPatients on data
   data.getPatients(function(patients) {
     res.json(patients);
   });
->>>>>>> 567df300eadb2f8fbf8e64005aa7776dd769cd56
 });
 
 // This code will Add /doctor endpoint
