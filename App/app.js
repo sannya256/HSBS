@@ -41,15 +41,15 @@ app.get("/doctors" , function(req, res) {
 
 
 // To add Diagnosis endpoint
-app.get("/diagnosis/:Diagnosis", function(req, res) {
+app.get("/diagnostics/:Diagnostics", function(req, res) {
     // Return "Module <code>"
-    res.send("Diagnosis " + req.params.Drug_ID);
+    res.send("Diagnostics " + req.params.Drug_ID);
   });
   
-  // To add Diagnosis endpoint to the front end
-  app.get("/diagnosis", function(req, res) {
+  // To add Diagnostics endpoint to the front end
+  app.get("/diagnostics", function(req, res) {
     // Return "All modules"
-    res.send("All Diagnosis");
+    res.send("All Diagnostics");
   });
 
 // This code is adding prescriptions endpoint

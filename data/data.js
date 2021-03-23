@@ -112,7 +112,32 @@ exports.getVolunteers = function(callback) {
     });
 };
 
- 
+//volunteering code starts here 
+// Export getProgrammes function
+exports.getDiagnostics = function(callback) {
+    // Create SQL statement
+    var sql = `SELECT * FROM diagnostics`;
+ // Execute query. Return all
+ db.all(sql, function(err, rows) {
+    // Check if error
+    if (err) {
+        return console.error(err.message);
+    }
+    // Create programme array
+        var diagnostics = [];
+        // Loop through rows creating programme objects
+        for (var row of rows) {
+            // creating patient object
+            var pats = new planetdocotr.Patients(row.Patients_ID, row.P_First_name, row.P_Last_name, row.DOB, row.Gender, row.Symptoms);
+            // Create programme object
+            var diag = new planetdoctor.diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+            // Add object to array
+            diagnostics.push(pats,diag);
+        }
+        // Execute callback function
+        callback(volunteering);
+    });
+};
 
 
 
