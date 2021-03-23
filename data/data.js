@@ -69,6 +69,24 @@ exports.getDoctors = function(callback) {
         callback(doctors);
     });
 };
+
+// Export getModule function
+exports.getDoctor = function(doc, callback) {
+    // Create SQL statement
+    var sql = `
+        SELECT * FROM Doctors
+        WHERE Doctor_ID = '${doc}'`;
+    // Execute query. Only one row returned.
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create a module object
+        var doctor = new planetdoctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
+        // Return module
+        callback(doctor);
+    });
+};
 // ENDS HERE
 
 //volunteering code starts here 
