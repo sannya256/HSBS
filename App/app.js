@@ -101,6 +101,15 @@ app.get("/prescriptions", function(req, res) {
     });
 });
 
+// Add /module endpoint
+app.get("/SinglePrescription/:code", function(req, res) {
+  // Call getModule on data
+  data.getSinglePrescription(req.params.code, function(singleprescription) {
+      res.json(singleprescription);
+  });
+});
+
+
 // This code is adding prescriptions endpoint to the front end
 //app.get("/volunteers", function(req, res) {
   // Return "All modules"

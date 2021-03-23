@@ -41,6 +41,25 @@ exports.getPrescriptions = function(callback) {
     });
 };
 
+// Export getModule function
+exports.getSinglePrescription = function(code, callback) {
+    // Create SQL statement
+    var sql = `
+        SELECT * FROM Prescriptions
+        WHERE Drug_ID = '${code}'`;
+    // Execute query. Only one row returned.
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create a module object
+        var singleprescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
+        // Return module
+        callback(singleprescription);
+    });
+};
+
+
 // NEW CODE
 
 // Export getStudents function
