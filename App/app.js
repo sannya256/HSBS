@@ -51,8 +51,8 @@ app.get("/diagnostics", function(req, res) {
   // To add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
     // Return "All modules"
-    data.getDiagnostics(function(diagnosisdata) {
-    res.json(diagnosisdata);
+    data.getDiagnostics(function(diagnosisting) {
+    res.json(diagnosisting);
   });
 });
 
