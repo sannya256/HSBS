@@ -93,7 +93,7 @@ exports.getVolunteers = function(callback) {
     // Create SQL statement
     var sql = `SELECT * FROM volunteers`;
  // Execute query. Return all
- db.all(sql, function(err, rows) {
+db.all(sql, function(err, rows) {
     // Check if error
     if (err) {
         return console.error(err.message);
@@ -112,13 +112,15 @@ exports.getVolunteers = function(callback) {
     });
 };
 
-//volunteering code starts here 
+// 
 // Export getProgrammes function
 exports.getDiagnostics = function(callback) {
     // Create SQL statement
-    var sql = `SELECT * FROM diagnostics`;
+    var sql = `SELECT Patient_ID, P_First_name, P_Last_name, Diagnosis, Drug_ID, Drug_name, Tests, Referal
+    From Diagnostics, Patients
+    WHERE Diagnostics.Patient_ID = Patients.Patient_ID`
  // Execute query. Return all
- db.all(sql, function(err, rows) {
+db.all(sql, function(err, rows) {
     // Check if error
     if (err) {
         return console.error(err.message);
@@ -135,10 +137,9 @@ exports.getDiagnostics = function(callback) {
             diagnostics.push(pats,diag);
         }
         // Execute callback function
-        callback(volunteering);
+        callback(diagnostics);
     });
 };
-
 
 
 

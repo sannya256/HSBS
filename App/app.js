@@ -49,8 +49,13 @@ app.get("/diagnostic/:Drug_ID", function(req, res) {
   // To add Diagnostics endpoint to the front end
   app.get("/diagnostics", function(req, res) {
     // Return "All modules"
-    res.send("All Diagnostics");
+    data.getDiagnostics(function(diagnostics) {
+    res.json(diagnostics);
   });
+});
+
+    //res.send("All Diagnostics");
+  //});
 
 // This code is adding prescriptions endpoint
 app.get("/prescriptions/:Prescriptions", function(req, res) {
