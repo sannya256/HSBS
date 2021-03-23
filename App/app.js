@@ -37,35 +37,26 @@ app.get("/patient/:Patient_ID", function(req, res) {
   });
 });
 
-// This code will Add /doctor endpoint
-//app.get("/doctor/:Doctor_ID", function(req, res) {
-  // This code will return "Doctor along with the id"
-  //res.send("Doctors" + req.params.Doctor_ID);
-//});
+// This is the start for doctor endpoints
 
-// this code will Add /doctors endpoint to the front end
+//This code will Add /doctors endpoint
 app.get("/doctors" , function(req, res) {
-  // Return "All modules"
+  // This code will return "all doctors" from the doctors table 
   data.getDoctors(function(doctors) {
     res.json(doctors);
   });
   
 });
 
-// Add /module endpoint
+// This is the code for Adding a single /doctor endpoint
 app.get("/doctor/:doc", function(req, res) {
-  // Call getModule on data
+  // tTis code will Call getDoctor on data
   data.getDoctor(req.params.doc, function(doc) {
       res.json(doc);
   });
 });
+// Doctor endpoints stop here
 
-
-// To add Diagnosis endpoint
-//app.get("/diagnostics", function(req, res) {
-    // 
-    //res.send("All Diagnostics");
-  //});
   
   // To add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
