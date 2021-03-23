@@ -22,18 +22,26 @@ app.use(express.static("static"));
 //});
 
 // This code will create /patients endpoint
-app.get("/patients", function(req, res) {
+//app.get("/patients", function(req, res) {
   // Call getPatients on data
-  data.getPatients(function(patients) {
-    res.json(patients);
+//data.getPatients(function(patients) {
+//res.json(patients);
+  //});
+//});
+
+// Add /patient endpoint
+app.get("/patient/:Patient_ID", function(req, res) {
+  // Call getPatient on data
+  data.getPatient(req.params.Patient_ID, function(patient) {
+      res.json(patient);
   });
 });
 
 // This code will Add /doctor endpoint
-app.get("/doctor/:Doctor_ID", function(req, res) {
+//app.get("/doctor/:Doctor_ID", function(req, res) {
   // This code will return "Doctor along with the id"
-  res.send("Doctors" + req.params.Doctor_ID);
-});
+  //res.send("Doctors" + req.params.Doctor_ID);
+//});
 
 // this code will Add /doctors endpoint to the front end
 app.get("/doctors" , function(req, res) {
@@ -42,6 +50,14 @@ app.get("/doctors" , function(req, res) {
     res.json(doctors);
   });
   
+});
+
+// Add /module endpoint
+app.get("/doctor/:doc", function(req, res) {
+  // Call getModule on data
+  data.getDoctor(req.params.doc, function(doc) {
+      res.json(doc);
+  });
 });
 
 
@@ -58,6 +74,15 @@ app.get("/doctors" , function(req, res) {
     res.json(diagnosting);
   });
 });
+
+// This code will add /diagnostics endpoint
+app.get("/diagnostic/:code", function(req, res) {
+  // This code will call getDiagnostics on data
+  data.getDiagnostic(req.params.code, function(diagnostic) {
+      res.json(diagnostic);
+  });
+});
+
 
     //res.send("All Diagnostics");
   //});
