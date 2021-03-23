@@ -154,7 +154,7 @@ exports.getPatients = function(callback) {
             return console.error(err.message);
         }
         // Create an array of Patients
-        var patientdata = [];
+        var patienting = [];
         // Loop through rows creating Patient objects
         for (var row of rows) {
             // Create programme object
@@ -162,9 +162,9 @@ exports.getPatients = function(callback) {
             // Create patient object
             var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_name, row.P_Last_name, row.DOB, row,Gender);
             // Add patients to array
-            patientdata.push(pat);
+            patienting.push(pat);
         }
         // Execute callback function
-        callback(patientdata);
+        callback(patienting);
     });
 };

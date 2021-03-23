@@ -24,8 +24,8 @@ app.get("/patients", function(req, res) {
 // This code will create /patients endpoint
 app.get("/patients", function(req, res) {
   // Call getPatients on data
-  data.getPatients(function(patientdata) {
-    res.json(patientdata);
+  data.getPatients(function(patienting) {
+    res.json(patienting);
   });
 });
 
