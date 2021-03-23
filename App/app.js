@@ -65,9 +65,24 @@ app.get("/prescriptions", function(req, res) {
 });
 
 
+// This code is adding prescriptions endpoint to the front end
+app.get("/volunteers", function(req, res) {
+  // Return "All modules"
+  res.send("All Volunteers");
+});
 
+app.get("/volunteering", function(req, res) {
+  // Call getProgrammes on data
+  data.getVolunteers(function(volunteering) {
+      res.json(volunteering);
+  });
+});
 
-
+// This code is adding prescriptions endpoint
+app.get("/volunteers/:Volunteers", function(req, res) {
+  // Return "Module <code>"
+  res.send("volunteers " + req.params.ID);
+});
 
 // To start the server
 // This code will allow the application layer to listen communication from the front end on port 3000
