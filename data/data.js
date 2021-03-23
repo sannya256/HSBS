@@ -15,6 +15,7 @@ var db = new sqlite3.Database("data/PlanetDoctor.db", function(err) {
     // This code will run if there is no error
     console.log("You are now Connected to planetdoctor database.");
 });
+
 // This will Export getPrescriptions function
 exports.getPrescriptions = function(callback) {
     // Creating SQL statement for Prescriptions and connecting foreign keys
@@ -106,32 +107,8 @@ exports.getDoctor = function(doc, callback) {
 };
 // Communication with the doctors data stops here
 
-//volunteering code starts here 
-// Export getProgrammes function
-exports.getVolunteers = function(callback) {
-    // Create SQL statement
-    var sql = `SELECT * FROM volunteers`;
- // Execute query. Return all
-db.all(sql, function(err, rows) {
-    // Check if error
-    if (err) {
-        return console.error(err.message);
-    }
-    // Create programme array
-        var volunteering = [];
-        // Loop through rows creating programme objects
-        for (var row of rows) {
-            // Create programme object
-            var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
-            // Add object to array
-            volunteering.push(volunt);
-        }
-        // Execute callback function
-        callback(volunteering);
-    });
-};
 
-// 
+
 // Export getProgrammes function
 exports.getDiagnostics = function(callback) {
     // Create SQL statement
@@ -179,8 +156,6 @@ exports.getDiagnostic = function(code, callback) {
     });
 };
 
-
-//NEW CODE
 // This will Export getPatients function
 exports.getPatients = function(callback) {
     // Creating SQL statements for Patients and connecting keys
@@ -222,6 +197,32 @@ exports.getPatient = function(Patient_ID, callback) {
         var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
         // Return patient
         callback(patient);
+    });
+};
+
+
+//volunteering code starts here 
+// Export getProgrammes function
+exports.getVolunteers = function(callback) {
+    // Create SQL statement
+    var sql = `SELECT * FROM volunteers`;
+ // Execute query. Return all
+db.all(sql, function(err, rows) {
+    // Check if error
+    if (err) {
+        return console.error(err.message);
+    }
+    // Create programme array
+        var volunteering = [];
+        // Loop through rows creating programme objects
+        for (var row of rows) {
+            // Create programme object
+            var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
+            // Add object to array
+            volunteering.push(volunt);
+        }
+        // Execute callback function
+        callback(volunteering);
     });
 };
 
