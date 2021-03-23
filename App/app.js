@@ -15,22 +15,25 @@ var app = express();
 // Location of the static files are added 
 app.use(express.static("static"));
 
-// This code will create /patients endpoint
+// This is the start for doctor endpoints
+
+// This code will add /patients endpoint
 app.get("/patients", function(req, res) {
-  // Call getPatients on data
+  // This code will return all patients from the patients table 
   data.getPatients(function(patients) {
     res.json(patients);
   });
 });
 
-
-// Add /patient endpoint
+// This code will add a single /patient endpoint
 app.get("/patient/:Patient_ID", function(req, res) {
-  // Call getPatient on data
+  // This code will return a single patient from the patients table 
   data.getPatient(req.params.Patient_ID, function(patient) {
       res.json(patient);
   });
 });
+
+// Patient endpoints stop here
 
 // This is the start for doctor endpoints
 
@@ -45,7 +48,7 @@ app.get("/doctors" , function(req, res) {
 
 // This is the code for Adding a single /doctor endpoint
 app.get("/doctor/:doc", function(req, res) {
-  // tTis code will Call getDoctor on data
+  // This code will Call getDoctor on data
   data.getDoctor(req.params.doc, function(doc) {
       res.json(doc);
   });
@@ -90,16 +93,16 @@ app.get("/SinglePrescription/:code", function(req, res) {
 
 
 //This code is adding volunteers endpoint to the front end
-app.get("/volunteers", function(req, res) {
+app.get("/volunteering", function(req, res) {
   // Call getVolunteers on data
-  data.getVolunteers(function(volunteers) {
-      res.json(volunteers);
+  data.getVolunteers(function(volunteering) {
+      res.json(volunteering);
   });
 });
 
 // Add /volunteer endpoint
 app.get("/volunteer/:code", function(req, res) {
-  // Call getVolunteer on data
+  // Call get on data
   data.getVolunteer(req.params.code, function(volunteer) {
       res.json(volunteer);
   });

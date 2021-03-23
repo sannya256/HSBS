@@ -3,7 +3,7 @@
 // This code will import SQLite library.
 const sqlite3 = require("sqlite3").verbose();
 
-// This code intructs the application layer to use planetdoctor classes
+// This code instructs the application layer to use planetdoctor classes
 const planetdoctor = require("../planetdoctor.js");
 
 // This code will connect to the planetdocotor database.
@@ -62,12 +62,12 @@ exports.getSinglePrescription = function(code, callback) {
 
 //Code here will expose doctor data information
 
-// This codde will export getStudents function 
+// This code will export getDoctors function 
 exports.getDoctors = function(callback) {
     // SQL statement for showing all doctors created
     var sql = `
         SELECT * FROM Doctors`;
-    // To execute th SQL quer and the return all doctors
+    // To execute the SQL query and the return all doctors
     db.all(sql, function(err, rows) {
         // This code will check for any errors and if any run the code
         if (err) {
@@ -82,7 +82,7 @@ exports.getDoctors = function(callback) {
             // This code will push each doctor to the array created above
             doctors.push(doc);
         }
-        // callback function will be excuted with this code
+        // callback function will be executed with this code
         callback(doctors);
     });
 };
@@ -120,9 +120,9 @@ db.all(sql, function(err, rows) {
     if (err) {
         return console.error(err.message);
     }
-    // This code will create programme array
+    // This code will create diagnostics array
         var diagnosting = [];
-        //This code will allow to loop through rows creating programme objects
+        //This code will allow to loop through rows creating diagnostics objects
         for (var row of rows) {
             
             // This code will create Diagnostics object
@@ -146,7 +146,7 @@ exports.getDiagnostic = function(code, callback) {
         if (err) {
             return console.error(err.message);
         }
-        // This code will create a module object
+        // This code will create a diagnostic object
         var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
         // This code will return diagnostics
         callback(diagnostic);
@@ -155,53 +155,54 @@ exports.getDiagnostic = function(code, callback) {
 
 // Diagnostics data broadcasting ends here
 
-// This will Export getPatients function
+//The following code will broadcast Patients data
+
+// This code will Export getPatients function
 exports.getPatients = function(callback) {
     // Creating SQL statements for Patients and connecting keys
     var sql = `SELECT * FROM Patients`;
-    // Execute query. Return all
+    // This code will execute query and return data from Patients class
     db.all(sql, function(err, rows) {
         // Check if there is an error
         if (err) {
             return console.error(err.message);
         }
-        // Create an array of Patients
+        // This code will create an array of Patients
         var patients= [];
-        // Loop through rows creating Patient objects
+        // This code will loop through rows creating Patient objects
         for (var row of rows) {
-            // Create programme object
-            //var prog = new student.Programme(row.programme, row.name);
-            // Create patient object
+            // This code will create patient object
             var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
-            // Add patients to array
+            // This code will add patients to array
             patients.push(pat);
         }
-        // Execute callback function
+        // This code will execute callback function
         callback(patients);
     });
 };
 
-// Export getPatient function
+// This code will export getPatient function
 exports.getPatient = function(Patient_ID, callback) {
-    // Create SQL statement
+    // This codw will create SQL statement
     var sql = `
         SELECT * FROM Patients
         WHERE Patient_ID = '${Patient_ID}'`;
-    // Execute query. Only one row returned.
+    // This code will execute query and only one row
     db.get(sql, function(err, row) {
         if (err) {
             return console.error(err.message);
         }
-        // Create a patient object
+        // This code will create a patient object
         var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
-        // Return patient
+        // This code will return patient
         callback(patient);
     });
 };
 
+//Patient data broadcasting ends here
 
 //volunteering code starts here 
-// Export getVolunteers function
+// Export getProgrammes function
 exports.getVolunteers = function(callback) {
     // Create SQL statement
     var sql = `SELECT * FROM volunteers`;
@@ -211,17 +212,17 @@ db.all(sql, function(err, rows) {
     if (err) {
         return console.error(err.message);
     }
-    // Create volunteer array
-        var volunteers = [];
-        // Loop through rows creating volunteer objects
+    // Create programme array
+        var volunteering = [];
+        // Loop through rows creating programme objects
         for (var row of rows) {
-            // Create new volunteer  object
+            // Create programme object
             var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
             // Add object to array
-            volunteers.push(volunt);
+            volunteering.push(volunt);
         }
         // Execute callback function
-        callback(volunteers);
+        callback(volunteering);
     });
 };
 
@@ -238,7 +239,7 @@ exports.getVolunteer = function(code, callback) {
         }
         // Create a volunteer object
         var volunteer = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
-        // Return single instance of volunteer using ID in the URL
+        // Return module
         callback(volunteer);
     });
 }; 
