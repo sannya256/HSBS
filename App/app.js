@@ -41,7 +41,7 @@ app.get("/doctors" , function(req, res) {
 
 
 // To add Diagnosis endpoint
-app.get("/diagnostics/:Diagnostics", function(req, res) {
+app.get("/diagnostic/:Drug_ID", function(req, res) {
     // Return "Module <code>"
     res.send("Diagnostics " + req.params.Drug_ID);
   });
