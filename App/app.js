@@ -51,9 +51,9 @@ app.get("/diagnosis/:Diagnosis", function(req, res) {
     // Return "All modules"
     res.send("All Diagnosis");
   });
-
+//Need to edit this code
 // This code is adding prescriptions endpoint
-app.get("/prescriptions/:Drug_name", function(req, res) {
+app.get("/prescription/:Drug_name", function(req, res) {
   // Return "Module <code>"
   res.send("Prescriptions " + req.params.Drug_name);
 });
