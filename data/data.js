@@ -7,7 +7,7 @@ const sqlite3 = require("sqlite3").verbose();
 const planetdoctor = require("../planetdoctor.js");
 
 // This code will connect to the planetdocotor database.
-var db = new sqlite3.Database("data/planetDoctor.db", function(err) {
+var db = new sqlite3.Database("data/PlanetDoctor.db", function(err) {
     // this code will run in case of an error
     if (err) {
         return console.error(err.message);
@@ -103,7 +103,7 @@ db.all(sql, function(err, rows) {
         // Loop through rows creating programme objects
         for (var row of rows) {
             // Create programme object
-            var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
+            var volunt = new planetdoctor.Volunteer(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
             // Add object to array
             volunteering.push(volunt);
         }
@@ -141,17 +141,29 @@ db.all(sql, function(err, rows) {
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//NEW CODE
+// This will Export getPatients function
+exports.getPatients = function(callback) {
+    // Creating SQL statements for Patients and connecting keys
+    var sql = `SELECT * FROM Patients`;
+    // Execute query. Return all
+    db.all(sql, function(err, rows) {
+        // Check if there is an error
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create an array of Patients
+        var patienting = [];
+        // Loop through rows creating Patient objects
+        for (var row of rows) {
+            // Create programme object
+            //var prog = new student.Programme(row.programme, row.name);
+            // Create patient object
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_name, row.P_Last_name, row.DOB, row,Gender);
+            // Add patients to array
+            patienting.push(pat);
+        }
+        // Execute callback function
+        callback(patienting);
+    });
+};

@@ -23,8 +23,10 @@ app.get("/patient/:Patient_ID", function(req, res) {
 
 // This code will create /patients endpoint
 app.get("/patients", function(req, res) {
-  // This code will display 'All patients' as a response 
-  res.send("All patients");
+  // Call getPatients on data
+  data.getPatients(function(patienting) {
+    res.json(patienting);
+  });
 });
 
 // This code will Add /doctor endpoint
