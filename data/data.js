@@ -69,6 +69,24 @@ exports.getDoctors = function(callback) {
         callback(doctors);
     });
 };
+
+// Export getModule function
+exports.getDoctor = function(doc, callback) {
+    // Create SQL statement
+    var sql = `
+        SELECT * FROM Doctors
+        WHERE Doctor_ID = '${doc}'`;
+    // Execute query. Only one row returned.
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // Create a module object
+        var doctor = new planetdoctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
+        // Return module
+        callback(doctor);
+    });
+};
 // ENDS HERE
 
 //volunteering code starts here 
@@ -126,6 +144,25 @@ db.all(sql, function(err, rows) {
     });
 };
 
+// This code will getDiagnostics function
+exports.getDiagnostics = function(code, callback) {
+    // To create SQL statements
+    var sql = `
+        SELECT * FROM Diagnostics
+        WHERE Drug_ID = '${code}'`;
+    // This code will execute return of only one row from the query
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        // This code will create a module object
+        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+        // This code will return diagnostics
+        callback(diagnostic);
+    });
+};
+
+
 //NEW CODE
 // This will Export getPatients function
 exports.getPatients = function(callback) {
@@ -153,20 +190,20 @@ exports.getPatients = function(callback) {
     });
 };
 
-// Export getPatient function
-exports.getPatient = function(Patient_ID, callback) {
+// Export getVolunteer function
+exports.getVolunteer = function(ddd, callback) {
     // Create SQL statement
     var sql = `
-        SELECT * FROM Patients
-        WHERE Patient_ID = '${Patient_ID}'`;
+        SELECT * FROM volunteers
+        WHERE ID = '${ddd}'`;
     // Execute query. Only one row returned.
     db.get(sql, function(err, row) {
         if (err) {
             return console.error(err.message);
         }
-        // Create a patient object
-        var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
-        // Return patient
-        callback(patient);
+        // Create a volunteer object
+        var volunteer = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
+        // Return module
+        callback(volunteer);
     });
 };

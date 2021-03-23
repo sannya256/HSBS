@@ -38,10 +38,10 @@ app.get("/patient/:Patient_ID", function(req, res) {
 });
 
 // This code will Add /doctor endpoint
-app.get("/doctor/:Doctor_ID", function(req, res) {
+//app.get("/doctor/:Doctor_ID", function(req, res) {
   // This code will return "Doctor along with the id"
-  res.send("Doctors" + req.params.Doctor_ID);
-});
+  //res.send("Doctors" + req.params.Doctor_ID);
+//});
 
 // this code will Add /doctors endpoint to the front end
 app.get("/doctors" , function(req, res) {
@@ -50,6 +50,14 @@ app.get("/doctors" , function(req, res) {
     res.json(doctors);
   });
   
+});
+
+// Add /module endpoint
+app.get("/doctor/:doc", function(req, res) {
+  // Call getModule on data
+  data.getDoctor(req.params.doc, function(doc) {
+      res.json(doc);
+  });
 });
 
 
@@ -66,6 +74,15 @@ app.get("/doctors" , function(req, res) {
     res.json(diagnosting);
   });
 });
+
+// This code will add /diagnostics endpoint
+app.get("/diagnostics/:code", function(req, res) {
+  // This code will call getDiagnostics on data
+  data.getDiagnostics(req.params.code, function(diagnostic) {
+      res.json(diagnostic);
+  });
+});
+
 
     //res.send("All Diagnostics");
   //});
@@ -95,6 +112,14 @@ app.get("/volunteering", function(req, res) {
   // Call getVolunteers on data
   data.getVolunteers(function(volunteering) {
       res.json(volunteering);
+  });
+});
+
+// Add /volunteer endpoint
+app.get("/volunteer/:ddd", function(req, res) {
+  // Call get on data
+  data.getVolunteer(req.params.ddd, function(volunteer) {
+      res.json(volunteer);
   });
 });
 
