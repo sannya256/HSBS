@@ -54,4 +54,24 @@ class Patients {
     this.Gender = Gender;
     this.Symptoms = Symptoms;
   }
+} 
+
+class Prescriptions {
+  // Name of medications
+  Drug_name;
+  // Stock levels of medications
+  Stock;
+  //Drug identification number
+  Drug_ID;
+  // Patient Identification number
+  Patient_ID;
+  
+ 
+
+  constructor(Drug_name, Stock, Drug_ID, Patient_ID) {
+    this.Drug_name = Drug_name;
+    this.Stock = Stock;
+    this.Drug_ID = Drug_ID;
+    this.Patient_ID = Patient_ID;
+  } 
 }
