@@ -1,6 +1,6 @@
 "use strict";
 
-class diagnostic {
+class Diagnostics {
     // This is the patient ID number
 Patient_ID;
   // This is Patient's first name
