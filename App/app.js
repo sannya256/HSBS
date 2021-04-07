@@ -13,7 +13,7 @@ const express = require("express");
 var app = express();
 
 // Location of the static files are added 
-app.use(express.static("Static"));
+app.use(express.static("Static")); // s=S
 
 // This is the start for doctor endpoints
 
