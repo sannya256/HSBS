@@ -24,7 +24,8 @@
                     <td>{{ doctor.Doctor_ID }}</td>
                     <td>{{ doctor.Gender }}</td>
                     <td>{{ doctor.Availability }}</td>
-                    <td><input type="button" ng-click="selectDoctor(doctor.Doctor_ID)" value="Select"></td>
+                    <td><input type="button" ng-click="deleteDoctor(doctor.Doctor_ID)" value="Delete"></td>
+                    <td><input type="button" ng-click="editDoctor(doctor.Doctor_ID)" value="Edit"></td>
                 </tr>
             </table>
         </div>
