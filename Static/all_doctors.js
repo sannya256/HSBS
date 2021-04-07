@@ -11,11 +11,11 @@ PDapp.controller("doctorController", function($scope, $http) {
         $scope.doctors = response.data;
     });
 
-    // Sends a delete message to the server
+    // This code will sends a delete notification to the server
     $scope.deleteDoctor = function(Doctor_ID) {
-    // Send delete message to /module/code
+    // This code will send delete notification to /doctor/Doctor_ID endpoint
         $http.delete("/doctor/" + Doctor_ID).then(function(response) {
-      // When request completes, refresh list of modules
+      // This code will refresh the list after successfull deletion
             $http.get("/doctors").then(function(response) {
                 $scope.doctors = response.data;
                 });
