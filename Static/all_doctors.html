@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctors</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+        <script src="planetdoctor.js"></script>
+        <script src="all_doctors.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Doctors Availability</h1>
+        <div ng-app="PDapp" ng-controller="doctorController">
+            <table class="customTable">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Doctor_ID</th>
+                    <th>Gender</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+                <tr ng-repeat = "doctor in doctors">
+                    <td>{{ doctor.Name }}</td>
+                    <td>{{ doctor.Doctor_ID }}</td>
+                    <td>{{ doctor.Gender }}</td>
+                    <td>{{ doctor.Availability }}</td>
+                    <td><input type="button" ng-click="selectDoctor(doctor.Doctor_ID)" value="Select"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

@@ -45,7 +45,7 @@ class Patients {
   //This will show Patient's current symptoms 
   Symptoms;
 
- 
+
   constructor(Patient_ID, P_First_Name, P_Last_Name, DOB, Gender, Symptoms) {
     this.Patient_ID = Patient_ID;
     this.P_First_Name = P_First_Name;
@@ -66,7 +66,7 @@ class Prescriptions {
   // Patient Identification number
   Patient_ID;
   
- 
+
 
   constructor(Drug_name, Stock, Drug_ID, Patient_ID) {
     this.Drug_name = Drug_name;
@@ -98,5 +98,24 @@ class Volunteers {
     this.Profession = Profession;
     this.Nationality = Nationality;
     this.camp_loc = camp_loc;
+  } 
+}
+
+// Doctors frontend setup
+class Doctors {
+  // This is the doctors full name
+  Name;
+  // This is the doctors identification
+  Doctor_ID;
+  // This shows the doctors gender
+  Gender;
+  // This is the doctors availability date
+  Availability;
+  
+  constructor(Name, Doctor_ID, Gender, Availability) {
+    this.Name = Name;
+    this.Doctor_ID = Doctor_ID;
+    this.Gender = Gender;
+    this.Availability = Availability;
   } 
 }
