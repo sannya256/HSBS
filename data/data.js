@@ -105,7 +105,18 @@ exports.getDoctor = function(doc, callback) {
         callback(doctor);
     });
 };
-// Communication with the doctors data stops here
+
+// This code will delete a doctor from the database
+exports.deleteDoctor = function(Doctor_ID, callback) {
+    // SQL delete statement
+    var sql = `DELETE FROM Doctors WHERE Doctor_ID='${Doctor_ID}'`;
+    // This code will execute the above SQL delete statement
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+        callback();
+        });
+    };
+// Communication with the doctors database stops here
 
 //The following code will broadcast Diagnostics data
 
