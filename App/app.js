@@ -53,6 +53,15 @@ app.get("/doctor/:doc", function(req, res) {
       res.json(doc);
   });
 });
+
+// Adding a /doctor delete endpoint
+app.delete("/doctor/:Doctor_ID", function(req, res) {
+  // This will call deleteDoctor on the data
+  data.deleteDoctor(req.params.Doctor_ID, function() {
+    // After successful deletion there will be an OK response to the browser
+    res.send("OK");
+  });
+});
 // Doctor endpoints stop here
 
   
