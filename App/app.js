@@ -15,6 +15,9 @@ var app = express();
 // Location of the static files are added 
 app.use(express.static("Static")); // s=S
 
+app.use(express.json ());
+
+
 // This is the start for doctor endpoints
 
 // This code will add /patients endpoint
@@ -63,6 +66,12 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
   });
 });
 
+
+app.put("/doctor/:Doctor_ID", function(req, res) {
+  data.updateDoctor(req.body, function() {
+  res.send("OK");
+  });
+});
 
 // Doctor endpoints stop here
 
