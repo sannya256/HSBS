@@ -118,6 +118,22 @@ exports.deleteDoctor = function(Doctor_ID, callback) {
         });
     };
 
+    // This code will add a doctor to the doctors database as entered from the front end
+exports.addDoctor = function(doctor, callback) {
+    // This is the SQL insert statement to enter new doctor availability information
+    var sql = `INSERT INTO Doctors VALUES ('${doctor.Name}', '${doctor.Doctor_ID}''${doctor.Gender}', '${doctor.Availability}')`;
+    // This code will execute SQL insert statement above
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+      callback();
+    });
+  };
+    
+
+
+
+
+
 // Communication with the doctors database stops here
 
 //The following code will broadcast Diagnostics data
