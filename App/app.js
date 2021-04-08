@@ -12,10 +12,13 @@ const express = require("express");
 // Express application is created 
 var app = express();
 
+// Add JSON parsing to accept incoming data from the frontend
+app.use(express.json());
+
 // Location of the static files are added 
 app.use(express.static("Static")); // s=S
 
-app.use(express.json ());
+
 
 
 // This is the start for doctor endpoints
@@ -46,7 +49,14 @@ app.get("/doctors" , function(req, res) {
   data.getDoctors(function(doctors) {
     res.json(doctors);
   });
-  
+});
+
+// Add /modules post endpoint
+app.post("/doctors", function(req, res) {
+  // Call addModule on data
+  data.addDoctors(req.body, function() {
+    res.send("OK");
+  });
 });
 
 // This is the code for Adding a single /doctor endpoint
