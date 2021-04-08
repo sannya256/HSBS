@@ -27,6 +27,13 @@
                     <td><input type="button" ng-click="deleteDoctor(doctor.Doctor_ID)" value="Delete"></td>
                     <td><input type="button" ng-click="saveDoctor(doctor.Doctor_ID)" value="Save"></td>
                 </tr>
+                <tr>
+                    <td><input type="text" ng-model="new_doctor.Name"></td>
+                    <td><input type="text" ng-model="new_doctor.Doctor_ID"></td>
+                    <td><input type="text" ng-model="new_doctor.Gender"></td>
+                    <td><input type="text" ng-model="new_doctor.Availability"></td>
+                    <td><input type="button" ng-click="addDoctor()" value="Add"></td>
+                  </tr>
             </table>
         </div>
     </body>
