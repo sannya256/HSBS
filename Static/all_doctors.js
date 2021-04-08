@@ -28,9 +28,9 @@ PDapp.controller("doctorController", function($scope, $http) {
         $scope.createDoctor = function() {
         // This code will send post a message the to /doctors endpoint
             $http.post("/doctors", $scope.new_doctor).then(function(response) {
-            // When request completes, reset new_module
+            // This will reset new_doctor to empty to accept new entry 
                 $scope.new_doctor = new Doctor("", "","","");
-            // Then refresh list of modules
+            // This code will refresh the list after successfull addition
             $http.get("/doctors").then(function(response) {
                 $scope.doctors = response.data;
             });
