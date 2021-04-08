@@ -53,8 +53,8 @@ app.get("/doctor/:doc", function(req, res) {
       res.json(doc);
   });
 });
-
-// Adding a /doctor delete endpoint
+//Asking the data layer to remove a doctors availability
+// Add a /doctor delete endpoint
 app.delete("/doctor/:Doctor_ID", function(req, res) {
   // This will call deleteDoctor on the data
   data.deleteDoctor(req.params.Doctor_ID, function() {
@@ -62,6 +62,8 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
     res.send("OK");
   });
 });
+
+
 // Doctor endpoints stop here
 
   

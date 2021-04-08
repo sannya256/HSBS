@@ -10,8 +10,8 @@ PDapp.controller("doctorController", function($scope, $http) {
     $http.get('/doctors').then(function(response) {
         $scope.doctors = response.data;
     });
-
-    // This code will sends a delete notification to the server
+    //Adding a deleteDoctor function
+    // This code will send a delete notification to the server
     $scope.deleteDoctor = function(Doctor_ID) {
     // This code will send delete notification to /doctor/Doctor_ID endpoint
         $http.delete("/doctor/" + Doctor_ID).then(function(response) {

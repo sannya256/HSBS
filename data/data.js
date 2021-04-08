@@ -78,7 +78,7 @@ exports.getDoctors = function(callback) {
         // This code will Loop through each row  to create Doctor objects
         for (var row of rows) {
             // To create a doctor object
-            var doc = new planetdoctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
+            var doc = new planetdoctor.Doctors(row.Name, row.Doctor_ID, row.Gender, row.Availability);
             // This code will push each doctor to the array created above
             doctors.push(doc);
         }
@@ -100,12 +100,13 @@ exports.getDoctor = function(doc, callback) {
             return console.error(err.message);
         }
         // This code will create a doctor object
-        var doctor = new planetdoctor.Doctors(row.Doctor_ID, row.Name, row.Gender, row.Availability);
+        var doctor = new planetdoctor.Doctors(row.Name, row.Doctor_ID, row.Gender, row.Availability);
         // After the code above is excuted then this code will return a doctor
         callback(doctor);
     });
 };
 
+//Adding  a deleteDoctor function
 // This code will delete a doctor from the database
 exports.deleteDoctor = function(Doctor_ID, callback) {
     // SQL delete statement
@@ -116,6 +117,7 @@ exports.deleteDoctor = function(Doctor_ID, callback) {
         callback();
         });
     };
+
 // Communication with the doctors database stops here
 
 //The following code will broadcast Diagnostics data
