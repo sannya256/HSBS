@@ -130,6 +130,19 @@ exports.addDoctor = function(doctor, callback) {
   };
     
 
+  
+  exports.updateDoctor = function(doctor, callback) {​​​​​​​
+
+
+    var sql = `UPDATE Doctors SET Availability='${​​​​​​​doctor.Availability}​​​​​​​' WHERE Doctor_ID='${doctor.​​​​​​​Doctor_ID}​​​​​​​'`;
+
+
+    db.run(sql, function(err) {​​​​​​​
+
+    callback();
+}​​​​​​​);
+}​​​​​​​;
+
 
 
 
