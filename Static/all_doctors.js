@@ -21,6 +21,19 @@ PDapp.controller("doctorController", function($scope, $http) {
                 });
             });
         };
-    });
-
-
+    //Inserting a new doctors availalbility to the table
+    //
+    $scope.new_doctor = new Doctor("", "","","");
+        // This code will send a put notification to the server
+        $scope.createDoctor = function() {
+        // This code will send post a message the to /doctors endpoint
+            $http.post("/doctors", $scope.new_doctor).then(function(response) {
+            // When request completes, reset new_module
+                $scope.new_doctor = new Doctor("", "","","");
+            // Then refresh list of modules
+            $http.get("/doctors").then(function(response) {
+                $scope.doctors = response.data;
+            });
+        });
+    };
+});
