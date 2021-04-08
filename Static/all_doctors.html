@@ -23,9 +23,9 @@
                     <td>{{ doctor.Name }}</td>
                     <td>{{ doctor.Doctor_ID }}</td>
                     <td>{{ doctor.Gender }}</td>
-                    <td>{{ doctor.Availability }}</td>
+                    <td><input type="text" ng-model="doctor.Availability"></td>
                     <td><input type="button" ng-click="deleteDoctor(doctor.Doctor_ID)" value="Delete"></td>
-                    <td><input type="button" ng-click="editDoctor(doctor.Doctor_ID)" value="Edit"></td>
+                    <td><input type="button" ng-click="saveDoctor(doctor.Doctor_ID)" value="Save"></td>
                 </tr>
             </table>
         </div>
