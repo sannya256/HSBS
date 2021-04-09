@@ -12,7 +12,19 @@ var mainApp = angular.module("mainApp", []);
 //});
 
 mainApp.controller("volunteerController", function($scope, $http) {
+    //hides the 'selected' element first of all
+    document.getElementById("selected").style.display="none";
+
     $http.get('/volunteers').then(function(response) {  
         $scope.volunteers = response.data;
     })
-})
+
+    $scope.selectVolunteer = function(ID) {
+        //get specific volunteer by ID
+       $http.get("/volunteer/" + ID).then(function(response){
+           $scope.selectVolunteer= response.data;
+            //show the 'selected element'
+           document.getElementById("selected").style.display="block";
+       });
+   }
+});
