@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prescriptions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+    <script src="planetdoctor.js"></script>
+    <script src="all_prescriptions.js"></script>
+  </head>
+  <body>
+    <h1>Prescriptions</h1>
+    <div ng-app="mainApp" ng-controller="prescriptionsController">
+      <p>{{ Prescriptions.Drug_name }}</p>
+      <p>{{ Prescriptions.Stock }}</p>
+      <p>{{ Prescriptions.Drug_ID }}</p>
+      <p>{{ Prescriptions.Patient_ID }}</p>     
+    </div>
+  </body>
+</html>
