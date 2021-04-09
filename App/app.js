@@ -18,9 +18,6 @@ app.use(express.json());
 // Location of the static files are added 
 app.use(express.static("Static")); // s=S
 
-
-
-
 // This is the start for doctor endpoints
 
 // This code will add /patients endpoint
@@ -51,10 +48,11 @@ app.get("/doctors" , function(req, res) {
   });
 });
 
-// Add /modules post endpoint
+
+// Add /doctors post endpoint
 app.post("/doctors", function(req, res) {
-  // Call addModule on data
-  data.addDoctors(req.body, function() {
+  // Call addDoctor on data
+  data.addDoctor(req.body, function() {
     res.send("OK");
   });
 });
@@ -77,11 +75,11 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
 });
 
 
-app.put("/doctor/:Doctor_ID", function(req, res) {
-  data.updateDoctor(req.body, function() {
-  res.send("OK");
-  });
-});
+//app.put("/doctor/:Doctor_ID", function(req, res) {
+ // data.updateDoctor(req.body, function() {
+  //res.send("OK");
+ // });
+//});
 
 // Doctor endpoints stop here
 
