@@ -246,7 +246,7 @@ db.all(sql, function(err, rows) {
         // Loop through rows creating volunteers objects
         for (var row of rows) {
             // Create volunteer object
-            var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Nationality, row.camp_loc);
+            var volunt = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
             // Add object to array
             volunteers.push(volunt);
         }
