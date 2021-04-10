@@ -8,15 +8,31 @@
     </head>
     <body>
         <h1>Diagnostics</h1>
-        <div ng-app="mainApp" ng-controller="diagnosticsController">
-            <p> {{ diagnostic.Patient_ID }}</p>
-            <p> {{ diagnostic.P_First_Name }}</p>
-            <p> {{ diagnostic.P_Last_Name }}</p>
-            <p> {{ diagnostic.Diagnosis }}</p>
-            <p> {{ diagnostic.Drug_ID }}</p>
-            <p> {{ diagnostic.Drug_name }}</p>
-            <p> {{ diagnostic.Tests }}</p>
-            <p> {{ diagnostic.Referal }}</p>
+        <div ng-app="PDApp" ng-controller="diagnosticsController">
+            <table class = customTable>
+                <thead>
+                <tr>
+                    <th>Patient_ID</th>
+                    <th>P_First_Name</th>
+                    <th>P_Last_Nameq</th>
+                    <th>Diagnosis</th>
+                    <th>Drug_ID</th>
+                    <th>Drug_name</th>
+                    <th>Tests</th>
+                    <th>Referal</th>
+                </tr>
+            </thead>
+                <tr ng-repeat="diagnostics in diagnostics">
+                    <td> {{ diagnostic.Patient_ID }}</td>
+                    <td> {{ diagnostic.P_First_Name }}</td>
+                    <td> {{ diagnostic.P_Last_Name }}</td>
+                    <td> {{ diagnostic.Diagnosis }}</td>
+                    <td> {{ diagnostic.Drug_ID }}</td>
+                    <td> {{ diagnostic.Drug_name }}</td>    
+                    <td> {{ diagnostic.Tests }}</td>
+                    <td> {{ diagnostic.Referal }}</td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
