@@ -201,7 +201,7 @@ exports.getPatients = function(callback) {
         // This code will loop through rows creating Patient objects
         for (var row of rows) {
             // This code will create patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
             // This code will add patients to array
             patients.push(pat);
         }
@@ -227,6 +227,28 @@ exports.getPatient = function(Patient_ID, callback) {
         callback(patient);
     });
 };
+//Adding  a deletePatient function
+// This code will delete a patient from the database
+exports.deletePatient = function(Patient_ID, callback) {
+    // SQL delete statement
+    var sql = `DELETE FROM Patients WHERE Patient_ID='${Patient_ID}'`;
+    // This code will execute the above SQL delete statement
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+        callback();
+        });
+    };
+
+// Add a patient to the database
+exports.createPatient = function(patient, callback) {
+    // Create SQL insert statement
+    var sql = `INSERT INTO Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
+    // Execute SQL insert statement
+    db.exec(sql, function(err) {
+      // Once completed, execute callback function
+      callback();
+    });
+  };
 
 //Patient data broadcasting ends here
 

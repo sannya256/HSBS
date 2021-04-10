@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Patients</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
-    <script src="planetdoctor.js"></script>
-    <script src="all_patients.js"></script>
-  </head>
-  <body>
-    <h1>Patients</h1>
-    <div ng-app="mainApp" ng-controller="patientsController">
-      <p>{{ Patients.code }}</p>
-      <p>{{ Patients.name }}</p>
-    </div>
-  </body>
+    <head>
+        <title>Patients</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+        <script src="planetdoctor.js"></script>
+        <script src="all_patients.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Patient Records</h1>
+        <div ng-app="PDApp" ng-controller="patientController">
+            <table class="customTable">
+                <thead>
+                <tr>
+                    <th>Patient_ID</th>
+                    <th>P_First_Name</th>
+                    <th>P_Last_Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Symptoms</th>
+                    <th>Diagnostics</th>
+                </tr>
+            </thead>
+                <tr ng-repeat = "patient in patients">
+                    <td>{{ patient.Patient_ID }}</td>
+                    <td>{{ patient.P_First_Name }}</td>
+                    <td>{{ patient.P_Last_Name }}</td>
+                    <td>{{ patient.DOB }}</td>
+                    <td>{{ patient.Gender}}</td>
+                    <td>{{ patient.Symptoms}}</td>
+                    <td>{{ patient.Diagnostics}}</td>
+                    <td><input type="text" ng-model="medical.Records"></td>
+                    <td><input type="button" ng-click="selectPatient()" value="Select"></td>
+                    <td><input type="button" ng-click="updatePatient()" value="Edit"></td>
+                    <td><input type="button" ng-click="deletePatients(patients.Patient_ID)" value="Delete"></td>
+                    
+                    
+                </tr>
+                <tr>
+                    <td><input type="text" ng-model="new_patient.Patient_ID"></td>
+                    <td><input type="text" ng-model="new_patient.P_First_Name"></td>
+                    <td><input type="text" ng-model="new_patient.P_Last_Name"></td>
+                    <td><input type="text" ng-model="new_patient.DOB"></td>
+                    <td><input type="text" ng-model="new_patient.Gender"></td>
+                    <td><input type="text" ng-model="new_patient.Symptoms"></td>
+                    <td><input type="text" ng-model="new_patient.Diagnostics"></td>
+                    <td><input type="button" ng-click="createPatient()" value="Create"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>

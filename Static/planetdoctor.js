@@ -44,15 +44,18 @@ class Patients {
   Gender;
   //This will show Patient's current symptoms 
   Symptoms;
+  //This will display patient diagnostics
+  Diagnostics = [];
 
 
-  constructor(Patient_ID, P_First_Name, P_Last_Name, DOB, Gender, Symptoms) {
+  constructor(Patient_ID, P_First_Name, P_Last_Name, DOB, Gender, Symptoms, Diagnostics) {
     this.Patient_ID = Patient_ID;
     this.P_First_Name = P_First_Name;
     this.P_Last_Name = P_Last_Name;
     this.DOB = DOB;
     this.Gender = Gender;
     this.Symptoms = Symptoms;
+    this.Diagnostics = Diagnostics;
   }
 } 
 
