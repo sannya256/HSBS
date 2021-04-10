@@ -1,7 +1,9 @@
 "use strict";
 
-var mainApp = angular.module("mainApp", []);
+var mainApp = angular.module("PDApp", []);
 
-mainApp.controller("diagnosticsController", function($scope, $http) {
-    $scope.diagnostic = new Diagnostics("000", "Test", "random1", "random2", "random3", "random4", "random5", "random6");
+PDApp.controller("diagnosticsController", function($scope, $http) {
+    $http.get("/diagnostics").then(function(response) {
+        $scope.diagnostics = response.data;
+    });
 });
