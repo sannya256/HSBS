@@ -29,7 +29,7 @@ PDApp.controller("patientController", function($scope, $http) {
         $scope.createPatients = function() {
         // This code will send post a message the to /patients endpoint
             $http.post("/patients", $scope.new_patients).then(function(response) {
-            // This will reset new_doctor to empty to accept new entry 
+            // This will reset new_patient to empty to accept new entry 
                 $scope.new_patients = new Patient("", "","","");
             // This code will refresh the list after successfull addition
             $http.get("/patients").then(function(response) {
