@@ -46,4 +46,4 @@ PDApp.controller("patientController", function($scope, $http) {
            document.getElementByPatient_ID("selected").style.display="block";
         });
     }
-  });
+  
