@@ -2,8 +2,8 @@
 
 var mainApp = angular.module("PDApp", []);
 
-PDApp.controller("diagnosticsController", function($scope, $http) {
-    $http.get("/diagnostics").then(function(response) {
+PDApp.controller("diagnosticController", function($scope, $http) {
+    $http.get('/diagnostics').then(function(response) {
         $scope.diagnostics = response.data;
     });
 });
