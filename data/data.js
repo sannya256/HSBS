@@ -340,6 +340,7 @@ db.all(sql, function(err, rows) {
             volunteers.push(volunt);
         }
         // Execute callback function
+        console.log(volunt)
         callback(volunteers);
     });
 };
