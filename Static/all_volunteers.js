@@ -27,4 +27,16 @@ mainApp.controller("volunteerController", function($scope, $http) {
            document.getElementById("selected").style.display="block";
        });
    }
+   //Sends a delete message to the server
+   $scope.deleteVolunteer = function(ID) {
+       //sends a delete message to /module/code
+       $http.delete('/volunteer/' + code).then(function(response) {
+           //when request completes, refresh list of modules
+           $http.get('/volunteer').then(function(response) {
+               $scope.modules = response.data;
+           })
+       })
+
+   }
+
 });
