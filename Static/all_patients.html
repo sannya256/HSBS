@@ -19,7 +19,7 @@
                     <th>DOB</th>
                     <th>Gender</th>
                     <th>Symptoms</th>
-                    <th>Diagnostics</th>
+                    <th>Diagnosis</th>
                 </tr>
             </thead>
                 <tr ng-repeat = "patient in patients">
@@ -29,14 +29,11 @@
                     <td>{{ patient.DOB }}</td>
                     <td>{{ patient.Gender}}</td>
                     <td>{{ patient.Symptoms}}</td>
-                    <td>{{ patient.Diagnostics}}</td>
+                    <td>{{ patient.Diagnostics.Diagnosis}}</td>
                     <td><input type="text" ng-model="medical.Records"></td>
-                    <td><input type="button" ng-click="selectPatient()" value="Select"></td>
+                    <td><input type="button" ng-click="selectPatient(Patient_ID)" value="Select"></td>
                     <td><input type="button" ng-click="updatePatient()" value="Edit"></td>
                     <td><input type="button" ng-click="deletePatients(patients.Patient_ID)" value="Delete"></td>
-                    
-                    
-                </tr>
                 <tr>
                     <td><input type="text" ng-model="new_patient.Patient_ID"></td>
                     <td><input type="text" ng-model="new_patient.P_First_Name"></td>
@@ -44,9 +41,13 @@
                     <td><input type="text" ng-model="new_patient.DOB"></td>
                     <td><input type="text" ng-model="new_patient.Gender"></td>
                     <td><input type="text" ng-model="new_patient.Symptoms"></td>
-                    <td><input type="text" ng-model="new_patient.Diagnostics"></td>
+                    <td><input type="text" ng-model="new_patient.Diagnotiscs.Diagnosis"></td>
                     <td><input type="button" ng-click="createPatient()" value="Create"></td>
                 </tr>
+                </tr>
+            </table>
+         <div Patient_ID = "selected">
+          <h2>{{ selectedPatient.Patient_ID }} {{ selectedPatient.P_First_Name }} {{ selectedPatients.P_Last_Name }} {{ selectedPatient.DOB }} {{ selectedPatient.Gender }} {{ selectedPatient.Symptoms }}</h2>
             </table>
         </div>
     </body>
