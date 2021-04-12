@@ -287,7 +287,7 @@ exports.getPatient = function(Patient_ID, callback) {
         callback(patient);
     });
 });
-});
+
 
 
 // Add a patient to the database
@@ -336,6 +336,7 @@ db.all(sql, function(err, rows) {
             volunteers.push(volunt);
         }
         // Execute callback function
+        console.log(volunt)
         callback(volunteers);
     });
 };
