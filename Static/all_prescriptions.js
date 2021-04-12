@@ -1,7 +1,7 @@
 "use strict";
 
-var mainApp = angular.module("PDApp", []);
+var PDApp = angular.module("PDApp", []);
 
-mainApp.controller("prescriptionsController", function($scope, $http) {
+PDApp.controller("prescriptionsController", function($scope, $http) {
     $scope.prescrtiptions = new Prescriptions("000", "Test", "random1", "random2", "random3", "random4", "random5", "random6");
 });
