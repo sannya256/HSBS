@@ -186,25 +186,24 @@ exports.getDiagnostic = function(code, callback) {
 
 
 //The following code will broadcast Patients data
-
 // This code will Export getPatients function
 exports.getPatients = function(callback) {
     // Creating SQL statements for Patients and connecting keys
     var sql =`
-    SELECT 
-        Patients.Patient_ID, 
-        Patients.P_First_Name, 
-        Patients.P_Last_Name, 
-        Patients.DOB,
-        Patients.Gender,
-        Patients.Symptoms
-        Diagnostics.Diagnosis
-    FROM
-        Patients,
-        Diagnostics
-    WHERE
-        Patients.diagnostic = Diagnostics.Patient_ID
-    `;
+        SELECT 
+            Patients.Patient_ID, 
+            Patients.P_First_Name, 
+            Patients.P_Last_Name, 
+            Patients.DOB,
+            Patients.Gender,
+            Patients.Symptoms,
+            Diagnostics.Diagnosis
+        FROM
+            Patients,
+            Diagnostics
+        WHERE
+            Patients.diagnostic = Diagnostics.Drug_ID
+        `;
     
     // This code will execute query and return data from Patients class
     db.all(sql, function(err, rows) {
@@ -217,9 +216,9 @@ exports.getPatients = function(callback) {
         // This code will loop through rows creating Patient objects
         for (var row of rows) {
             // This code will create diagnostic object
-            var diag = new planetdoctor.Diagnostics(row.diagnostic, row.Diagnosis);
+            var diag = new planetdoctor.Diagnostic(row.diagnostic, row.Diagnosis);
             // This code will create patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms,diag);
+            var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
             // This code will add patients to array
             patients.push(pat);
         }
@@ -232,22 +231,22 @@ exports.getPatients = function(callback) {
 exports.getPatient = function(Patient_ID, callback) {
     // This codw will create SQL statement
     var sql =`
-    SELECT 
-        Patients.Patient_ID, 
-        Patients.P_First_Name, 
-        Patients.P_Last_Name, 
-        Patients.DOB,
-        Patients.Gender,
-        Patients.Symptoms
-        Diagnostics.Diagnosis
-    FROM
-        Patients,
-        Diagnostics
-    WHERE
-        Patients.Patient_ID = '1'
-        AND
-        Patients.diagnostic = Diagnostics.Patient_ID
-    `;
+            SELECT 
+                Patients.Patient_ID, 
+                Patients.P_First_Name, 
+                Patients.P_Last_Name, 
+                Patients.DOB,
+                Patients.Gender,
+                Patients.Symptoms,
+                Diagnostics.Diagnosis
+            FROM
+                Patients,
+                Diagnostics
+            WHERE
+                Patients.Patient_ID = '1'
+                AND
+                Patients.diagnostic = Diagnostics.Drug_ID
+            `;
     // This code will execute query and only one row
     db.get(sql, function(err, row) {
         if (err) {
@@ -261,14 +260,14 @@ exports.getPatient = function(Patient_ID, callback) {
         sql = `
             SELECT
                 Diagnostics.Patient_ID
-                Diagnostics.Diagnosis
-                Prescriptions.Drug_name,
+                Diagnostics.Diagnosis,
+                Prescriptions.Drug_name
             FROM
                 Diagnostics, Prescriptions
             WHERE
                 Prescriptions.patient= ${Patient_ID}
                 AND
-                Prescriptions.diagnostic = Diagnostics.Patient_ID
+                Prescriptions.diagnostic = Diagnostics.Drug_ID
             `;
         // Execute query. Multiple rows returned.
         db.all(sql, function(err, rows) {
@@ -278,16 +277,18 @@ exports.getPatient = function(Patient_ID, callback) {
             // Loop through each row and create a diagnostic object and attach a drug name
             for (var row of rows) {
                 // This code will create diagnostic object
-                var diag = new planetdoctor.Diagnostic(row.diagnostic, row.Diagnosis);
+                var diag = new planetdoctor.Diagnostic(row.Patient_ID, row.Diagnosis);
                 // Create a module combined with grade
                 var Drug_name = {diag, Drug_name:row.Drug_name}
                 // Add module and grade to student
-                pat.diagnostic.push(Drug_name);
+                pat.diagnostics.push(Drug_name);
             }
         // This code will return patient
         callback(patient);
     });
 });
+});
+
 
 // Add a patient to the database
 exports.createPatient = function(patient, callback) {
@@ -311,7 +312,6 @@ exports.deletePatient = function(Patient_ID, callback) {
         callback();
         });
     };
-
 
 //Patient data broadcasting ends here
 
