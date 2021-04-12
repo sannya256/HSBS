@@ -9,11 +9,23 @@
   </head>
   <body>
     <h1>Prescriptions</h1>
-    <div ng-app="PDApp" ng-controller="prescriptionsController">
-      <p>{{ Prescriptions.Drug_name }}</p>
-      <p>{{ Prescriptions.Stock }}</p>
-      <p>{{ Prescriptions.Drug_ID }}</p>
-      <p>{{ Prescriptions.Patient_ID }}</p>     
-    </div>
-  </body>
+    <div ng-app="PDApp" ng-controller="prescriptionsController"> 
+      <table class = customTable>
+        <thead>
+        <tr>
+            <th>Drug_name</th>
+            <th>Stock</th>
+            <th>Drug_ID</th>
+            <th>Patient_ID</th>
+        </tr>
+    </thead>
+        <tr ng-repeat="diagnostics in diagnostics">
+            <td> {{ prescriptions.Drug_name }}</td>
+            <td> {{ prescriptions.Stock }}</td>
+            <td> {{ prescriptions.Drug_ID }}</td>
+            <td> {{ prescriptions.Patient_ID }}</td>
+        </tr>
+    </table>
+</div>
+</body>
 </html>
