@@ -7,14 +7,14 @@
         <script src="all_diagnostics.js"></script>
     </head>
     <body>
-        <h1>Diagnostics</h1>
-        <div ng-app="PDApp" ng-controller="diagnosticsController">
+        <h1>Diagnostics Records</h1>
+        <div ng-app="PDApp" ng-controller="diagnosticController">
             <table class = customTable>
                 <thead>
                 <tr>
                     <th>Patient_ID</th>
                     <th>P_First_Name</th>
-                    <th>P_Last_Nameq</th>
+                    <th>P_Last_Name</th>
                     <th>Diagnosis</th>
                     <th>Drug_ID</th>
                     <th>Drug_name</th>
@@ -22,17 +22,18 @@
                     <th>Referal</th>
                 </tr>
             </thead>
-                <tr ng-repeat="diagnostics in diagnostics">
-                    <td> {{ diagnostic.Patient_ID }}</td>
-                    <td> {{ diagnostic.P_First_Name }}</td>
-                    <td> {{ diagnostic.P_Last_Name }}</td>
-                    <td> {{ diagnostic.Diagnosis }}</td>
-                    <td> {{ diagnostic.Drug_ID }}</td>
-                    <td> {{ diagnostic.Drug_name }}</td>    
-                    <td> {{ diagnostic.Tests }}</td>
-                    <td> {{ diagnostic.Referal }}</td>
+                <tr ng-repeat="diagnostic in diagnostics">
+                    <td>{{ diagnostic.Patient_ID }}</td>
+                    <td>{{ diagnostic.P_First_Name }}</td>
+                    <td>{{ diagnostic.P_Last_Name }}</td>
+                    <td>{{ diagnostic.Diagnosis }}</td>
+                    <td>{{ diagnostic.Drug_ID }}</td>
+                    <td>{{ diagnostic.Drug_name }}</td>    
+                    <td>{{ diagnostic.Tests }}</td>
+                    <td>{{ diagnostic.Referal }}</td>
                 </tr>
             </table>
         </div>
     </body>
 </html>
+                                                                                 

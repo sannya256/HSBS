@@ -150,21 +150,21 @@ db.all(sql, function(err, rows) {
         return console.error(err.message);
     }
     // This code will create diagnostics array
-        var diagnosting = [];
+        var diagnostics = [];
         //This code will allow to loop through rows creating diagnostics objects
         for (var row of rows) {
             
             // This code will create Diagnostics object
-            var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+            var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
             // This code will add Diagnostics object to array
-            diagnosting.push(diag);
+            diagnostics.push(diag);
         }
         // This code will execute callback function
-        callback(diagnosting);
+        callback(diagnostics);
     });
 };
 
-// This code will export getDiagnostics function
+// This code will export getDiagnostic function
 exports.getDiagnostic = function(code, callback) {
     // This code will allow to create SQL statements
     var sql = `
@@ -176,7 +176,7 @@ exports.getDiagnostic = function(code, callback) {
             return console.error(err.message);
         }
         // This code will create a diagnostic object
-        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
         // This code will return diagnostics
         callback(diagnostic);
     });

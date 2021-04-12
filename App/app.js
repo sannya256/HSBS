@@ -103,15 +103,15 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
 // Doctor endpoints stop here
 
   
-  // This code will add Diagnostics endpoint to the front end
-  app.get("/diagnosting", function(req, res) {
+  // This code will add /diagnostics endpoint to the front end
+  app.get("/diagnostics", function(req, res) {
     // This code will return the endpoint to the frontend
-    data.getDiagnostics(function(diagnosting) {
-    res.json(diagnosting);
+    data.getDiagnostics(function(diagnostics) {
+    res.json(diagnostics);
   });
 });
 
-// This code will add /diagnostics endpoint
+// This code will add single /diagnostic endpoint
 app.get("/diagnostic/:code", function(req, res) {
   // This code will call getDiagnostics on data
   data.getDiagnostic(req.params.code, function(diagnostic) {
@@ -163,7 +163,7 @@ app.listen(3000, function(err) {
   if (err) {
     return console.error(err.message);
   }
-  //When theres no error
+  //When there is no error
   console.log("You have launched the Server.");
 });
 
