@@ -290,6 +290,7 @@ exports.getPatient = function(Patient_ID, callback) {
 
 
 
+
 // Add a patient to the database
 exports.createPatient = function(patient, callback) {
     // Create SQL insert statement
@@ -336,7 +337,6 @@ db.all(sql, function(err, rows) {
             volunteers.push(volunt);
         }
         // Execute callback function
-        console.log(volunt)
         callback(volunteers);
     });
 };
@@ -356,6 +356,5 @@ exports.getVolunteer = function(code, callback) {
         var volunteer = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
         // Return module
         callback(volunteer); 
-    });
-    };
-}; 
+    }); 
+};

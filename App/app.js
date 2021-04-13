@@ -18,7 +18,7 @@ app.use(express.json());
 // Location of the static files are added 
 app.use(express.static("Static")); // s=S
 
-// This is the start for patients endpoints
+// This is the start for doctor endpoints
 
 // This code will add /patients endpoint
 app.get("/patients", function(req, res) {
@@ -28,30 +28,11 @@ app.get("/patients", function(req, res) {
   });
 });
 
-// Add /patients post endpoint
-app.post("/patients", function(req, res) {
-  // Call addPatients on data
-  data.createPatient(req.body, function() {
-    res.send("OK");
-  });
-});
-
-
 // This code will add a single /patient endpoint
 app.get("/patient/:Patient_ID", function(req, res) {
   // This code will return a single patient from the patients table 
   data.getPatient(req.params.Patient_ID, function(patient) {
       res.json(patient);
-  });
-});
-
-//Asking the data layer to remove a patient
-// Add a /patient delete endpoint
-app.delete("/patient/:Patient_ID", function(req, res) {
-  // This will call deletePatient on the data
-  data.deletePatient(req.params.Patient_ID, function() {
-    // After successful deletion there will be an OK response to the browser
-    res.send("OK");
   });
 });
 
@@ -103,15 +84,15 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
 // Doctor endpoints stop here
 
   
-  // This code will add /diagnostics endpoint to the front end
-  app.get("/diagnostics", function(req, res) {
+  // This code will add Diagnostics endpoint to the front end
+  app.get("/diagnosting", function(req, res) {
     // This code will return the endpoint to the frontend
-    data.getDiagnostics(function(diagnostics) {
-    res.json(diagnostics);
+    data.getDiagnostics(function(diagnosting) {
+    res.json(diagnosting);
   });
 });
 
-// This code will add single /diagnostic endpoint
+// This code will add /diagnostics endpoint
 app.get("/diagnostic/:code", function(req, res) {
   // This code will call getDiagnostics on data
   data.getDiagnostic(req.params.code, function(diagnostic) {
@@ -163,7 +144,7 @@ app.listen(3000, function(err) {
   if (err) {
     return console.error(err.message);
   }
-  //When there is no error
+  //When theres no error
   console.log("You have launched the Server.");
 });
 
