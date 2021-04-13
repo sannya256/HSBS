@@ -45,9 +45,9 @@ exports.Patients = class {
   //This will show Patient's current symptoms 
   Symptoms;
   //This will display patient diagnostics
-  Diagnostic;
+  Diagnostics;
   //This will display patient prescriptions and drug names
-  Drug_ID = [];
+  Drug_name = [];
 
 
  

@@ -19,8 +19,7 @@ var db = new sqlite3.Database("data/PlanetDoctor.db", function(err) {
 // This will Export getPrescriptions function
 exports.getPrescriptions = function(callback) {
     // Creating SQL statement for Prescriptions and connecting foreign keys
-    var sql = `
-        SELECT * FROM Prescriptions `;
+    var sql = `SELECT * FROM Prescriptions `;
 
     // This will execute the query and return all prescriptions
     db.all(sql, function(err, rows) {
@@ -220,7 +219,7 @@ exports.getPatients = function(callback) {
         // This code will loop through rows creating Patient objects
         for (var row of rows) {
             // This code will create diagnostic object
-            var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+            var diag = new planetdoctor.Diagnostics(row.diagnostic, row.diagnostic, row.diagnostic, row.Diagnosis);
             // This code will create patient object
             var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
             // This code will add patients to array
@@ -257,40 +256,43 @@ exports.getPatient = function(Patient_ID, callback) {
             return console.error(err.message);
         }
         //This code will create diagnostic object
-        var diag = new planetdoctor.Diagnostic(row.Diagnosis);
+        var diag = new planetdoctor.Diagnostics(row.Diagnosis);
          //This code will create a patient object
-        var patient = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
+        var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
+     
         // Now get the drug names for the patient
-        //sql = 
-            //SELECT
-                //Diagnostics.Patient_ID,
-                //Diagnostics.Diagnosis,
-                //Prescriptions.Drug_name
-            //FROM
-                //Diagnostics, Prescriptions
-            //WHERE
-                //Prescriptions.patient= ${Patient_ID}
-                //AND
-                //Prescriptions.Drug_ID = Diagnostics.Drug_ID
-            //;
+        sql =`
+            SELECT
+                Diagnostics.Patient_ID,
+                Diagnostics.Diagnosis,
+                Diagnostics.Drug_ID,
+                Prescriptions.Drug_name
+            FROM
+                Diagnostics, Prescriptions
+            WHERE
+                Drug_name.diagnostic= ${Drug_ID}
+                AND
+                Prescriptions.Drug_ID = Diagnostics.Drug_ID
+            `;
         // Execute query. Multiple rows returned.
-        //db.all(sql, function(err, rows) {
-            //if (err) {
-                //return console.error(err.message);
-            //}
+        db.all(sql, function(err, rows) {
+            if (err) {
+                return console.error(err.message);
+            }
             // Loop through each row and create a diagnostic object and attach a drug name
-            //for (var row of rows) {
+            for (var row of rows) {
                 // This code will create diagnostic object
-                //var diag = new planetdoctor.Diagnostic(row.Patient_ID, row.Diagnosis);
+                var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
                 // Create a module combined with grade
-                //var Drug_name = {diag, Drug_name:row.Drug_name}
+                var Pres = {diag, Pres:row.Drug_name, row,Stock, row,Drug_ID, row,Patient_ID}
                 // Add module and grade to student
-                //pat.diagnostics.push(Drug_name);
+                diag.prescriptions.push(Drug_name);
             //}
         // This code will return patient
-        //callback(patient);
-    //});
+        callback(diag);
+    };
 });
+    });
 
 
 
@@ -362,5 +364,5 @@ exports.getVolunteer = function(code, callback) {
         callback(volunteer); 
         });
     };
-};
 
+}

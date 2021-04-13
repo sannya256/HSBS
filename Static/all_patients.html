@@ -6,11 +6,12 @@
         <script src="planetdoctor.js"></script>
         <script src="all_patients.js"></script>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="data_style.css">
     </head>
     <body>
-        <h1>Patient Records</h1>
+        <h1>Patient Medical Records</h1>
         <div ng-app="PDApp" ng-controller="patientController">
-            <table class="customTable">
+            <table class=customTable>
                 <thead>
                 <tr>
                     <th>Patient_ID</th>
@@ -20,6 +21,7 @@
                     <th>Gender</th>
                     <th>Symptoms</th>
                     <th>Diagnosis</th>
+                    <th>Drug Names</th>
                 </tr>
             </thead>
                 <tr ng-repeat = "patient in patients">
@@ -30,6 +32,7 @@
                     <td>{{ patient.Gender}}</td>
                     <td>{{ patient.Symptoms}}</td>
                     <td>{{ patient.Diagnostics.Diagnosis}}</td>
+                    <td>{{ patient.Diagnostics.Prescriptions.Drug_name}}</td>
                     <td><input type="text" ng-model="medical.Records"></td>
                     <td><input type="button" ng-click="selectPatient(Patient_ID)" value="Select"></td>
                     <td><input type="button" ng-click="updatePatient()" value="Edit"></td>
@@ -42,6 +45,7 @@
                     <td><input type="text" ng-model="new_patient.Gender"></td>
                     <td><input type="text" ng-model="new_patient.Symptoms"></td>
                     <td><input type="text" ng-model="new_patient.Diagnotiscs.Diagnosis"></td>
+                    <td><input type="text" ng-model="new_patient.Diagnotiscs.Prescriptions.Drug_name"></td>
                     <td><input type="button" ng-click="createPatient()" value="Create"></td>
                 </tr>
                 </tr>
