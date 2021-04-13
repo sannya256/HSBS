@@ -47,7 +47,7 @@ class Patients {
   //This will display patient diagnostics
   Diagnostics;
   //This will display patient prescriptions
-  Prescriptions = [];
+  Drug_name = [];
 
   constructor(Patient_ID, P_First_Name, P_Last_Name, DOB, Gender, Symptoms, Diagnostics) {
     this.Patient_ID = Patient_ID;

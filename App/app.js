@@ -106,8 +106,8 @@ app.get("/diagnostic/:code", function(req, res) {
 // This code is adding prescriptions endpoint to the front end
 app.get("/prescriptions", function(req, res) {
   // Call getPrescriptons on data
-  data.getPrescriptions(function(prescriptions){
-      res.json(prescriptions)
+  data.getPrescriptions(function(prescriptions) {
+      res.json(prescriptions);
     });
 });
 
