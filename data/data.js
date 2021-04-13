@@ -19,8 +19,7 @@ var db = new sqlite3.Database("data/PlanetDoctor.db", function(err) {
 // This will Export getPrescriptions function
 exports.getPrescriptions = function(callback) {
     // Creating SQL statement for Prescriptions and connecting foreign keys
-    var sql = `
-        SELECT * FROM Prescriptions `;
+    var sql = `SELECT * FROM Prescriptions `;
 
     // This will execute the query and return all prescriptions
     db.all(sql, function(err, rows) {
