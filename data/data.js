@@ -202,7 +202,11 @@ exports.getPatients = function(callback) {
             Patients,
             Diagnostics
         WHERE
-            Patients.diagnostic = Diagnostics.Drug_ID
+            Patients.Patient_ID = Diagnostics.Patient_ID
+            AND
+            Patients.P_First_Name = Diagnostics.P_First_Name
+            AND
+            Patients.P_Last_Name = Diagnostics.P_Last_Name
         `;
     
     // This code will execute query and return data from Patients class
@@ -216,9 +220,9 @@ exports.getPatients = function(callback) {
         // This code will loop through rows creating Patient objects
         for (var row of rows) {
             // This code will create diagnostic object
-            var diag = new planetdoctor.Diagnostic(row.diagnostic, row.Diagnosis);
+            var diag = new planetdoctor.Diagnostics(row.diagnostic, row.diagnostic, row.diagnostic, row.Diagnosis);
             // This code will create patient object
-            var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
             // This code will add patients to array
             patients.push(pat);
         }
@@ -243,31 +247,33 @@ exports.getPatient = function(Patient_ID, callback) {
                 Patients,
                 Diagnostics
             WHERE
-                Patients.Patient_ID = '1'
+                Patients.Patient_ID = '2553811640'
                 AND
-                Patients.diagnostic = Diagnostics.Drug_ID
+                Patients.Patient_ID = Diagnostics.Patient_ID
             `;
-    // This code will execute query and only one row
+    //This code will execute query and only one row
     db.get(sql, function(err, row) {
         if (err) {
             return console.error(err.message);
         }
-        // This code will create diagnostic object
-        var diag = new planetdoctor.Diagnostic(row.diagnostic, row.Diagnosis);
-        // This code will create a patient object
-        var patient = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
+        //This code will create diagnostic object
+        var diag = new planetdoctor.Diagnostics(row.Diagnosis);
+         //This code will create a patient object
+        var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
+     
         // Now get the drug names for the patient
-        sql = `
+        sql =`
             SELECT
-                Diagnostics.Patient_ID
+                Diagnostics.Patient_ID,
                 Diagnostics.Diagnosis,
+                Diagnostics.Drug_ID,
                 Prescriptions.Drug_name
             FROM
                 Diagnostics, Prescriptions
             WHERE
-                Prescriptions.patient= ${Patient_ID}
+                Drug_name.diagnostic= ${Drug_ID}
                 AND
-                Prescriptions.diagnostic = Diagnostics.Drug_ID
+                Prescriptions.Drug_ID = Diagnostics.Drug_ID
             `;
         // Execute query. Multiple rows returned.
         db.all(sql, function(err, rows) {
@@ -277,16 +283,17 @@ exports.getPatient = function(Patient_ID, callback) {
             // Loop through each row and create a diagnostic object and attach a drug name
             for (var row of rows) {
                 // This code will create diagnostic object
-                var diag = new planetdoctor.Diagnostic(row.Patient_ID, row.Diagnosis);
+                var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
                 // Create a module combined with grade
-                var Drug_name = {diag, Drug_name:row.Drug_name}
+                var Pres = {diag, Pres:row.Drug_name, row,Stock, row,Drug_ID, row,Patient_ID}
                 // Add module and grade to student
-                pat.diagnostics.push(Drug_name);
-            }
+                diag.prescriptions.push(Drug_name);
+            //}
         // This code will return patient
-        callback(patient);
-    });
+        callback(diag);
+    };
 });
+    });
 
 
 
@@ -336,6 +343,7 @@ db.all(sql, function(err, rows) {
             volunteers.push(volunt);
         }
         // Execute callback function
+        console.log(volunt)
         callback(volunteers);
     });
 };
@@ -355,6 +363,7 @@ exports.getVolunteer = function(code, callback) {
         var volunteer = new planetdoctor.Volunteers(row.ID, row.First_Name, row.Last_Name, row.Profession, row.Nationality, row.camp_loc);
         // Return module
         callback(volunteer); 
-    });
+        });
     };
-}; 
+
+}
