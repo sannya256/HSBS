@@ -232,7 +232,8 @@ exports.getPatients = function(callback) {
 
 // This code will export getPatient function
 exports.getPatient = function(Patient_ID, callback) {
-    // This codw will create SQL statement
+    // This code will create SQL statement
+    //Get the patient and their prescriptions
     var sql =`
             SELECT 
                 Patients.Patient_ID, 
@@ -241,8 +242,8 @@ exports.getPatient = function(Patient_ID, callback) {
                 Patients.DOB,
                 Patients.Gender,
                 Patients.Symptoms,
-                Prescriptions.Drug_name
-                Prescriptions.Stock
+                Prescriptions.Drug_name,
+                Prescriptions.Stock,
                 Prescriptions.Drug_ID
             FROM
                 Patients,
@@ -257,16 +258,17 @@ exports.getPatient = function(Patient_ID, callback) {
         if (err) {
             return console.error(err.message);
         }
-        //This code will create diagnostic object
-        var pres = new planetdoctor.Prescriptions(row.Drug_name, row.prescription, row.prescription);
+        //This code will create prescription object
+            var pres = new planetdoctor.Prescriptions(row.Drug_name, row.prescription, row.prescription);
          //This code will create a patient object
-        var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
         // This code will add patient to array
-        patients.push(pres);
-    }
-    // This code will execute callback function
-    callback(patients);
-};
+            pat.push(pres);
+        }
+    //This code will execute callback function
+        callback(patient));
+    };
+
 
 
 
