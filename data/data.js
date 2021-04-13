@@ -154,7 +154,7 @@ db.all(sql, function(err, rows) {
         for (var row of rows) {
             
             // This code will create Diagnostics object
-            var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+            var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
             // This code will add Diagnostics object to array
             diagnostics.push(diag);
         }
