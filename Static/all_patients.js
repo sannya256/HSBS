@@ -23,14 +23,12 @@ PDApp.controller("patientController", function($scope, $http) {
             });
         };
     //Inserting a new patients medical records to the table
-    //
-    $scope.new_patients = new Patients("", "","","");
         // This code will send a put notification to the server
-        $scope.createPatients = function() {
+        $scope.createPatient = function() {
         // This code will send post a message the to /patients endpoint
-            $http.post("/patients", $scope.new_patients).then(function(response) {
+            $http.post("/patients", $scope.new_patient).then(function(response) {
             // This will reset new_patient to empty to accept new entry 
-                $scope.new_patients = new Patient("", "","","");
+                $scope.new_patient = new Patient("", "","","");
             // This code will refresh the list after successfull addition
             $http.get("/patients").then(function(response) {
                 $scope.patients = response.data;
