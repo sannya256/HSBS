@@ -18,7 +18,7 @@ PDApp.controller("diagnosticController", function($scope, $http) {
         $http.get("/disgnostic/" + Patient_ID).then(function(response) {
             $scope.selectDiagnostic = response.data;
             document.getElementById("selected").style.display = "block";
-        };
+        });
     };
 
     $scope.deleteDiagnostic = function(Patient_ID) {
