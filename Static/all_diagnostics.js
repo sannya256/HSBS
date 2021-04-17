@@ -14,12 +14,12 @@ PDApp.controller("diagnosticController", function($scope, $http) {
 
 //The following code will add user interactions
 
-    $scope.selectDiagnostic = function(Patient_ID) {
+    /*$scope.selectDiagnostic = function(Patient_ID) {
         $http.get("/disgnostic/" + Patient_ID).then(function(response) {
             $scope.selectDiagnostic = response.data;
             document.getElementById("selected").style.display = "block";
         });
-    };
+    };*/
 
     $scope.deleteDiagnostic = function(Patient_ID) {
         $http.delete("/diagnostic/" + Patient_ID).then(function(response) {

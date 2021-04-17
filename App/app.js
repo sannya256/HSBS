@@ -102,7 +102,8 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
 
 // Doctor endpoints stop here
 
-  
+// Diagnostics endpoints start here
+
   // This code will add /diagnostics endpoint to the front end
   app.get("/diagnostics", function(req, res) {
     // This code will return the endpoint to the frontend
@@ -119,8 +120,14 @@ app.get("/diagnostic/:code", function(req, res) {
   });
 });
 
+// This code will add /diagnostic delete endpoint
+app.delete("/diagnostic/:Patient_ID", function(req, res) {
+  data.deleteDiagnostic(req.params.Patient_ID, function() {
+    res.send("OK");
+  });
+});
 
-
+// Diagnostics endpoints stop here
 
 // This code is adding prescriptions endpoint to the front end
 app.get("/prescriptions", function(req, res) {
