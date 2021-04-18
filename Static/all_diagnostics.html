@@ -8,7 +8,11 @@
         <link rel="stylesheet" href="data_style.css">
     </head>
     <body>
-        <h1>Diagnostics Records</h1>
+        
+        <h1>Diagnostics Records <i class="fa fa-address-card" aria-hidden="true"> </i>
+        </h1>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" /> 
+
         <div ng-app="PDApp" ng-controller="diagnosticController">
             <table class = customTable>
                 <thead>
@@ -32,9 +36,14 @@
                     <td>{{ diagnostic.Drug_name }}</td>    
                     <td>{{ diagnostic.Tests }}</td>
                     <td>{{ diagnostic.Referal }}</td>
+                    <td><input type="button" ng-click="selectDiagnostic (diagnostic.Patient_ID)" value="Select"></td>
+                    <td><input type="button" ng-click="deleteDiagnostic (diagnostic.Patient_ID)" value="Delete"></td>
+                    <td><input type="button" ng-click="updateDiagnostic (diagnostic.Patient_ID)" value="Update"></td>
+                    <td><input type="button" ng-click="createDiagnostic (diagnostic.Patient_ID)" value="Create"></td>
                 </tr>
+
             </table>
+            
         </div>
     </body>
 </html>
-                                                                                 

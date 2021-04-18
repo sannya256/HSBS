@@ -83,9 +83,16 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
 
 // Doctor endpoints stop here
 
+<<<<<<< HEAD
   
   // This code will add Diagnostics endpoint to the front end
   app.get("/diagnosting", function(req, res) {
+=======
+// Diagnostics endpoints start here
+
+  // This code will add /diagnostics endpoint to the front end
+  app.get("/diagnostics", function(req, res) {
+>>>>>>> c7ac693e125031d4bc0fa2dc9e29b85a4c6d998a
     // This code will return the endpoint to the frontend
     data.getDiagnostics(function(diagnosting) {
     res.json(diagnosting);
@@ -100,8 +107,14 @@ app.get("/diagnostic/:code", function(req, res) {
   });
 });
 
+// This code will add /diagnostic delete endpoint
+app.delete("/diagnostic/:Patient_ID", function(req, res) {
+  data.deleteDiagnostic(req.params.code, function() {
+    res.send("OK");
+  });
+});
 
-
+// Diagnostics endpoints stop here
 
 // This code is adding prescriptions endpoint to the front end
 app.get("/prescriptions", function(req, res) {
