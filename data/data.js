@@ -259,7 +259,7 @@ exports.getPatient = function(Patient_ID, callback) {
         var diag = new planetdoctor.Diagnostics(row.Diagnosis);
          //This code will create a patient object
         var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
-     
+
         // Now get the drug names for the patient
         sql =`
             SELECT
@@ -270,7 +270,7 @@ exports.getPatient = function(Patient_ID, callback) {
             FROM
                 Diagnostics, Prescriptions
             WHERE
-                Drug_name.diagnostic= ${Drug_ID}
+                Drug_ID.diagnostic= ${Drug_ID}
                 AND
                 Prescriptions.Drug_ID = Diagnostics.Drug_ID
             `;
@@ -290,9 +290,11 @@ exports.getPatient = function(Patient_ID, callback) {
             //}
         // This code will return patient
         callback(diag);
-    };
-});
+            };
+        });
     });
+};
+
 
 
 
@@ -304,11 +306,11 @@ exports.createPatient = function(patient, callback) {
     // Execute SQL insert statement
     db.exec(sql, function(err) {
       // Once completed, execute callback function
-      callback();
+    callback();
     });
-  };
+};
 
-  //Adding  a deletePatient function
+//Adding  a deletePatient function
 // This code will delete a patient from the database
 exports.deletePatient = function(Patient_ID, callback) {
     // Create SQL delete statement
@@ -327,8 +329,8 @@ exports.deletePatient = function(Patient_ID, callback) {
 exports.getVolunteers = function(callback) {
     // Create SQL statement
     var sql = `SELECT * FROM volunteers`;
- // Execute query. Return all
-db.all(sql, function(err, rows) {
+    // Execute query. Return all
+    db.all(sql, function(err, rows) {
     // Check if error
     if (err) {
         return console.error(err.message);
@@ -365,4 +367,5 @@ exports.getVolunteer = function(code, callback) {
         });
     };
 
-}
+
+
