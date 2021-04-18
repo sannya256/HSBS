@@ -182,9 +182,9 @@ exports.getDiagnostic = function(code, callback) {
 };
 
 // Delete Diagnostic from the database
-exports.deleteDiagnostic = function(Patient_ID, callback) {
+exports.deleteDiagnostic = function(code, callback) {
 // Create SQL delete query
-    var sql = `DELETE FROM Diagnostics WHERE Patient_ID=${Patient_ID}`;
+    var sql = `DELETE FROM Diagnostics WHERE Patient_ID=${code}`;
     // Execute SQL delete query 
     db.exec(sql, function(err) {
         callback();

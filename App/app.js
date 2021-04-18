@@ -122,7 +122,7 @@ app.get("/diagnostic/:code", function(req, res) {
 
 // This code will add /diagnostic delete endpoint
 app.delete("/diagnostic/:Patient_ID", function(req, res) {
-  data.deleteDiagnostic(req.params.Patient_ID, function() {
+  data.deleteDiagnostic(req.params.code, function() {
     res.send("OK");
   });
 });

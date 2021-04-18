@@ -21,8 +21,10 @@ PDApp.controller("diagnosticController", function($scope, $http) {
         });
     };*/
 
-    $scope.deleteDiagnostic = function(Patient_ID) {
-        $http.delete("/diagnostic/" + Patient_ID).then(function(response) {
+    $scope.deleteDiagnostic = function(code) {
+        //sending a delete request to the server using node
+        $http.delete("/diagnostic/" + code).then(function(response) {
+            // this code will refresh the diagnostics list
             $http.get("/diagnostics/").then(function(response) {
                 $scope.Diagnostics = response.data;
             });
