@@ -33,10 +33,30 @@ mainApp.controller("volunteerController", function($scope, $http) {
        $http.delete('/volunteer/' + code).then(function(response) {
            //when request completes, refresh list of modules
            $http.get('/volunteer').then(function(response) {
-               $scope.modules = response.data;
+               $scope.volunteers = response.data;
            })
        })
 
    }
 
+   $scope.new_volunteer = new Volunteers("", "","","","","");
+  
+   // Sends a put message to the server
+   $scope.createVolunteer = function() {
+     // Send post message to /modules
+     $http.post("/volunteers", $scope.new_volunteer).then(function(response) {
+       // When request completes, reset new_module
+       $scope.new_volunteer = new Volunteers("cccc", "","","", "", "");
+       // Then refresh list of modules
+       $http.get("/volunteers").then(function(response) {
+         $scope.volunteers = response.data;
+       });
+     });
+   };
+
 });
+
+
+  
+   
+  

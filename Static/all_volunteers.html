@@ -31,6 +31,14 @@
           <td><input type="button" ng-click="selectVolunteer(volunteer.ID)" value="select"></td>
           <td><input type="button" ng-click="deleteVolunteer(volunteer.ID)" value="delete"></td>
         </tr>
+        <tr>
+          <td><input type="text" ng-model= "new_volunteer.ID" ></td>
+          <td><input type="text" ng-model= "new_volunteer.First_Name" ></td>
+          <td><input type="text" ng-model= "new_volunteer.Last_Name" ></td>
+          <td><input type="text" ng-model= "new_volunteer.Profession" ></td>
+          <td><input type="text" ng-model= "new_volunteer.Nationality" ></td>
+          <td><input type="text" ng-model= "new_volunteer.camp_loc" ></td>
+          <td colspan='2'><input type="button" style='width:100%' ng-model= "createVolunteer()" value='create'></td>
       </table>
       <div id = "selected">
           <h2>ID: {{selectVolunteer.ID}}</h2>
