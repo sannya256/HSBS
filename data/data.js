@@ -182,10 +182,17 @@ exports.getDiagnostic = function(code, callback) {
 };
 
 // Delete Diagnostic from the database
-exports.deleteDiagnostic = function(code, callback) {
+exports.deleteDiagnostic = function(Patient_ID, callback) {
 // Create SQL delete query
-    var sql = `DELETE FROM Diagnostics WHERE Patient_ID=${code}`;
+    var sql = `DELETE FROM Diagnostics WHERE Patient_ID='${Patient_ID}'`;
     // Execute SQL delete query 
+    db.exec(sql, function(err) {
+        callback();
+    });
+};
+
+exports.addDiagnostic = function(diagnostic, callback) {
+    var sql = `INSERT INTO Diagnostics VALUES ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}')`;
     db.exec(sql, function(err) {
         callback();
     });
