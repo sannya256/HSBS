@@ -396,7 +396,7 @@ exports.getVolunteer = function(code, callback) {
 
 exports.addVolunteer = function (_volunteer , callback)   {
    // create SQL insert statment
-   var sql= `INSERT INTO volunteers VALUES ('${module.First_Name}', '${module.Last_Name}','${module.Profession}', '${module.Nationality}','${module.camp_loc}')`;
+   var sql= `INSERT INTO volunteers VALUES ('${_volunteer.First_Name}', '${_volunteer.Last_Name}','${_volunteer.Profession}', '${_volunteer.Nationality}','${_volunteer.camp_loc}')`;
    //execute SQL insert statement
    db.exec(sql, function(err){
        //once completed, execute callback function
