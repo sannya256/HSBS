@@ -39,9 +39,9 @@ mainApp.controller("volunteerController", function($scope, $http) {
 
     };
 
-   //$scope.new_volunteer = new Volunteers("", "","","","","");
+    $scope.new_volunteer = new Volunteers("", "","","","","");
 
-   // Sends a put message to the server
+   // Sends a post message to the server
     $scope.createVolunteer = function() {
      // Send post message to /volunteers
         $http.post("/volunteers", $scope.new_volunteer).then(function(response) {
@@ -53,6 +53,5 @@ mainApp.controller("volunteerController", function($scope, $http) {
             });
         });
     };
-
 });
 

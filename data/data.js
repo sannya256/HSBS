@@ -394,14 +394,14 @@ exports.getVolunteer = function(code, callback) {
         });
     };
 
-exports.addVolunteer = function (_volunteer , callback)   {
+exports.addVolunteer = function (volunteer , callback)   {
    // create SQL insert statment
-   var sql= `INSERT INTO volunteers VALUES ('${_volunteer.First_Name}', '${_volunteer.Last_Name}','${_volunteer.Profession}', '${_volunteer.Nationality}','${_volunteer.camp_loc}')`;
+    var sql= `INSERT INTO volunteers VALUES (${volunteer.ID}','${volunteer.First_Name}', '${volunteer.Last_Name}','${volunteer.Profession}', '${volunteer.Nationality}','${volunteer.camp_loc}')`;
    //execute SQL insert statement
-   db.exec(sql, function(err){
+    db.exec(sql, function(err){
        //once completed, execute callback function
-       callback();
-   });
+        callback();
+    });
 };
 
 
