@@ -387,4 +387,14 @@ exports.getVolunteer = function(code, callback) {
         });
     };
 
+exports.addVolunteer = function (_volunteer , callback)   {
+   // create SQL insert statment
+   var sql= `INSERT INTO volunteers VALUES ('${module.First_Name}', '${module.Last_Name}','${module.Profession}', '${module.Nationality}','${module.camp_loc}')`;
+   //execute SQL insert statement
+   db.exec(sql, function(err){
+       //once completed, execute callback function
+       callback();
+   });
+};
+
 

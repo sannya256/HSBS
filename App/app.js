@@ -143,6 +143,13 @@ app.get("/volunteer/:code", function(req, res) {
   });
 });
 
+app.post("/volunteers", function(req,res){
+  //call addVolunteer on data 
+  data.addVolunteer(req.body, function(){
+    res.send("OK");
+  });
+});
+
 
 // To start the server
 // This code will allow the application layer to listen communication from the front end on port 3000
