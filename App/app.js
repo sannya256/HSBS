@@ -103,7 +103,13 @@ app.get("/diagnostic/:code", function(req, res) {
 
 // This code will add /diagnostic delete endpoint
 app.delete("/diagnostic/:Patient_ID", function(req, res) {
-  data.deleteDiagnostic(req.params.code, function() {
+  data.deleteDiagnostic(req.params.Patient_ID, function() {
+    res.send("OK");
+  });
+});
+
+app.post("/diagnostics", function(req, res) {
+  data.addDiagnostic(req.body,function() {
     res.send("OK");
   });
 });
@@ -140,6 +146,13 @@ app.get("/volunteer/:code", function(req, res) {
   // Call getVolunteer on data
   data.getVolunteer(req.params.code, function(volunteer) {
       res.json(volunteer);
+  });
+});
+
+app.post("/volunteers", function(req,res){
+  //call addVolunteer on data 
+  data.addVolunteer(req.body, function(){
+    res.send("OK");
   });
 });
 

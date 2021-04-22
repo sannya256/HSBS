@@ -5,11 +5,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
     <script src="planetdoctor.js"></script>
     <script src="all_prescriptions.js"></script> 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="data_style.css">
   </head>
   <body>
-    <h1>Prescriptions</h1>
-    <div ng-app="PDApp" ng-controller="prescriptionsController"> 
+    <h1>Prescriptions <i class="fa fa-address-card" aria-hidden="true"> </i> </h1>
+    <div ng-app="PDApp" ng-controller="prescriptionController"> 
       <table class = customTable>
         <thead>
         <tr>
@@ -19,13 +19,25 @@
             <th>Patient_ID</th>
         </tr>
     </thead>
-        <tr ng-repeat="singleprescription in prescriptions">
+        <tr ng-repeat="prescription in prescriptions">
             <td> {{ prescriptions.Drug_name }}</td>
             <td> {{ prescriptions.Stock }}</td>
             <td> {{ prescriptions.Drug_ID }}</td>
             <td> {{ prescriptions.Patient_ID }}</td> 
-        </tr>
-    </table>
-</div>
-</body>
+            <td><input type="button" ng-click="selectprescription(Patient_ID)" value="Select"></td>
+                    <td><input type="button" ng-click="updateprescription()" value="Edit"></td>
+                    <td><input type="button" ng-click="deleteprescriptions(prescriptions.Drug_name)" value="Delete"></td>
+                <tr>
+                    <td><input type="text" ng-model="new_prescription.Drug_name"></td>
+                    <td><input type="text" ng-model="new_prescription.Stock"></td>
+                    <td><input type="text" ng-model="new_prescription.Drug_ID"></td>
+                    <td><input type="text" ng-model="new_prescription.Patient_ID"></td>
+                    <td><input type="button" ng-click="createprescription()" value="Create"></td>
+                </tr>
+            </table>
+         <div Drug_name = "selected">
+          <h2>{{ selectedprescription.Drug_name }} {{ selectedprescription.Stock }} {{ selectedprescription.Drug_ID }} {{ selectedprescription.Patient_ID }} </h2>
+            </table>
+        </div>
+    </body>
 </html>
