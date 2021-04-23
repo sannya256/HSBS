@@ -7,7 +7,7 @@ var PDApp = angular.module("PDApp", []);
 
 //This code creates the dignostics controller and requests diagnostics data from the backend    
 PDApp.controller("diagnosticController", function($scope, $http) {
-    document.getElementById("selected").style.display = "none"
+    //document.getElementById("selected").style.display = "none"
 
     //This coode will 
     $http.get('/diagnostics').then(function(response) {
@@ -19,7 +19,7 @@ PDApp.controller("diagnosticController", function($scope, $http) {
     $scope.selectDiagnostic = function(Patient_ID) {
         $http.get("/disgnostic/" + Patient_ID).then(function(response) {
             $scope.selectDiagnostic = response.data;
-            document.getElementById("selected").style.display = "block";
+            //document.getElementById("selected").style.display = "block";
         });
     };
     //This code will send delete request to the server
