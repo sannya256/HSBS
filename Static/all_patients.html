@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="data_style.css">
     </head>
     <body>
+<h1>Patients<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
         <h1>Patient Medical Records</h1>
         <div ng-app="PDApp" ng-controller="patientController">
             <table class=customTable>
@@ -33,7 +34,7 @@
                     <td>{{ patient.Diagnostics.Diagnosis}}</td>
                     <td><input type="button" ng-click="selectPatient(Patient_ID)" value="Select"></td>
                     <td><input type="button" ng-click="updatePatient()" value="Edit"></td>
-                    <td><input type="button" ng-click="deletePatients(patients.Patient_ID)" value="Delete"></td>
+                    <td><input type="button" ng-click="deletePatient(patients.Patient_ID)" value="Delete"></td>
                 <tr>
                     <td><input type="text" ng-model="new_patient.Patient_ID"></td>
                     <td><input type="text" ng-model="new_patient.P_First_Name"></td>

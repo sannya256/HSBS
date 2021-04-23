@@ -182,10 +182,17 @@ exports.getDiagnostic = function(code, callback) {
 };
 
 // Delete Diagnostic from the database
-exports.deleteDiagnostic = function(code, callback) {
+exports.deleteDiagnostic = function(Patient_ID, callback) {
 // Create SQL delete query
-    var sql = `DELETE FROM Diagnostics WHERE Patient_ID=${code}`;
+    var sql = `DELETE FROM Diagnostics WHERE Patient_ID='${Patient_ID}'`;
     // Execute SQL delete query 
+    db.exec(sql, function(err) {
+        callback();
+    });
+};
+
+exports.addDiagnostic = function(diagnostic, callback) {
+    var sql = `INSERT INTO Diagnostics VALUES ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}')`;
     db.exec(sql, function(err) {
         callback();
     });
@@ -241,83 +248,44 @@ exports.getPatients = function(callback) {
 };
 
 // This code will export getPatient function
-///exports.getPatient = function(Patient_ID, callback) {
+exports.getPatient = function(pat, callback) {
     // This code will create SQL statement
     //Get the patient and their prescriptions
-    ///var sql =`
-            //SELECT 
-               // Patients.Patient_ID, 
-              //  Patients.P_First_Name, 
-                //Patients.P_Last_Name, 
-                //Patients.DOB,
-               // Patients.Gender,
-                //Patients.Symptoms,
-               // Prescriptions.Drug_name,
-               // Prescriptions.Stock,
-              //  Prescriptions.Drug_ID
-            //FROM
-                //Patients,
-                //Prescriptions
-            //WHERE
-               // Patients.Patient_ID = '2553811640'
-              //  AND
-               // Patients.Patient_ID = Prescriptions.Patient_ID
-            //`;
+    var sql =`
+            SELECT 
+                Patients.Patient_ID, 
+                Patients.P_First_Name, 
+                Patients.P_Last_Name, 
+                Patients.DOB,
+                Patients.Gender,
+                Patients.Symptoms,
+                Prescriptions.Drug_name,
+                Prescriptions.Stock,
+                Prescriptions.Drug_ID
+            FROM
+                Patients,
+                Prescriptions
+            WHERE
+                Patients.Patient_ID = '${pat}'
+                AND
+                Patients.Patient_ID = Prescriptions.Patient_ID
+            `;
     //This code will execute query and only one row
-   // db.get(sql, function(err, row) {
-       //if (err) {
-           // return console.error(err.message);
-      // }
+   db.get(sql, function(err, row) {
+        // To check for errors, this code will be excuted and if any the error msg will be displayed
+       if (err) {
+           return console.error(err.message);
+      }
         //This code will create prescription object
-            //var pres = new planetdoctor.Prescriptions(row.Drug_name, row.prescription, row.prescription);
+            var pres = new planetdoctor.Prescriptions(row.Drug_name, row.prescription, row.prescription);
          //This code will create a patient object
-            //var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
         // This code will add patient to array
-            //pat.push(pres);
-        ///}
+            patient.push(pat);
+        });
     //This code will execute callback function
-       // callback(patient));
-    ///};
-
-
-
-
-     
-        // Now get the drug names for the patient
-        //sql =`
-            //SELECT
-                //Diagnostics.Patient_ID,
-                //Diagnostics.Diagnosis,
-                //Diagnostics.Drug_ID,
-                //Prescriptions.Drug_name
-            //FROM
-                //Diagnostics, Prescriptions
-            //WHERE
-                //Diagnostics.Drug_name= ${Drug_ID}
-                //AND
-                //Prescriptions.Drug_ID = Diagnostics.Drug_ID
-            //`;
-        // Execute query. Multiple rows returned.
-        //db.all(sql, function(err, rows) {
-            //if (err) {
-                //return console.error(err.message);
-            //}
-            // Loop through each row and create a diagnostic object and attach a drug name
-            //for (var row of rows) {
-                // This code will create diagnostic object
-                //var diag = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
-                // Create a drug name combined with diagnosis
-                //var Pres = {diag, Pres:row.}
-                // Add module and grade to student
-                //diag.prescriptions.push(Drug_name);
-            //}
-        // This code will return patient
-        //callback(diag);
-   // };
-//});
-   // });
-
-
+       callback(patient);
+    }
 
 // Add a patient to the database
 exports.createPatient = function(patient, callback) {
@@ -387,4 +355,13 @@ exports.getVolunteer = function(code, callback) {
         });
     };
 
+exports.addVolunteer = function (volunteer , callback)   {
+   // create SQL insert statment
+    var sql= `INSERT INTO volunteers VALUES (${volunteer.ID}','${volunteer.First_Name}', '${volunteer.Last_Name}','${volunteer.Profession}', '${volunteer.Nationality}','${volunteer.camp_loc}')`;
+   //execute SQL insert statement
+    db.exec(sql, function(err){
+       //once completed, execute callback function
+        callback();
+    });
+};
 

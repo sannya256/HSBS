@@ -1,5 +1,18 @@
 
 
+h1{
+    position: absolute;
+    color: blue;
+    margin: 7% 20%;
+}
+
+h2{
+    position: absolute;
+    color: rgb(75, 75, 212);
+    margin: 13% 40%;
+}
+
+
 ul {
     margin-left: 600px;
 
@@ -11,6 +24,7 @@ ul li {
     font-display: block;
     display: flex;
     height: 50px;
+    position: relative;
 
 }
 
@@ -19,11 +33,40 @@ ul li a {
     text-decoration: none;
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(42, 42, 199);
+    color: rgb(8, 8, 8);
     padding: 0 20px;
+    margin: 35% -10%;
 
 }
-ul li a:hoover {
-    color: rgb(149, 149, 229);
+ul li a:hover {
+    color: rgb(238, 238, 245);
+
+}
+
+.linkbutton{
+    background-color: #1c87c9;
+    border: blue;
+    color: rgb(0, 0, 0);
+    padding: 20px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 35% -10%;
+    cursor: pointer;
+}
+
+img{
+    padding: 0%;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    opacity: 0.5;
+    margin-top: 0;
+    margin-left: 0;
+
 
 }
