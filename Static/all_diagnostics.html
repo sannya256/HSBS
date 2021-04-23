@@ -36,9 +36,9 @@
                     <td>{{ diagnostic.Drug_name }}</td>    
                     <td>{{ diagnostic.Tests }}</td>
                     <td>{{ diagnostic.Referal }}</td>
-                    <td><input type="button" ng-click="selectDiagnostic (diagnostic.Patient_ID)" value="Select"></td>
-                    <td><input type="button" ng-click="deleteDiagnostic (diagnostic.Patient_ID)" value="Delete"></td>
-                    <td><input type="button" ng-click="updateDiagnostic (diagnostic.Patient_ID)" value="Update"></td>
+                    <td><input type="button" ng-click="selectDiagnostic(diagnostic.Patient_ID)" value="Select"></td>
+                    <td><input type="button" ng-click="deleteDiagnostic(diagnostic.Patient_ID)" value="Delete"></td>
+                    <td><input type="button" ng-click="updateDiagnostic(diagnostic.Patient_ID)" value="Update"></td>
                     
                 </tr>
                 <tr>
@@ -50,10 +50,9 @@
                     <td><input type="text" ng-model="new_diagnostic.Drug_name"></td>
                     <td><input type="text" ng-model="new_diagnostic.Tests"></td>
                     <td><input type="text" ng-model="new_diagnostic.Referal"></td>
-                    <td><input type="button" ng-click="createDiagnostic (diagnostic.Patient_ID)" value="Create"></td>
+                    <td><input type="button" ng-click="createDiagnostic()" value="Create"></td>
                 </tr>
-            </table>
-            
+            </table> 
         </div>
     </body>
 </html>
