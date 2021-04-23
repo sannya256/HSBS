@@ -394,14 +394,25 @@ exports.getVolunteer = function(code, callback) {
         });
     };
 
-exports.addVolunteer = function (volunteer , callback)   {
+exports.addVolunteer = function(volunteer , callback)   {
    // create SQL insert statment
-    var sql= `INSERT INTO volunteers VALUES (${volunteer.ID}','${volunteer.First_Name}', '${volunteer.Last_Name}','${volunteer.Profession}', '${volunteer.Nationality}','${volunteer.camp_loc}')`;
+    var sql= `INSERT INTO volunteers VALUES ('${volunteer.ID}','${volunteer.First_Name}', '${volunteer.Last_Name}','${volunteer.Profession}', '${volunteer.Nationality}','${volunteer.camp_loc}')`;
    //execute SQL insert statement
     db.exec(sql, function(err){
        //once completed, execute callback function
         callback();
     });
 };
+
+// This code will delete a volunteer from db
+exports.deleteDoctor = function(ID, callback) {
+    // SQL delete statement
+    var sql = `DELETE FROM volunteers WHERE ID='${ID}'`;
+    // This code will execute the above SQL delete statement
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+        callback();
+        });
+    };
 
 
