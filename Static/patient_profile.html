@@ -2,123 +2,146 @@
 <html>
     <head>
         <title>Patients</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
-        <script src="planetdoctor.js"></script>
-        <script src="all_patients.js"></script>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" type="text/css" href="patient_profile.css">
-        <div class="container">
-            <div class="row">
-            <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-      </head>
-    <body>
-        <a href="#" class="btn btn-primary" style="width:140px">Patient Database</a>
-                       
-                        <a href="#" class="btn btn-primary" style="width:140px"> Homepage</a>
-                      </head>
-                      <body>
-                  <h1>Patients<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
-                          <h1>Patient Medical Records</h1>
-                          <div ng-app="PDApp" ng-controller="patientController">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+<script src="planetdoctor.js"></script>
+<script src="all_patients.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+<h1>Patients<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
+        <h1>Patient Medical Records</h1>
+        <li><a href="all_patients.html" class="btn btn-primary" style="width:140px", style='position:absolute; right: 200px;'>Patient Database</a>
+        <a href="index.html" class="btn btn-primary" style="width:140px", style='position:absolute; right: 200px;'> Homepage</a>
+        
+        <div ng-app="PDApp" ng-controller="patientController"></div>
+<div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
 
-
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Patient Profile</h3>
             </div>
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-    
-                <div class="panel panel-info">
-                  <div class="panel-heading">
-                  </div>
-                  <div class="panel-body">
-                    <div class="row">
-                      <div class="col-md-3 col-lg-3 " align="center">  </div>
-                      
-                      <div class=" col-md-9 col-lg-9 "> 
-                        <table class="table table-user-information">
-                          <tbody>
-                            <tr>
-                              <td> <b>Personal Information: </b></td>
-                              <td></td>
-                            </tr>
-                              <td>Patient ID:</td>
-                              <td>2553811640</td>
-                            </tr>
-                            <tr>
-                              <td>First Name:</td>
-                              <td>Suzana</td>
-                            </tr>
-                         
-                               <tr>
-                                   <tr>
-                              <td>Last Name:</td>
-                              <td> Arefin</td>
-                            </tr>
-                              <tr>
-                              <td>Gender:</td>
-                              <td>Female</td>
-                            </tr>
-                            <tr>
-                              <td>DOB:</td>
-                              <td>07/04/1996</td>
-                            </tr>
-                              <td>Symptoms:</td>
-                              <td> Headache </td>
-                                 
-                            </tr>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">  </div>
+                
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr ng-repeat = "patient in patients">
+                        <td> <b>Personal Information: </b></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>patient.Patient_ID</td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>patient.P_First_Name:</td>
+                        <td></td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                        <td>patient.P_Last_Name:</td>
+                        <td> </td>
+                      </tr>
+                        <tr>
+                        <td>patient.DOB:</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>patient.Gender:</td>
+                        <td></td>
+                      </tr>
+                        <td>patient.Symptoms:</td>
+                        <td></td>
                            
-                             </tr>
-                              <td>Diagnosis:</td>
-                              <td>  </td>
-                                 
-                            </tr>
+                      </tr>
+                     
+                       </tr>
+                        <td>patient.Diagnostics.Diagnosis:</td>
+                        <td></td>
                            
-                            </tr>
-                              <td> <b > Patient Medical Information:</b></td>
-                              <td> </td>
-                                 
-                            </tr>
-      
-                            </tr>
-                              <td>Latest surgery date:</td>
-                              <td> Yes:  <input type="checkbox" name="yes" value="yes">  No:<input type="checkbox" name="no" value="no"> </td>
-                                 
-                            </tr>
+                      </tr>
+                     
+                      </tr>
+                        <td> <b > Medical Information:</b></td>
+                        <td> </td>
                            
+                      </tr>
+
+                      </tr>
+                        <td>Latest Appointment attended</td>
+                        <td> Yes:  <input type="checkbox" name="yes" value="yes">  No:<input type="checkbox" name="no" value="no"> </td>
                            
-                            </tr>
-                              <td>Suffer from any kidney ,lungs , heart ,blood presure disease?</td>
-                              <td> Yes:  <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
-                                 
-                            </tr>
+                      </tr>
+                     
+                     
+                      </tr>
+                        <td>Blood pressure checks</td>
+                        <td> Yes:  <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
                            
-                             </tr>
-                              <td>Previous Blood transfer </td>
-                              <td>  Yes: <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
-                                 
-                            </tr>
+                      </tr>
+                     
+                       </tr>
+                        <td>Polio Vaccination</td>
+                        <td>  Yes: <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
                            
-                           </tr>
-                              <td>Vaccinated for virus C or B</td>
-                              <td>  Yes: <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
-                                 
-                            </tr>
+                      </tr>
+                     
+                     </tr>
+                        <td>TB Vaccination</td>
+                        <td>  Yes: <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
                            
-                            </tr>
-                              <td>Current medicines</td>
-                              <td>  Yes: <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
-                                 
-                            </tr>
+                      </tr>
+                     
+                      </tr>
+                        <td>Covid-19 Test</td>
+                        <td>  Yes: <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
                            
+                      </tr>
+                     
+                      </tr>
+                        <td>Covid-19 Vaccination</td>
+                        <td> Yes:  <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
                            
-                          </tbody>
-                        </table>
-                        
-                        
-                      </div>
-                    </div>
-                  </div>
-                      
-                  
+                      </tr>
+
+                     
+                       </tr>
+                        <td>Allergies</td>
+                        <td>  Yes: <input type="checkbox" name="yes" value="yes"> No: <input type="checkbox" name="no" value="no"> </td>
+                           
+                      </tr>
+                     
+                     
+                     
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
-          </div>   
+                
+            
+          </div>
+        </div>
+      </div>
+    </div>
