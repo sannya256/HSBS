@@ -175,7 +175,7 @@ app.post("/volunteers", function(req,res){
 });
 
 // Add a /doctor delete endpoint
-app.delete("/volunteer/:code", function(req, res) {
+app.delete("/volunteer/:ID", function(req, res) {
   // This will call deleteVolunteer on the data
   data.deleteVolunteer(req.params.ID, function() {
     // After deletion send OK response to the browser

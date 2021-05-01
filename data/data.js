@@ -366,7 +366,7 @@ exports.addVolunteer = function(volunteer , callback)   {
 };
 
 // This code will delete a volunteer from db
-exports.deleteDoctor = function(ID, callback) {
+exports.deleteVolunteer = function(ID, callback) {
     // SQL delete statement
     var sql = `DELETE FROM volunteers WHERE ID='${ID}'`;
     // This code will execute the above SQL delete statement
