@@ -241,8 +241,8 @@ exports.getPatient = function(code, callback) {
         if (err) {
         return console.error(err.message);
       }
-         //This code will create a patient object
-        var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
+// This code will create a patient object
+    var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
     //This code will execute callback function
        callback(patient);
     });
