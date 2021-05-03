@@ -229,44 +229,24 @@ exports.getPatients = function(callback) {
 };
 
 // This code will export getPatient function
-exports.getPatient = function(pat, callback) {
+exports.getPatient = function(code, callback) {
     // This code will create SQL statement
     //Get the patient and their prescriptions
     var sql =`
-            SELECT 
-                Patients.Patient_ID, 
-                Patients.P_First_Name, 
-                Patients.P_Last_Name, 
-                Patients.DOB,
-                Patients.Gender,
-                Patients.Symptoms,
-                Prescriptions.Drug_name,
-                Prescriptions.Stock,
-                Prescriptions.Drug_ID
-            FROM
-                Patients,
-                Prescriptions
-            WHERE
-                Patients.Patient_ID = '${pat}'
-                AND
-                Patients.Patient_ID = Prescriptions.Patient_ID
-            `;
+            SELECT * FROM Patients
+            WHERE Patient_ID = '${code}'`;
     //This code will execute query and only one row
    db.get(sql, function(err, row) {
         // To check for errors, this code will be excuted and if any the error msg will be displayed
-       if (err) {
-           return console.error(err.message);
+        if (err) {
+        return console.error(err.message);
       }
-        //This code will create prescription object
-            var pres = new planetdoctor.Prescriptions(row.Drug_name, row.prescription, row.prescription);
          //This code will create a patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
-        // This code will add patient to array
-            patient.push(pat);
-        });
+        var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
     //This code will execute callback function
        callback(patient);
-    }
+    });
+};
 
 // Add a patient to the database
 exports.createPatient = function(patient, callback) {

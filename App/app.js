@@ -37,10 +37,10 @@ app.post("/patients", function(req, res) {
 });
 
 // This code will add a single /patient endpoint
-app.get("/patient/:pat", function(req, res) {
+app.get("/patient/:code", function(req, res) {
   // This code will return a single patient from the patients table 
-  data.getPatient(req.params.pat, function(pat) {
-      res.json(pat);
+  data.getPatient(req.params.code, function(patient) {
+      res.json(patient);
   });
 });
 
