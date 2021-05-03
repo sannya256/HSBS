@@ -249,15 +249,15 @@ exports.getPatient = function(code, callback) {
 };
 
 // Add a patient to the database
-exports.createPatient = function(patient, callback) {
+exports.addPatient = function(patient, callback) {
     // Create SQL insert statement
     var sql = `INSERT INTO Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
     // Execute SQL insert statement
     db.exec(sql, function(err) {
       // Once completed, execute callback function
-    callback();
-    });
-};
+        callback();
+        });
+    };
 
 //Adding  a deletePatient function
 // This code will delete a patient from the database

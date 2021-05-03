@@ -30,8 +30,8 @@ app.get("/patients", function(req, res) {
 
 // Add /patients post endpoint
 app.post("/patients", function(req, res) {
-  // Call createPatient on data
-  data.createPatient(req.body, function() {
+// Call createPatient on data
+  data.addPatient(req.body, function() {
     res.send("OK");
   });
 });
@@ -42,6 +42,13 @@ app.get("/patient/:code", function(req, res) {
   data.getPatient(req.params.code, function(patient) {
       res.json(patient);
   });
+});
+
+// This code will update a single /patient endpoint
+app.put("/patient/:code", function(req, res) {
+data.updatePatient(req.body, function() {
+  res.send("OK");
+});
 });
 
 //Asking the data layer to remove a patient
