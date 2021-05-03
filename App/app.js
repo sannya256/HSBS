@@ -18,7 +18,7 @@ app.use(express.json());
 // Location of the static files are added 
 app.use(express.static("Static")); // s=S
 
-// This is the start for doctor endpoints
+// This is the start for patient endpoints
 
 // This code will add /patients endpoint
 app.get("/patients", function(req, res) {
@@ -28,11 +28,29 @@ app.get("/patients", function(req, res) {
   });
 });
 
+// Add /patients post endpoint
+app.post("/patients", function(req, res) {
+  // Call createPatient on data
+  data.createPatient(req.body, function() {
+    res.send("OK");
+  });
+});
+
 // This code will add a single /patient endpoint
-app.get("/patient/:Patient_ID", function(req, res) {
+app.get("/patient/:pat", function(req, res) {
   // This code will return a single patient from the patients table 
-  data.getPatient(req.params.Patient_ID, function(patient) {
-      res.json(patient);
+  data.getPatient(req.params.pat, function(pat) {
+      res.json(pat);
+  });
+});
+
+//Asking the data layer to remove a patient
+// Add a /patient delete endpoint
+app.delete("/patient/:Patient_ID", function(req, res) {
+  // This will call deletePatient on the data
+  data.deletePatient(req.params.Patient_ID, function() {
+    // After successful deletion there will be an OK response to the browser
+    res.send("OK");
   });
 });
 
@@ -152,6 +170,15 @@ app.get("/volunteer/:code", function(req, res) {
 app.post("/volunteers", function(req,res){
   //call addVolunteer on data 
   data.addVolunteer(req.body, function(){
+    res.send("OK");
+  });
+});
+
+// Add a /doctor delete endpoint
+app.delete("/volunteer/:ID", function(req, res) {
+  // This will call deleteVolunteer on the data
+  data.deleteVolunteer(req.params.ID, function() {
+    // After deletion send OK response to the browser
     res.send("OK");
   });
 });

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Patients</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+        <script src="planetdoctor.js"></script>
+        <script src="all_patients.js"></script>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="data_style.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    </head>
+    <body>
+<h1>Patients<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
+     <h2>Patient Registration form</h2>  
+     <div ng-app="PDApp" ng-controller="patientController"></div>
+    <form>  
+     <fieldset>  
+              <legend>Personal information</legend>  
+              <label>Enter Patient ID</label><br>  
+              <input type="text" name="name"><br>  
+              <label>Enter Patient First Name</label><br>  
+              <input type="text" name="name"><br>  
+              <label>Enter Patient Last Name</label><br>  
+              <input type="text" name="name"><br>  
+              <label>Enter Patient DOB</label><br>  
+              <input type="calendar" name="date"><br>  
+         <br><label>Enter Patient gender</label><br>  
+         <input type="radio" id="gender" name="gender" value="male"/>Male  <br>  
+         <input type="radio" id="gender" name="gender" value="female"/>Female <br/>    
+         <input type="radio" id="gender" name="gender" value="Other"/>Other <br/>   
+          <br>Enter Current Symptoms:<br>  
+         <textarea></textarea><br>  
+         <a/<input type="submit" value="Register" href="all_patients.html" class="btn btn-primary" style="width:140px", style='position:absolute; right: 200px;'>Register</a>
+     </fieldset>  
+  </form>  
+ </body>  
+</html>  
