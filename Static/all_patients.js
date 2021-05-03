@@ -13,15 +13,16 @@ PDApp.controller("patientController", function($scope, $http) {
   });
   
     // This code will send a delete message to the server
-    $scope.deletePatient = function(Patient_ID) {
+    //$scope.deletePatient = function(Patient_ID) {
     // This code will send delete message to /patients/Patient_ID endpoint
-        $http.delete("/patient/" + Patient_ID).then(function(response) {
+        //$http.delete("/patient/" + Patient_ID).then(function(response) {
       // This code will refresh the list of patients after request is completed
-            $http.get("/patients").then(function(response) {
-                $scope.patients = response.data;
-                });
-            });
-        };
+            //$http.get("/patients").then(function(response) {
+                //$scope.patients = response.data;
+                //});
+            //});
+        //};
+        
     //Inserting a new patients medical records to the table
         // This code will send a put notification to the server
         $scope.createPatient = function() {

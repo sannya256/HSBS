@@ -206,24 +206,7 @@ exports.addDiagnostic = function(diagnostic, callback) {
 exports.getPatients = function(callback) {
     // Creating SQL statements for Patients and connecting keys
     var sql =`
-        SELECT 
-            Patients.Patient_ID, 
-            Patients.P_First_Name, 
-            Patients.P_Last_Name, 
-            Patients.DOB,
-            Patients.Gender,
-            Patients.Symptoms,
-            Diagnostics.Diagnosis
-        FROM
-            Patients,
-            Diagnostics
-        WHERE
-            Patients.Patient_ID = Diagnostics.Patient_ID
-            AND
-            Patients.P_First_Name = Diagnostics.P_First_Name
-            AND
-            Patients.P_Last_Name = Diagnostics.P_Last_Name
-        `;
+        SELECT * FROM Patients`;
     
     // This code will execute query and return data from Patients class
     db.all(sql, function(err, rows) {
@@ -235,10 +218,8 @@ exports.getPatients = function(callback) {
         var patients= [];
         // This code will loop through rows creating Patient objects
         for (var row of rows) {
-            // This code will create diagnostic object
-            var diag = new planetdoctor.Diagnostics(row.diagnostic, row.diagnostic, row.diagnostic, row.Diagnosis);
             // This code will create patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
             // This code will add patients to array
             patients.push(pat);
         }
@@ -300,15 +281,15 @@ exports.createPatient = function(patient, callback) {
 
 //Adding  a deletePatient function
 // This code will delete a patient from the database
-exports.deletePatient = function(Patient_ID, callback) {
+//exports.deletePatient = function(Patient_ID, callback) {
     // Create SQL delete statement
-    var sql = `DELETE FROM Patients WHERE Patient_ID='${Patient_ID}'`;
+    //var sql = `DELETE FROM Patients WHERE Patient_ID='${Patient_ID}'`;
     // This code will execute the SQL delete statement
-    db.exec(sql, function(err) {
+    //db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed
-        callback();
-        });
-    };
+        //callback();
+        //});
+    //};
 
 //Patient data broadcasting ends here
 
