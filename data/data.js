@@ -42,7 +42,7 @@ exports.getPrescriptions = function(callback) {
 };
 
 // Export getSinglePrescription function
-exports.getSinglePrescription = function(Meds, callback) {
+exports.getPrescription = function(Meds, callback) {
     // Create SQL statement for prescriptions 
     var sql = `
         SELECT * FROM Prescriptions
@@ -53,14 +53,14 @@ exports.getSinglePrescription = function(Meds, callback) {
             return console.error(err.message);
         }
         // Create a singleprescription object
-        var singleprescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
+        var prescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
         // Return singleprescription 
-        callback(singleprescription);
+        callback(prescription);
     });
 };
 
-exports.addSinglePrescription = function (singleprescription,callback) {
-    var sql = `INSERT INTO Prescriptions VALUES ('${singleprescription.Drug_name}', '${singleprescription.Stock}','${singleprescription.Drug_ID}', '${singleprescription.Patient_ID}')`; 
+exports.addPrescription = function (prescription,callback) {
+    var sql = `INSERT INTO Prescriptions VALUES ('${prescription.Drug_name}', '${prescription.Stock}','${prescription.Drug_ID}', '${prescription.Patient_ID}')`; 
     // This code will execute SQL insert statement above
     db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed
