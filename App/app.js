@@ -30,29 +30,36 @@ app.get("/patients", function(req, res) {
 
 // Add /patients post endpoint
 app.post("/patients", function(req, res) {
-  // Call createPatient on data
-  data.createPatient(req.body, function() {
+// Call createPatient on data
+  data.addPatient(req.body, function() {
     res.send("OK");
   });
 });
 
 // This code will add a single /patient endpoint
-app.get("/patient/:pat", function(req, res) {
+app.get("/patient/:code", function(req, res) {
   // This code will return a single patient from the patients table 
-  data.getPatient(req.params.pat, function(pat) {
-      res.json(pat);
+  data.getPatient(req.params.code, function(patient) {
+      res.json(patient);
   });
+});
+
+// This code will update a single /patient endpoint
+app.put("/patient/:code", function(req, res) {
+data.updatePatient(req.body, function() {
+  res.send("OK");
+});
 });
 
 //Asking the data layer to remove a patient
 // Add a /patient delete endpoint
-app.delete("/patient/:Patient_ID", function(req, res) {
+//app.delete("/patient/:Patient_ID", function(req, res) {
   // This will call deletePatient on the data
-  data.deletePatient(req.params.Patient_ID, function() {
+  //data.deletePatient(req.params.Patient_ID, function() {
     // After successful deletion there will be an OK response to the browser
-    res.send("OK");
-  });
-});
+    //res.send("OK");
+  //});
+//});
 
 // Patient endpoints stop here
 
@@ -147,6 +154,12 @@ app.get("/SinglePrescription/:code", function(req, res) {
   // This code will call prescriptions on data
   data.getSinglePrescription(req.params.code, function(singleprescription) {
       res.json(singleprescription);
+  });
+}); 
+app.post("/prescriptions", function(req,res){
+  //call addsingleprescription on data 
+  data.addSinglePrescription(req.body, function(){
+    res.send("OK");
   });
 });
 

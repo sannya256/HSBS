@@ -12,7 +12,7 @@
     <body>
 <h1>Patients<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
         <h1>Patient Medical Records</h1>
-            <a href="index.html" class="btn btn-primary" style="width:140px", style='position:absolute; right: 200px;'> Homepage</a>    
+            <a href="Menu.html" class="btn btn-primary" style="width:140px", style='position:absolute; right: 200px;'> Homepage</a>    
         <div ng-app="PDApp" ng-controller="patientController">
 
             <table class=customTable>
@@ -24,7 +24,6 @@
                     <th>DOB</th>
                     <th>Gender</th>
                     <th>Symptoms</th>
-                    <th>Diagnosis</th>
                 </tr>
             </thead>
                 <tr ng-repeat = "patient in patients">
@@ -34,10 +33,8 @@
                     <td>{{ patient.DOB }}</td>
                     <td>{{ patient.Gender}}</td>
                     <td>{{ patient.Symptoms}}</td>
-                    <td>{{ patient.Diagnostics.Diagnosis}}</td>
                     <td><input type="button" ng-click="selectPatient(Patient_ID)" value="Select"></td>
                     <td><input type="button" ng-click="updatePatient()" value="Edit"></td>
-                    <td><input type="button" ng-click="deletePatient(patients.Patient_ID)" value="Delete"></td>
                 <tr>
                     <td><input type="text" ng-model="new_patient.Patient_ID"></td>
                     <td><input type="text" ng-model="new_patient.P_First_Name"></td>
@@ -45,12 +42,8 @@
                     <td><input type="text" ng-model="new_patient.DOB"></td>
                     <td><input type="text" ng-model="new_patient.Gender"></td>
                     <td><input type="text" ng-model="new_patient.Symptoms"></td>
-                    <td><input type="text" ng-model="new_patient.Diagnotiscs.Diagnosis"></td>
-                    <td><input type="button" ng-click="createPatient()" value="Create"></td>
+                    <td><input type="button" ng-click="createPatient()" value="Add"></td>
                 </tr>
-            </table>
-         <div Patient_ID = "selected">
-          <h2><a href="patient_profile.html" class="btn btn-primary" style="width:140px", style='position:absolute; right: 200px;'><Select></Select></a>{{ selectedPatient.Patient_ID }} {{ selectedPatient.P_First_Name }} {{ selectedPatients.P_Last_Name }} {{ selectedPatient.DOB }} {{ selectedPatient.Gender }} {{ selectedPatient.Symptoms }}</h2>
             </table>
         </div>
     </body>
