@@ -42,7 +42,7 @@ exports.getPrescriptions = function(callback) {
 };
 
 // Export getSinglePrescription function
-exports.getSinglePrescription = function(Meds, callback) {
+exports.getPrescription = function(Meds, callback) {
     // Create SQL statement for prescriptions 
     var sql = `
         SELECT * FROM Prescriptions
@@ -53,14 +53,14 @@ exports.getSinglePrescription = function(Meds, callback) {
             return console.error(err.message);
         }
         // Create a singleprescription object
-        var singleprescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
+        var prescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
         // Return singleprescription 
-        callback(singleprescription);
+        callback(prescription);
     });
 };
 
-exports.addSinglePrescription = function (singleprescription,callback) {
-    var sql = `INSERT INTO Prescriptions VALUES ('${singleprescription.Drug_name}', '${singleprescription.Stock}','${singleprescription.Drug_ID}', '${singleprescription.Patient_ID}')`; 
+exports.addPrescription = function (prescription,callback) {
+    var sql = `INSERT INTO Prescriptions VALUES ('${prescription.Drug_name}', '${prescription.Stock}','${prescription.Drug_ID}', '${prescription.Patient_ID}')`; 
     // This code will execute SQL insert statement above
     db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed
@@ -149,7 +149,7 @@ exports.addDoctor = function(doctor, callback) {
 // This code will allow to export getDiagnostics function
 exports.getDiagnostics = function(callback) {
     // This code will create SQL statement
-    var sql = `SELECT * FROM Diagnostics` 
+    var sql = `SELECT * FROM diagnostics` 
 
  // This code will allow to execute queries and return data from Diagnostics class 
 db.all(sql, function(err, rows) {
@@ -191,9 +191,9 @@ exports.getDiagnostic = function(code, callback) {
 };
 
 // Delete Diagnostic from the database
-exports.deleteDiagnostic = function(Patient_ID, callback) {
+exports.deleteDiagnostic = function(Drug_ID, callback) {
 // Create SQL delete query
-    var sql = `DELETE FROM Diagnostics WHERE Patient_ID='${Patient_ID}'`;
+    var sql = `DELETE FROM diagnostics WHERE Patient_ID='${Drug_ID}'`;
     // Execute SQL delete query 
     db.exec(sql, function(err) {
         callback();
@@ -201,7 +201,7 @@ exports.deleteDiagnostic = function(Patient_ID, callback) {
 };
 
 exports.addDiagnostic = function(diagnostic, callback) {
-    var sql = `INSERT INTO Diagnostics VALUES ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}')`;
+    var sql = `INSERT INTO diagnostics VALUES ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}')`;
     db.exec(sql, function(err) {
         callback();
     });

@@ -113,8 +113,8 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
   // This code will add /diagnostics endpoint to the front end
   app.get("/diagnostics", function(req, res) {
     // This code will return the endpoint to the frontend
-    data.getDiagnostics(function(diagnosting) {
-    res.json(diagnosting);
+    data.getDiagnostics(function(diagnostics) {
+    res.json(diagnostics);
   });
 });
 
@@ -127,14 +127,14 @@ app.get("/diagnostic/:code", function(req, res) {
 });
 
 // This code will add /diagnostic delete endpoint
-app.delete("/diagnostic/:Patient_ID", function(req, res) {
-  data.deleteDiagnostic(req.params.Patient_ID, function() {
+app.delete("/diagnostic/:Drug_ID", function(req, res) {
+  data.deleteDiagnostic(req.params.Drug_ID, function() {
     res.send("OK");
   });
 });
 
-app.post("/diagnostics", function(req, res) {
-  data.addDiagnostic(req.body,function() {
+app.post("/diagnostics", function(req, res){
+  data.addDiagnostic(req.body,function(){
     res.send("OK");
   });
 });
@@ -150,15 +150,15 @@ app.get("/prescriptions", function(req, res) {
 });
 
 // Add /Prescription endpoint
-app.get("/SinglePrescription/:code", function(req, res) {
+app.get("/Prescription/:code", function(req, res) {
   // This code will call prescriptions on data
-  data.getSinglePrescription(req.params.code, function(singleprescription) {
-      res.json(singleprescription);
+  data.getPrescription(req.params.code, function(prescription) {
+      res.json(prescription);
   });
 }); 
 app.post("/prescriptions", function(req,res){
   //call addsingleprescription on data 
-  data.addSinglePrescription(req.body, function(){
+  data.addPrescription(req.body, function(){
     res.send("OK");
   });
 });

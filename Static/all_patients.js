@@ -23,7 +23,6 @@ PDApp.controller("patientController", function($scope, $http) {
             //});
         //};
 
-    //$scope.new_patient = new Module("", "");
     //$scope.new_patient = new Module("","","","","","");
         
     //Inserting a new patients medical records to the table
