@@ -150,15 +150,15 @@ app.get("/prescriptions", function(req, res) {
 });
 
 // Add /Prescription endpoint
-app.get("/SinglePrescription/:code", function(req, res) {
+app.get("/Prescription/:code", function(req, res) {
   // This code will call prescriptions on data
-  data.getSinglePrescription(req.params.code, function(singleprescription) {
-      res.json(singleprescription);
+  data.getPrescription(req.params.code, function(prescription) {
+      res.json(prescription);
   });
 }); 
 app.post("/prescriptions", function(req,res){
   //call addsingleprescription on data 
-  data.addSinglePrescription(req.body, function(){
+  data.addPrescription(req.body, function(){
     res.send("OK");
   });
 });
