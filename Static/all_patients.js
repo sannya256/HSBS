@@ -23,11 +23,7 @@ PDApp.controller("patientController", function($scope, $http) {
             //});
         //};
 
-<<<<<<< HEAD
-    //$scope.new_patient = new Module("", "");
-=======
     //$scope.new_patient = new Module("","","","","","");
->>>>>>> 1d972331a2f49dc963087405b2e85f6649bdb263
         
     //Inserting a new patients medical records to the table
         // This code will send a put notification to the server

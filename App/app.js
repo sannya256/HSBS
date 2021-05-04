@@ -113,8 +113,8 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
   // This code will add /diagnostics endpoint to the front end
   app.get("/diagnostics", function(req, res) {
     // This code will return the endpoint to the frontend
-    data.getDiagnostics(function(diagnosting) {
-    res.json(diagnosting);
+    data.getDiagnostics(function(diagnostics) {
+    res.json(diagnostics);
   });
 });
 
