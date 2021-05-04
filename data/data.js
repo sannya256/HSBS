@@ -214,16 +214,20 @@ exports.addDiagnostic = function(diagnostic, callback) {
 // This code will Export getPatients function
 exports.getPatients = function(callback) {
     // Creating SQL statements for Patients and connecting keys
+<<<<<<< HEAD
     var sql =`
         SELECT * FROM Patients`;
+=======
+    var sql =`SELECT * FROM Patients`;
+>>>>>>> 1d972331a2f49dc963087405b2e85f6649bdb263
     
     // This code will execute query and return data from Patients class
     db.all(sql, function(err, rows) {
         // Check if there is an error
-        if (err) {
-            return console.error(err.message);
-        }
-        // This code will create an array of Patients
+    if (err) {
+        return console.error(err.message);
+    }
+    // This code will create an array of Patients
         var patients= [];
         // This code will loop through rows creating Patient objects
         for (var row of rows) {
@@ -237,11 +241,16 @@ exports.getPatients = function(callback) {
     });
 };
 
+<<<<<<< HEAD
 // This code will export getPatient function
 exports.getPatient = function(code, callback) {
+=======
+//This code will export getPatient function
+/*exports.getPatient = function(Patient_ID, callback) {
+>>>>>>> 1d972331a2f49dc963087405b2e85f6649bdb263
     // This code will create SQL statement
-    //Get the patient and their prescriptions
     var sql =`
+<<<<<<< HEAD
             SELECT * FROM Patients
             WHERE Patient_ID = '${code}'`;
     //This code will execute query and only one row
@@ -256,6 +265,76 @@ exports.getPatient = function(code, callback) {
        callback(patient);
     });
 };
+=======
+            SELECT 
+                Patients.Patient_ID, 
+                Patients.P_First_Name, 
+                Patients.P_Last_Name, 
+                Patients.DOB,
+                Patients.Gender,
+                Patients.Symptoms,
+                Diagnostics.Diagnosis,
+                Diagnostics.Drug_name
+
+            FROM
+                Patients, Diagnostics
+
+            WHERE
+                Patients.Patient_ID = '2553811640'
+                AND
+                Patients.Patient_ID= Diagnostics.Patient_ID
+    `;
+    //This code will execute query and only one row
+    /*db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        //This code will create diagnostic object
+        //var diag = new planetdoctor.Diagnostics(row.Diagnosis, row.Drug_name);
+         
+        //This code will create a patient object
+        var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
+        
+        //now get the diagnostics for patient
+        var sql =`
+                SELECT 
+                    Patients.Patient_ID, 
+                    Diagnostics.Diagnosis,
+                    Diagnostics.Drug_name
+
+                FROM
+                    Patients,Diagnostics
+
+                WHERE
+                    Patients.Patient_ID = '2553811640'
+                    AND
+                    Patients.Patient_ID= Diagnostics.Patient_ID
+                `;*/
+
+        // Execute query. Multiple rows returned.
+        /*db.all(sql, function(err, rows) {
+            if (err) {
+                return console.error(err.message);
+            }
+          // Loop through each row and create a module object and attach a grade
+            for (var row of rows) {
+              // Create module object
+              var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
+              // Create a module combined with grade
+                var diag = {diag:row.diag}
+              // Add module and grade to student
+                pat.push(diag);
+            }
+          // Return student
+            callback(pat);
+        });
+    });
+}; */
+
+
+      
+
+>>>>>>> 1d972331a2f49dc963087405b2e85f6649bdb263
 
 // Add a patient to the database
 exports.addPatient = function(patient, callback) {
@@ -265,8 +344,13 @@ exports.addPatient = function(patient, callback) {
     db.exec(sql, function(err) {
       // Once completed, execute callback function
         callback();
+<<<<<<< HEAD
         });
     };
+=======
+    });
+};
+>>>>>>> 1d972331a2f49dc963087405b2e85f6649bdb263
 
 //Adding  a deletePatient function
 // This code will delete a patient from the database
