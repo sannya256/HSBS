@@ -5,12 +5,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
     <script src="planetdoctor.js"></script>         <!--was student.js-->
     <script src="all_volunteers.js"></script>       <!--was all_programmes.js-->
+    <link rel="stylesheet" href="data_style.css">
   </head>
   <body>
     <h1>Volunteers<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
    
     <div ng-app="mainApp" ng-controller="volunteerController">     <!--was programmeController-->
-      <table border=1>
+      <table class="customTable">
         <tr>
           <th>Code</th>
           <th>Name</th>
