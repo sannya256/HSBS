@@ -24,7 +24,7 @@ app.use(express.static("Static")); // s=S
 app.get("/patients", function(req, res) {
   // This code will return all patients from the patients table 
   data.getPatients(function(patients) {
-    res.json(patients);
+      res.json(patients);
   });
 });
 
