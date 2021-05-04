@@ -42,11 +42,11 @@ exports.getPrescriptions = function(callback) {
 };
 
 // Export getSinglePrescription function
-exports.getSinglePrescription = function(code, callback) {
+exports.getSinglePrescription = function(Meds, callback) {
     // Create SQL statement for prescriptions 
     var sql = `
         SELECT * FROM Prescriptions
-        WHERE Drug_ID = '${code}'`;
+        WHERE Drug_ID = '${Meds}'`;
     // Execute query, this will return only one row of data
     db.get(sql, function(err, row) {
         if (err) {
@@ -58,6 +58,15 @@ exports.getSinglePrescription = function(code, callback) {
         callback(singleprescription);
     });
 };
+
+exports.addSinglePrescription = function (singleprescription,callback) {
+    var sql = `INSERT INTO Prescriptions VALUES ('${singleprescription.Drug_name}', '${singleprescription.Stock}','${singleprescription.Drug_ID}', '${singleprescription.Patient_ID}')`; 
+    // This code will execute SQL insert statement above
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+        callback();
+        });
+    }; 
 
 //Code here will expose doctor data information
 

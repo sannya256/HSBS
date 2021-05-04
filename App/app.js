@@ -155,6 +155,12 @@ app.get("/SinglePrescription/:code", function(req, res) {
   data.getSinglePrescription(req.params.code, function(singleprescription) {
       res.json(singleprescription);
   });
+}); 
+app.post("/prescriptions", function(req,res){
+  //call addsingleprescription on data 
+  data.addSinglePrescription(req.body, function(){
+    res.send("OK");
+  });
 });
 
 
