@@ -60,7 +60,7 @@ exports.getSinglePrescription = function(Meds, callback) {
 };
 
 exports.addSinglePrescription = function (singleprescription,callback) {
-    var sql = 'INSERT INTO Prescriptions VALUES ('${singleprescription.Drug_name}', '${singleprescription.Stock}','${singleprescription.Drug_ID}', '${singleprescription.Patient_ID}')'; 
+    var sql = `INSERT INTO Prescriptions VALUES ('${singleprescription.Drug_name}', '${singleprescription.Stock}','${singleprescription.Drug_ID}', '${singleprescription.Patient_ID}')`; 
     // This code will execute SQL insert statement above
     db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed
