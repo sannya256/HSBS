@@ -10,7 +10,7 @@ PDApp.controller("patientController", function($scope, $http) {
     $http.get('/patients').then(function(response) {
         $scope.patients = response.data;
     });
-});
+
 
     // This code will send a delete message to the server
     //$scope.deletePatient = function(Patient_ID) {
@@ -23,11 +23,8 @@ PDApp.controller("patientController", function($scope, $http) {
             //});
         //};
 
-<<<<<<< HEAD
     //$scope.new_patient = new Module("", "");
-=======
     //$scope.new_patient = new Module("","","","","","");
->>>>>>> 1d972331a2f49dc963087405b2e85f6649bdb263
         
     //Inserting a new patients medical records to the table
         // This code will send a put notification to the server
@@ -35,7 +32,7 @@ PDApp.controller("patientController", function($scope, $http) {
         // This code will send post a message the to /patients endpoint
         $http.post("/patients", $scope.new_patient).then(function(response) {
         // This will reset new_patient to empty to accept new entry 
-        $scope.new_patient = new Patient("","","","","","");
+        $scope.new_patient = new Patients("","","","","","");
         // This code will refresh the list after successfull addition
         $http.get("/patients").then(function(response) {
             $scope.patients = response.data;
@@ -51,4 +48,5 @@ PDApp.controller("patientController", function($scope, $http) {
             //show the 'selected element'
         document.getElementByPatient_ID("selected").style.display="block";
         });
-    }
+    };
+});
