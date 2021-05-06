@@ -47,5 +47,19 @@
                 </tr>
             </table>
         </div>
+
+        <div ng-app="PDApp" ng-controller="patientController">
+            <table class=customTable>
+                <thead>
+                <tr>
+                    <th>Diagnosis</th>
+                    <th>Drug_name</th>
+                </tr>
+            </thead>
+                <tr ng-repeat = "diagnostic in diagnostics">
+                    <td>{{ diagnostics.Diagnosis }}</td>
+                    <td>{{ diagnostics.Drug_name }}</td>
+                <tr>
+        </div>
     </body>
 </html>
