@@ -23,6 +23,17 @@ PDApp.controller("patientController", function($scope, $http) {
             });
         };
 
+    //Sends a delete message to the server
+    $scope.deletePatient = function(code) {
+            //sends a delete message to /module/code
+    $http.delete('/patient/' + code).then(function(response) {
+                //when request completes, refresh list of modules
+        $http.get('/patients').then(function(response) {
+            $scope.patients = response.data;
+            });
+        });
+    };
+
     //$scope.new_patient = new Module("","","","","","");
         
     //Inserting a new patients medical records to the table
