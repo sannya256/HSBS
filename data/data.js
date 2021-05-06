@@ -306,8 +306,8 @@ exports.getPatients = function(callback) {
 }; */
 
 
-//Adding  a deleteDoctor function
-// This code will delete a doctor from the database
+//Adding  a deletePatient function
+// This code will delete a patient from the database
 exports.deletePatient = function(Patient_ID, callback) {
     // SQL delete statement
     var sql = `DELETE FROM Patients WHERE Patient_ID='${Patient_ID}'`;
