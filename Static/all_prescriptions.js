@@ -13,9 +13,9 @@ PDApp.controller("prescriptionController", function($scope, $http) {
   });
   
     // This code will send a delete message to the server
-    $scope.deletePrescription = function(Drug_name) {
+    $scope.deletePrescription = function(code) {
     // This code will send delete message to /prescriptions/Drug_name endpoint
-        $http.delete("/prescription/" + Drug_name).then(function(response) {
+        $http.delete("/prescription/" + code).then(function(response) {
       // This code will refresh the list of prescriptions after request is completed
             $http.get("/prescriptions").then(function(response) {
                 $scope.prescriptions = response.data;
@@ -27,7 +27,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
         // This code will send post a message the to prescriptions endpoint
             $http.post("/prescriptions", $scope.new_prescription).then(function(response) {
             // This will reset new_patient to empty to accept new entry 
-                $scope.new_prescription = new new_prescription("", "","","");
+                $scope.new_prescription = new Prescription("", "","","");
             // This code will refresh the list after successfull addition
             $http.get("/prescriptions").then(function(response) {
                 $scope.prescriptions = response.data;
@@ -35,12 +35,12 @@ PDApp.controller("prescriptionController", function($scope, $http) {
         });
     };
 //This code will select a prescription
-    $scope.selectPrescription= function(Drug_name) {
+    $scope.selectPrescription= function(code) {
         //get specific prescription by drug name
-       $http.get("/prescription/" + Drug_name).then(function(response){
+       $http.get("/prescription/" + code).then(function(response){
            $scope.selectprescription= response.data;
             //show the 'selected element'
-           document.getElementByDrug_name("selected").style.display="block";
+           document.getElementBycode("selected").style.display="block";
         });
     }
   

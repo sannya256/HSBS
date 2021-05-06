@@ -22,18 +22,18 @@
         </tr>
     </thead>
         <tr ng-repeat="prescription in prescriptions">
-            <td> {{ prescriptions.Drug_name }}</td>
-            <td> {{ prescriptions.Stock }}</td>
-            <td> {{ prescriptions.Drug_ID }}</td>
-            <td> {{ prescriptions.Patient_ID }}</td> 
-            <td><input type="button" ng-click="selectprescription(Patient_ID)" value="Select"></td>
-                    <td><input type="button" ng-click="updateprescription()" value="Edit"></td>
+            <td> {{ prescription.Drug_name }}</td>
+            <td> {{ prescription.Stock }}</td>
+            <td> {{ prescription.Drug_ID }}</td>
+            <td> {{ prescription.Patient_ID }}</td> 
+            <td><input type="button" ng-click="selectPrescription(prescription.Patient_ID)" value="Select"></td>
+                    <td><input type="button" ng-click="updatePrescription(prescription.Patient_ID)" value="Edit"></td>
                 <tr>
                     <td><input type="text" ng-model="new_prescription.Drug_name"></td>
                     <td><input type="text" ng-model="new_prescription.Stock"></td>
                     <td><input type="text" ng-model="new_prescription.Drug_ID"></td>
                     <td><input type="text" ng-model="new_prescription.Patient_ID"></td>
-                    <td><input type="button" ng-click="createprescription()" value="Create"></td>
+                    <td><input type="button" ng-click="createPrescription()" value="Create"></td>
                 </tr>
               </table>
       <!-- <div Drug_name = "selected">

@@ -150,7 +150,7 @@ app.get("/prescriptions", function(req, res) {
 });
 
 // Add /Prescription endpoint
-app.get("/Prescription/:code", function(req, res) {
+app.get("/prescription/:code", function(req, res) {
   // This code will call prescriptions on data
   data.getPrescription(req.params.code, function(prescription) {
       res.json(prescription);
