@@ -13,15 +13,15 @@ PDApp.controller("patientController", function($scope, $http) {
 
 
     // This code will send a delete message to the server
-    //$scope.deletePatient = function(Patient_ID) {
+    $scope.updatePatient = function(Patient_ID) {
     // This code will send delete message to /patients/Patient_ID endpoint
-        //$http.delete("/patient/" + Patient_ID).then(function(response) {
+        $http.update("/patient/" + Patient_ID).then(function(response) {
       // This code will refresh the list of patients after request is completed
-            //$http.get("/patients").then(function(response) {
-                //$scope.patients = response.data;
-                //});
-            //});
-        //};
+            $http.get("/patients").then(function(response) {
+                $scope.patients = response.data;
+                });
+            });
+        };
 
     //$scope.new_patient = new Module("","","","","","");
         
@@ -31,7 +31,7 @@ PDApp.controller("patientController", function($scope, $http) {
         // This code will send post a message the to /patients endpoint
         $http.post("/patients", $scope.new_patient).then(function(response) {
         // This will reset new_patient to empty to accept new entry 
-        $scope.new_patient = new Patients("","","","","","");
+        $scope.new_patient = new Patients ("","","","","","");
         // This code will refresh the list after successfull addition
         $http.get("/patients").then(function(response) {
             $scope.patients = response.data;

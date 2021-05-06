@@ -322,15 +322,15 @@ exports.addPatient = function(patient, callback) {
 
 //Adding  a deletePatient function
 // This code will delete a patient from the database
-//exports.deletePatient = function(Patient_ID, callback) {
+exports.updatePatient = function(patient, callback) {
     // Create SQL delete statement
-    //var sql = `DELETE FROM Patients WHERE Patient_ID='${Patient_ID}'`;
+    var sql = `UPDATE Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
     // This code will execute the SQL delete statement
-    //db.exec(sql, function(err) {
+    db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed
-        //callback();
-        //});
-    //};
+        callback();
+        });
+    };
 
 //Patient data broadcasting ends here
 

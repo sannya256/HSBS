@@ -46,9 +46,9 @@ app.get("/patient/:code", function(req, res) {
 
 // This code will update a single /patient endpoint
 app.put("/patient/:code", function(req, res) {
-data.updatePatient(req.body, function() {
-  res.send("OK");
-});
+  data.updatePatient(req.body, function() {
+      res.send("OK");
+  });
 });
 
 //Asking the data layer to remove a patient

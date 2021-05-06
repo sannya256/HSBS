@@ -35,7 +35,7 @@ PDApp.controller("diagnosticController", function($scope, $http) {
     //this code will send create request to the server
     $scope.createDiagnostic = function() {
         $http.post("/diagnostics", $scope.new_diagnostic).then(function(response) {
-            $scope.new_diagnostic = new Diagnostic("", "", "", "", "", "", "", "");
+            $scope.new_diagnostic = new Diagnostics("", "", "", "", "", "", "", "");
             $http.get("/diagnostics").then(function(response) { 
                 $scope.diagnostics = response.data;
             });
