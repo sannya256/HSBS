@@ -51,9 +51,9 @@ PDApp.controller("patientController", function($scope, $http) {
     };
 ;
 //This code will select a patient
-    $scope.selectPatient= function(Patient_ID) {
+    $scope.selectPatient= function(code) {
         //get specific patient by ID
-        $http.get("/patient/" + Patient_ID).then(function(response){
+        $http.get("/patient/" + code).then(function(response){
         $scope.selectpatient= response.data;
             //show the 'selected element'
         document.getElementByPatient_ID("selected").style.display="block";
