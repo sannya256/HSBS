@@ -310,6 +310,17 @@ exports.deletePatient = function(Patient_ID, callback) {
         });
     };
 
+    exports.updateDoctorAvailability = function(doctor, callback) {
+        var sql = `UPDATE Doctors 
+        SET Availability="${doctor.Availability}"
+        WHERE Doctor_ID="${doctor.Doctor_ID}"`;
+        // Execute SQL update statement
+        db.exec(sql, function(err) {
+          // Once completed, execute callback function
+        callback();
+        });
+    };
+
 //Patient data broadcasting ends here
 
 //volunteers code starts here 
@@ -366,7 +377,7 @@ exports.addVolunteer = function(volunteer , callback)   {
 };
 
 // This code will delete a volunteer from db
-exports.deleteDoctor = function(ID, callback) {
+/*exports.deleteDoctor = function(ID, callback) {
     // SQL delete statement
     var sql = `DELETE FROM volunteers WHERE ID='${ID}'`;
     // This code will execute the above SQL delete statement
@@ -375,5 +386,5 @@ exports.deleteDoctor = function(ID, callback) {
         callback();
         });
     };
-
+*/
 
