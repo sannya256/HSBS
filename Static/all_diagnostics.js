@@ -1,6 +1,6 @@
 "use strict";
 
-const { Diagnostics } = require("../planetdoctor");
+//const { Diagnostics } = require("../planetdoctor");
 
 //This code will get "PDApp" from the webpage
 var PDApp = angular.module("PDApp", []);
@@ -14,28 +14,28 @@ PDApp.controller("diagnosticController", function($scope, $http) {
         $scope.diagnostics = response.data; //linking the diagnostics json data
     });
     
-    //The following codes will add user interactions
+    /*//The following codes will add user interactions
     //This code will send select request to the server
     $scope.selectDiagnostic = function(Patient_ID) {
         $http.get("/disgnostic/" + Patient_ID).then(function(response) {
             $scope.selectDiagnostic = response.data;
             //document.getElementById("selected").style.display = "block";
         });
-    };
+    };*/
     //This code will send delete request to the server
     $scope.deleteDiagnostic = function(code) {
         //sending a delete request to the server using node
         $http.delete("/diagnostic/" + code).then(function(response) {
             // this code will refresh the diagnostics list
             $http.get("/diagnostics/").then(function(response) {
-                $scope.Diagnostics = response.data;
+                $scope.diagnostics = response.data;
             });
         });
     }; 
     //this code will send create request to the server
-    $scope.createDiagnostic = function(diagnostic) {
+    $scope.createDiagnostic = function() {
         $http.post("/diagnostics", $scope.new_diagnostic).then(function(response) {
-            $scope.new_diagnostic = new Diagnostic("", "", "", "", "", "", "", "");
+            $scope.new_diagnostic = new Diagnostics("", "", "", "", "", "", "", "");
             $http.get("/diagnostics").then(function(response) { 
                 $scope.diagnostics = response.data;
             });

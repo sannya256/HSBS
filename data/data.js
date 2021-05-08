@@ -19,7 +19,7 @@ var db = new sqlite3.Database("data/PlanetDoctor.db", function(err) {
 // This will Export getPrescriptions function
 exports.getPrescriptions = function(callback) {
     // Creating SQL statement for Prescriptions and connecting foreign keys
-    var sql = `SELECT * FROM Prescriptions `;
+    var sql = `SELECT * FROM prescriptions `;
 
     // This will execute the query and return all prescriptions
     db.all(sql, function(err, rows) {
@@ -42,7 +42,7 @@ exports.getPrescriptions = function(callback) {
 };
 
 // Export getSinglePrescription function
-exports.getSinglePrescription = function(code, callback) {
+exports.getPrescription = function(Meds, callback) {
     // Create SQL statement for prescriptions 
     var sql = `
         SELECT * FROM Prescriptions
@@ -53,11 +53,20 @@ exports.getSinglePrescription = function(code, callback) {
             return console.error(err.message);
         }
         // Create a singleprescription object
-        var singleprescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
+        var prescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
         // Return singleprescription 
-        callback(singleprescription);
+        callback(prescription);
     });
 };
+
+exports.addPrescription = function (prescription,callback) {
+    var sql = `INSERT INTO Prescriptions VALUES ('${prescription.Drug_name}', '${prescription.Stock}','${prescription.Drug_ID}', '${prescription.Patient_ID}')`; 
+    // This code will execute SQL insert statement above
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+        callback();
+        });
+    }; 
 
 //Code here will expose doctor data information
 
@@ -140,7 +149,7 @@ exports.addDoctor = function(doctor, callback) {
 // This code will allow to export getDiagnostics function
 exports.getDiagnostics = function(callback) {
     // This code will create SQL statement
-    var sql = `SELECT * FROM Diagnostics` 
+    var sql = `SELECT * FROM diagnostics` 
 
  // This code will allow to execute queries and return data from Diagnostics class 
 db.all(sql, function(err, rows) {
@@ -182,9 +191,9 @@ exports.getDiagnostic = function(code, callback) {
 };
 
 // Delete Diagnostic from the database
-exports.deleteDiagnostic = function(Patient_ID, callback) {
+exports.deleteDiagnostic = function(Drug_ID, callback) {
 // Create SQL delete query
-    var sql = `DELETE FROM Diagnostics WHERE Patient_ID='${Patient_ID}'`;
+    var sql = `DELETE FROM diagnostics WHERE Patient_ID='${Drug_ID}'`;
     // Execute SQL delete query 
     db.exec(sql, function(err) {
         callback();
@@ -192,7 +201,7 @@ exports.deleteDiagnostic = function(Patient_ID, callback) {
 };
 
 exports.addDiagnostic = function(diagnostic, callback) {
-    var sql = `INSERT INTO Diagnostics VALUES ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}')`;
+    var sql = `INSERT INTO diagnostics VALUES ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}')`;
     db.exec(sql, function(err) {
         callback();
     });
@@ -205,40 +214,20 @@ exports.addDiagnostic = function(diagnostic, callback) {
 // This code will Export getPatients function
 exports.getPatients = function(callback) {
     // Creating SQL statements for Patients and connecting keys
-    var sql =`
-        SELECT 
-            Patients.Patient_ID, 
-            Patients.P_First_Name, 
-            Patients.P_Last_Name, 
-            Patients.DOB,
-            Patients.Gender,
-            Patients.Symptoms,
-            Diagnostics.Diagnosis
-        FROM
-            Patients,
-            Diagnostics
-        WHERE
-            Patients.Patient_ID = Diagnostics.Patient_ID
-            AND
-            Patients.P_First_Name = Diagnostics.P_First_Name
-            AND
-            Patients.P_Last_Name = Diagnostics.P_Last_Name
-        `;
+    var sql =`SELECT * FROM Patients`;
     
     // This code will execute query and return data from Patients class
     db.all(sql, function(err, rows) {
         // Check if there is an error
-        if (err) {
-            return console.error(err.message);
-        }
-        // This code will create an array of Patients
+    if (err) {
+        return console.error(err.message);
+    }
+    // This code will create an array of Patients
         var patients= [];
         // This code will loop through rows creating Patient objects
         for (var row of rows) {
-            // This code will create diagnostic object
-            var diag = new planetdoctor.Diagnostics(row.diagnostic, row.diagnostic, row.diagnostic, row.Diagnosis);
             // This code will create patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, diag);
+            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
             // This code will add patients to array
             patients.push(pat);
         }
@@ -247,62 +236,84 @@ exports.getPatients = function(callback) {
     });
 };
 
-// This code will export getPatient function
-exports.getPatient = function(pat, callback) {
+//This code will export getPatient function
+exports.getPatient = function(code, callback) {
     // This code will create SQL statement
-    //Get the patient and their prescriptions
     var sql =`
-            SELECT 
-                Patients.Patient_ID, 
-                Patients.P_First_Name, 
-                Patients.P_Last_Name, 
-                Patients.DOB,
-                Patients.Gender,
-                Patients.Symptoms,
-                Prescriptions.Drug_name,
-                Prescriptions.Stock,
-                Prescriptions.Drug_ID
-            FROM
-                Patients,
-                Prescriptions
-            WHERE
-                Patients.Patient_ID = '${pat}'
-                AND
-                Patients.Patient_ID = Prescriptions.Patient_ID
-            `;
+            SELECT * FROM Patients
+            WHERE Patient_ID ='${code}'
+    `;
     //This code will execute query and only one row
-   db.get(sql, function(err, row) {
-        // To check for errors, this code will be excuted and if any the error msg will be displayed
-       if (err) {
-           return console.error(err.message);
-      }
-        //This code will create prescription object
-            var pres = new planetdoctor.Prescriptions(row.Drug_name, row.prescription, row.prescription);
-         //This code will create a patient object
-            var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
-        // This code will add patient to array
-            patient.push(pat);
+    db.get(sql, function(err, row) {
+        if (err) {
+            return console.error(err.message);
+        }
+        //This code will create diagnostic object
+        //var diag = new planetdoctor.Diagnostics(row.Diagnosis, row.Drug_name);
+         
+        //This code will create a patient object
+        var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name);
+        
+        //now get the diagnostics for patient
+        var sql =`
+                SELECT Diagnostics.Diagnosis, Diagnotics.Drug_name
+                FROM Diagnostics, Patients
+                WHERE
+                    Diagnotics.Patient_ID ='${code}'
+                    AND
+                    Patient.Patient_ID=Diagnotics.Patient_ID
+                `;
+
+        // Execute query. Multiple rows returned.
+        db.all(sql, function(err, rows) {
+            if (err) {
+                return console.error(err.message);
+            }
+          // Loop through each row and create a module object and attach a grade
+            for (var row of rows) {
+              // Create module object
+              //var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
+              // Create a module combined with grade
+              var diag = new planetdoctor.Diagnostic(row.Diagnosis, row.Drug_name);
+              // Add module and grade to student
+                pat.diagnostics.push(diag);
+            }
+          // Return student
+            callback(pat);
         });
-    //This code will execute callback function
-       callback(patient);
-    }
+    });
+}; 
+
+
+//Adding  a deletePatient function
+// This code will delete a patient from the database
+exports.deletePatient = function(Patient_ID, callback) {
+    // SQL delete statement
+    var sql = `DELETE FROM Patients WHERE Patient_ID='${Patient_ID}'`;
+    // This code will execute the above SQL delete statement
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+        callback();
+        });
+    };
+
 
 // Add a patient to the database
-exports.createPatient = function(patient, callback) {
+exports.addPatient = function(patient, callback) {
     // Create SQL insert statement
     var sql = `INSERT INTO Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
     // Execute SQL insert statement
     db.exec(sql, function(err) {
       // Once completed, execute callback function
-    callback();
+        callback();
     });
 };
 
 //Adding  a deletePatient function
 // This code will delete a patient from the database
-exports.deletePatient = function(Patient_ID, callback) {
+exports.updatePatient = function(patient, callback) {
     // Create SQL delete statement
-    var sql = `DELETE FROM Patients WHERE Patient_ID='${Patient_ID}'`;
+    var sql = `UPDATE Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
     // This code will execute the SQL delete statement
     db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed
@@ -377,7 +388,7 @@ exports.addVolunteer = function(volunteer , callback)   {
 };
 
 // This code will delete a volunteer from db
-/*exports.deleteDoctor = function(ID, callback) {
+exports.deleteVolunteer = function(ID, callback) {
     // SQL delete statement
     var sql = `DELETE FROM volunteers WHERE ID='${ID}'`;
     // This code will execute the above SQL delete statement
@@ -386,5 +397,5 @@ exports.addVolunteer = function(volunteer , callback)   {
         callback();
         });
     };
-*/
+
 
