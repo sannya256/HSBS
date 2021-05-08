@@ -24,7 +24,7 @@ PDapp.controller("doctorController", function($scope, $http) {
             });
         };
     //Inserting a new doctors availalbility to the table
-    //
+
     //$scope.new_doctor = new Doctor("", "","","");
         // This code will send a put notification to the server
     $scope.createDoctor = function() {
