@@ -92,12 +92,15 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
   });
 });
 
+app.put("/doctors", function(req, res) {
+  // Call function on data
+  data.updateDoctorAvailability(req.body, function() {
+    res.send("OK");
+  });
+});
 
-//app.put("/doctor/:Doctor_ID", function(req, res) {
- // data.updateDoctor(req.body, function() {
-  //res.send("OK");
- // });
-//});
+
+
 
 // Doctor endpoints stop here
 
