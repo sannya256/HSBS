@@ -58,7 +58,7 @@ ul li a {
 ul li a:hover {
     background-color: rgb(39, 122, 247);
     color: rgb(238, 238, 245);
-    text-align: left;
+    text-align: left; 
 
 }
 
