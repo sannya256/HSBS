@@ -35,6 +35,7 @@
                     <td>{{ patient.Symptoms}}</td>
                     <td><input type="button" ng-click="selectPatient(Patient_ID)" value="Select"></td>
                     <td><input type="button" ng-click="updatePatient()" value="Edit"></td>
+                    <td><input type="button" ng-click="deletePatient(patient.Patient_ID)" value="Delete"></td>
                 <tr>
                     <td><input type="text" ng-model="new_patient.Patient_ID"></td>
                     <td><input type="text" ng-model="new_patient.P_First_Name"></td>
@@ -45,6 +46,23 @@
                     <td><input type="button" ng-click="createPatient()" value="Create"></td>
                 </tr>
             </table>
+        </div>
+
+        <div Patient_ID="selected">
+            <h2>{{ selectedDiagnostic.Diagnosis }} {{ selectedDiagnostic.Drug_name }}</h2>
+            <h3>Diagnostic Information</h3>
+            <table class=customTable></table>
+            <table border=1>
+              <tr>
+                <th>Diagnosis</th>
+                <th>Drug_name</th>
+              </tr>
+              <tr ng-repeat="diagnostic in selectedPatient.diagnostics">
+                <td>{{ Diagnostic.Diagnosis }}</td>
+                <td>{{ Diagnostic.Drug_name }}</td>
+              </tr>
+            </table>
+          </div>
         </div>
     </body>
 </html>

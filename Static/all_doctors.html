@@ -25,15 +25,17 @@
                     <td>{{ doctor.Name }}</td>
                     <td>{{ doctor.Doctor_ID }}</td>
                     <td>{{ doctor.Gender }}</td>
-                    <td>{{ doctor.Availability }}</td>
-                    <td><input type="button" ng-click="deleteDoctor(doctor.Doctor_ID)" value="Delete"></td>                    
+                    <td><input type="text" ng-model="doctor.Availability"></td>
+                
+                    <td><input type="button" ng-click="deleteDoctor(doctor.Doctor_ID)" value="Delete"></td> 
+                    <td><input type="button" ng-click="updateDoctor()" value="Update"></td>                   
                 </tr>
                 <tr>
                     <td><input type="text" ng-model="new_doctor.Name"></td>
                     <td><input type="text" ng-model="new_doctor.Doctor_ID"></td>
                     <td><input type="text" ng-model="new_doctor.Gender"></td>
                     <td><input type="text" ng-model="new_doctor.Availability"></td>
-                    <td><input type="button" ng-click="createDoctor()" value="Add"></td>
+                    <td><input type="button" ng-click="createDoctor()" value="Create"></td>
                 </tr>
             </table>
         </div>
