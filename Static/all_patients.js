@@ -5,6 +5,8 @@ var  PDApp= angular.module("PDApp", []);
 
 // This code will create the patient controller and request for patient data from the backend
 PDApp.controller("patientController", function($scope, $http) {
+    //hides the 'selected' element first of all
+    document.getElementById("selected").style.display="none";
 
 //This code will get patient data from the backend and display to the frontend 
     $http.get('/patients').then(function(response) {
@@ -65,7 +67,7 @@ PDApp.controller("patientController", function($scope, $http) {
         $http.get("/patient/" + code).then(function(response){
         $scope.selectpatient= response.data;
             //show the 'selected element'
-        document.getElementByPatient_ID("selected").style.display="block";
+        document.getElementById("selected").style.display="block";
         });
     };
 });

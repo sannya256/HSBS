@@ -48,21 +48,19 @@
             </table>
         </div>
 
-        <div Patient_ID="selected">
+        <div id="selected">
             <h2>{{ selectedDiagnostic.Diagnosis }} {{ selectedDiagnostic.Drug_name }}</h2>
             <h3>Diagnostic Information</h3>
             <table class=customTable></table>
-            <table border=1>
-              <tr>
+            <tr>
                 <th>Diagnosis</th>
                 <th>Drug_name</th>
-              </tr>
-              <tr ng-repeat="diagnostic in selectedPatient.diagnostics">
+            </tr>
+            <tr ng-repeat="diagnostic in selectedPatient.diagnostics">
                 <td>{{ Diagnostic.Diagnosis }}</td>
                 <td>{{ Diagnostic.Drug_name }}</td>
-              </tr>
+            </tr>
             </table>
-          </div>
         </div>
     </body>
 </html>

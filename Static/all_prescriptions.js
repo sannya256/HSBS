@@ -1,5 +1,6 @@
 "use strict";
 
+
 // This code will get the PDApp
 var  PDApp= angular.module("PDApp", []);
 
@@ -10,12 +11,11 @@ PDApp.controller("prescriptionController", function($scope, $http) {
     $http.get('/prescriptions').then(function(response) {
       $scope.prescriptions = response.data;
     });
-  });
   
-    // This code will send a delete message to the server
-    $scope.deletePrescription = function(code) {
-    // This code will send delete message to /prescriptions/Drug_name endpoint
-        $http.delete("/prescription/" + code).then(function(response) {
+    // This code will send a update message to the server
+    $scope.updatePrescription = function(Drug_name) {
+    // This code will send update message to /prescriptions/Drug_name endpoint
+        $http.update("/prescription/" + Drug_name).then(function(response) {
       // This code will refresh the list of prescriptions after request is completed
             $http.get("/prescriptions").then(function(response) {
                 $scope.prescriptions = response.data;
@@ -42,5 +42,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             //show the 'selected element'
            document.getElementBycode("selected").style.display="block";
         });
-    }
+    }; 
+});
+
   
