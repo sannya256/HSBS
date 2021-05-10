@@ -10,12 +10,11 @@ PDApp.controller("prescriptionController", function($scope, $http) {
     $http.get('/prescriptions').then(function(response) {
       $scope.prescriptions = response.data;
     });
-  });
   
-    // This code will send a delete message to the server
-    $scope.updatePrescription = function(code) {
-    // This code will send delete message to /prescriptions/Drug_name endpoint
-        $http.update("/prescription/" + code).then(function(response) {
+    // This code will send a update message to the server
+    $scope.updatePrescription = function(Drug_name) {
+    // This code will send update message to /prescriptions/Drug_name endpoint
+        $http.update("/prescription/" + Drug_name).then(function(response) {
       // This code will refresh the list of prescriptions after request is completed
             $http.get("/prescriptions").then(function(response) {
                 $scope.prescriptions = response.data;
@@ -34,6 +33,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             });
         });
     };
+;
 //This code will select a prescription
     $scope.selectPrescription= function(code) {
         //get specific prescription by drug name
@@ -42,5 +42,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             //show the 'selected element'
            document.getElementBycode("selected").style.display="block";
         });
-    }
+    }; 
+});
+
   
