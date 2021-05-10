@@ -51,12 +51,20 @@ app.put("/patient/:code", function(req, res) {
   });
 });
 
+
 //Asking the data layer to remove a patient
 // Add a /patient delete endpoint
 app.delete("/patient/:Patient_ID", function(req, res) {
   // This will call deletePatient on the data
   data.deletePatient(req.params.Patient_ID, function() {
     // After successful deletion there will be an OK response to the browser
+    res.send("OK");
+  });
+});
+
+app.put("/patients", function(req, res) {
+  // Call function on data
+  data.updatePatient(req.body, function() {
     res.send("OK");
   });
 });
