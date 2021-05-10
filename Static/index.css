@@ -3,11 +3,7 @@
     padding: 0;
 }
 
-nav{
-    height: 200px;
-    width: 200px;
-    background-color: blue;
-}
+
 h1{
     position: absolute;
     color: rgb(0, 0, 0);
@@ -16,13 +12,20 @@ h1{
 
 h2{
     position: absolute;
-    color: rgb(33, 33, 34);
+    color: rgb(0, 0, 0);
     margin: 13% 40%;
 }
 
 
 ul {
-    margin-left: 600px;
+    
+    padding: 220px 450px;
+    width: 20px;
+    background-color: transparent;
+    text-indent: -30px;
+    
+
+ 
     
 
 }
@@ -34,6 +37,8 @@ ul li {
     height: 50px;
     position: relative;
     display: block;
+    justify-content: center;
+    
     
 
 }
@@ -44,26 +49,17 @@ ul li a {
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(5, 5, 5);
-    padding: 20% 0;
-    margin: 50%;
+    padding: 10px 150px;
+    margin: 20%;
+    text-align: center;
+    
 
 }
 ul li a:hover {
+    background-color: #6caac9;
     color: rgb(238, 238, 245);
+    text-align: left; 
 
-}
-
-.linkbutton{
-    background-color: #1c87c9;
-    border: blue;
-    color: rgb(0, 0, 0);
-    padding: 20px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-    margin: 35% -10%;
-    cursor: pointer;
 }
 
 img{
@@ -74,7 +70,7 @@ img{
     background-position: center;
     background-size: cover;
     position: absolute;
-    opacity: 0.5;
+    opacity: 0.7;
 
 
 

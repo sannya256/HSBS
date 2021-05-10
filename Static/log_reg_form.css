@@ -7,10 +7,20 @@
 .container{
     height: 100%;
     width: 100%;
-    background-color:  rgba(49, 155, 66, 0.24);
+    
     background-position: center;
     background-size: cover;
     position: absolute;
+}
+img{
+    padding: 0%;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    opacity: 0.7;
 }
 
 .login-container{
@@ -18,7 +28,7 @@
     height: 500px;
     position: relative;
     margin: 6% auto;
-    background: rgba(49, 155, 66, 0.24);
+    background:  #6caac9;
     padding: 5px;
     overflow: hidden;
 
@@ -48,7 +58,7 @@
     position: absolute;
     height: 100%;
     width: 110px;
-    background: linear-gradient(to right, #206623, #34eca0);
+    background: linear-gradient(to right, #202166, #348aec);
     border-radius: 30px;
     transition: .5s;
 }
@@ -83,7 +93,7 @@
     border-left: 0;
     border-top: 0;
     border-right: 0;
-    border-bottom: 2px solid #206623;
+    border-bottom: 2px solid #30498b;
     outline: none;
     background: transparent;
     
@@ -95,7 +105,7 @@
     cursor: pointer;
     display: block;
     margin: auto;
-    background: linear-gradient(to right, #34eca0, #9debca);
+    background: linear-gradient(to right, #2a27f5, #9debca);
     outline: none;
     border-radius: 30px;
     border: 0;

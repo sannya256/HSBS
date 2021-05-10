@@ -172,6 +172,12 @@ app.post("/prescriptions", function(req,res){
   data.addPrescription(req.body, function(){
     res.send("OK");
   });
+}); 
+// This code will update a single /patient endpoint
+app.put("/prescriptions/:code", function(req, res) {
+  data.updatePrescriptions(req.body, function() {
+      res.send("OK");
+  });
 });
 
 
