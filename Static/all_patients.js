@@ -13,7 +13,7 @@ PDApp.controller("patientController", function($scope, $http) {
 
 
     // This code will send a delete message to the server
-    $scope.updatePatient = function(Patient_ID) {
+    /*$scope.updatePatient = function(Patient_ID) {
     // This code will send delete message to /patients/Patient_ID endpoint
         $http.update("/patient/" + Patient_ID).then(function(response) {
       // This code will refresh the list of patients after request is completed
@@ -21,7 +21,16 @@ PDApp.controller("patientController", function($scope, $http) {
                 $scope.patients = response.data;
                 });
             });
-        };
+        };*/
+
+    //Inserting a new doctors availalbility to the table
+    //
+    $scope.updatePatient = function() {
+        $http.put("/patients", $scope.patient).then(function(response) {
+            // Alert user
+            window.alert("Entry updated.");
+        });
+    };
 
     //Sends a delete message to the server
     $scope.deletePatient = function(code) {

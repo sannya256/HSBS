@@ -1,19 +1,10 @@
 "use strict";
-
 // Get the mainApp
 var mainApp = angular.module("mainApp", []);
 
-// Create the controller
-//mainApp.controller("volunteerController", function($scope, $http) {   //was programmeController
-//  $scope.volunteers = [                      
-//    new Volunteers("002", "John", "Smith","nurse", "English", "Tropical island") // was Programme
-
- // ];
-//});
-
 mainApp.controller("volunteerController", function($scope, $http) {
     //hides the 'selected' element first of all
-  //  document.getElementById("selected").style.display="none";
+    document.getElementById("selected").style.display="none";
 
     $http.get('/volunteers').then(function(response) {  
         $scope.volunteers = response.data;
@@ -44,5 +35,31 @@ mainApp.controller("volunteerController", function($scope, $http) {
             });
         });
     };
-});
+    $scope.selectVolunteer = function(code) {
+        // Get student by id
+        $http.get("/volunteer/" + code).then(function(response) {
+        $scope.Volunteer = response.data;
+          // Show the selected element
+        document.getElementById("selected").style.display="block";
+        });
+    }
+
+     //Sends an update message to the server
+   // $scope.updateVolunteer = function() {
+        //sends a delete message to /module/code
+   // $http.put('/volunteers', $scope.ud_volunteer).then(function(response) {
+            //when request completes, refresh list of modules
+    //$http.get('/volunteers').then(function(response) 
+    //.then(function(response){
+   // $scope.volunteers = response.data;
+         //       });
+     //       });
+     //   };
+    });
+
+
+
+
+
+
 
