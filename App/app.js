@@ -150,6 +150,12 @@ app.post("/diagnostics", function(req, res){
   });
 });
 
+app.put("/diagnostic/:Drug_ID", function(req, res) {
+  data.updateDiagnostic(req.params.Drug_ID, function() {
+    res.send("OK");
+  });
+});
+
 // Diagnostics endpoints stop here
 
 // This code is adding prescriptions endpoint to the front end

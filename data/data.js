@@ -207,6 +207,13 @@ exports.addDiagnostic = function(diagnostic, callback) {
     });
 };
 
+exports.updateDiagnostic = function(Drug_ID, callback) {
+    var sql = `UPDATE diagnostics SET ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}') WHERE Patient_ID='${Drug_ID}'`;
+    db.exec(sql, function(err) {
+        callback();
+    });
+};
+
 // Diagnostics data broadcasting ends here
 
 
