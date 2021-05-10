@@ -3,26 +3,26 @@
   <head>
     <title>Volunteers</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
-    <script src="planetdoctor.js"></script>         <!--was student.js-->
-    <script src="all_volunteers.js"></script>       <!--was all_programmes.js-->
+    <script src="planetdoctor.js"></script>         
+    <script src="all_volunteers.js"></script>       
     <link rel="stylesheet" href="data_style.css">
   </head>
   <body>
     <h1>Volunteers<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
-   
-    <div ng-app="mainApp" ng-controller="volunteerController">     <!--was programmeController-->
+
+    <div ng-app="mainApp" ng-controller="volunteerController">     
       <table class="customTable">
         <tr>
-          <th>Code</th>
+          <th>ID</th>
           <th>Name</th>
           <th>Last Name</th>
           <th>Profession</th>
           <th>Nationality</th>
           <th>Camp Location</th>
         </tr>
-        <tr ng-repeat = "volunteer in volunteers"> <!--was programme in programmes-->
-          <td>{{ volunteer.ID }}</td>            <!--was programme.code-->
-          <td>{{ volunteer.First_Name }}</td>            <!--was programme.name-->
+        <tr ng-repeat = "volunteer in volunteers"> 
+          <td>{{ volunteer.ID }}</td>            
+          <td>{{ volunteer.First_Name }}</td>            
           <td>{{ volunteer.Last_Name }}</td>
           <td>{{ volunteer.Profession }}</td>
           <td>{{ volunteer.Nationality }}</td>
@@ -32,22 +32,23 @@
           
         </tr>
         <tr>
-          <td><input type="text" ng-model= "new_volunteer.ID"></td>
-          <td><input type="text" ng-model= "new_volunteer.First_Name"></td>
-          <td><input type="text" ng-model= "new_volunteer.Last_Name"></td>
-          <td><input type="text" ng-model= "new_volunteer.Profession"></td>
-          <td><input type="text" ng-model= "new_volunteer.Nationality"></td>
-          <td><input type="text" ng-model= "new_volunteer.camp_loc"></td>
+          <td><input type="text" ng-model= "new_volunteer.ID" placeholder='ID'></td>
+          <td><input type="text" ng-model= "new_volunteer.First_Name" placeholder='First Name'></td>
+          <td><input type="text" ng-model= "new_volunteer.Last_Name" placeholder='Second Name'></td>
+          <td><input type="text" ng-model= "new_volunteer.Profession" placeholder= 'Profession'></td>
+          <td><input type="text" ng-model= "new_volunteer.Nationality" placeholder= 'Nationality'></td>
+          <td><input type="text" ng-model= "new_volunteer.camp_loc" placeholder= 'Camp Location'></td>
           <td><input type="button" ng-click="createVolunteer()" value='create'></td>
         </tr>
       </table>
       <div id="selected">
-        <h2>{{Volunteer.ID}}
-          {{selectVolunteer.First_Name}}
-          <input type="text" ng-model="volunteer.First_Name">    <!--"volunteer.First_Name"-->
-          <input type="button" ng-click="updateVolunteer(volunteer.ID)" value="update">
-        </h2>
-        <h1>Name</h1>
+        <h2>Current Location: {{volunteer.camp_loc}}</h2>
+          <input type="text" ng-model="ud_First_Name">    
+          <input type="button" ng-click="updateVolunteer()" value="update">
+          
+        
+        <h2>New location: <span ng-bind='ud_First_Name'></span></h2>    
+        
       </div>
 
     </div>

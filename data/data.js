@@ -401,7 +401,7 @@ exports.deleteVolunteer = function(ID, callback) {
     // This code will delete a volunteer from db
 exports.alterVolunteer = function(ID, callback) {
     // SQL delete statement
-    var sql = `UPDATE First_Name FROM volunteers WHERE ID='${ID}'`;
+    var sql = `UPDATE volunteers SET First_Name= ${First_Name}  WHERE ID='${ID}'`;
     // This code will execute the above SQL delete statement
     db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed
@@ -410,3 +410,5 @@ exports.alterVolunteer = function(ID, callback) {
     };
 
 
+   // UPDATE volunteers SET First_Name = 'jan' WHERE ID= '1' //successful SQL query
+  // UPDATE volunteers SET First_Name = 'jan' WHERE First_Name= '1' //successful SQL query 
