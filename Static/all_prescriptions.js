@@ -13,9 +13,9 @@ PDApp.controller("prescriptionController", function($scope, $http) {
   });
   
     // This code will send a delete message to the server
-    $scope.deletePrescription = function(code) {
+    $scope.updatePrescription = function(code) {
     // This code will send delete message to /prescriptions/Drug_name endpoint
-        $http.delete("/prescription/" + code).then(function(response) {
+        $http.update("/prescription/" + code).then(function(response) {
       // This code will refresh the list of prescriptions after request is completed
             $http.get("/prescriptions").then(function(response) {
                 $scope.prescriptions = response.data;
