@@ -252,7 +252,7 @@ exports.getPatient = function(code, callback) {
         //var diag = new planetdoctor.Diagnostics(row.Diagnosis, row.Drug_name);
          
         //This code will create a patient object
-        var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name);
+        var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
         
         //now get the diagnostics for patient
         var sql =`
