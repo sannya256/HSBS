@@ -14,6 +14,9 @@ h2{
     position: absolute;
     color: rgb(0, 0, 0);
     margin: 13% 40%;
+    
+    text-align:left
+
 }
 
 
@@ -21,13 +24,9 @@ ul {
     
     padding: 220px 450px;
     width: 20px;
-    background-color: transparent;
-    text-indent: -30px;
     
-
- 
+    text-indent: -40px;
     
-
 }
 
 ul li {
@@ -38,6 +37,7 @@ ul li {
     position: relative;
     display: block;
     justify-content: center;
+    width: 60%;
     
     
 
@@ -52,7 +52,7 @@ ul li a {
     padding: 10px 150px;
     margin: 20%;
     text-align: center;
-    
+    font-weight: 500;
 
 }
 ul li a:hover {
@@ -71,7 +71,7 @@ img{
     background-size: cover;
     position: absolute;
     opacity: 0.7;
-
-
-
 }
+
+
+
