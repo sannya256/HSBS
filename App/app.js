@@ -51,12 +51,20 @@ app.put("/patient/:code", function(req, res) {
   });
 });
 
+
 //Asking the data layer to remove a patient
 // Add a /patient delete endpoint
 app.delete("/patient/:Patient_ID", function(req, res) {
   // This will call deletePatient on the data
   data.deletePatient(req.params.Patient_ID, function() {
     // After successful deletion there will be an OK response to the browser
+    res.send("OK");
+  });
+});
+
+app.put("/patients", function(req, res) {
+  // Call function on data
+  data.updatePatient(req.body, function() {
     res.send("OK");
   });
 });
@@ -163,6 +171,12 @@ app.post("/prescriptions", function(req,res){
   //call addsingleprescription on data 
   data.addPrescription(req.body, function(){
     res.send("OK");
+  });
+}); 
+// This code will update a single /patient endpoint
+app.put("/prescriptions/:code", function(req, res) {
+  data.updatePrescriptions(req.body, function() {
+      res.send("OK");
   });
 });
 
