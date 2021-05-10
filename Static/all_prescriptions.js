@@ -1,5 +1,6 @@
 "use strict";
 
+
 // This code will get the PDApp
 var  PDApp= angular.module("PDApp", []);
 
@@ -33,7 +34,6 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             });
         });
     };
-;
 //This code will select a prescription
     $scope.selectPrescription= function(code) {
         //get specific prescription by drug name
