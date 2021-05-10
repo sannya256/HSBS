@@ -72,8 +72,6 @@ img{
     margin:40px 100px 40px 130px;
     font-size: 20px;
     
-    
-    
 }
 
 .input-group{
@@ -105,7 +103,7 @@ img{
     cursor: pointer;
     display: block;
     margin: auto;
-    background: linear-gradient(to right, #2a27f5, #9debca);
+    background: linear-gradient(to right, #6260ee, #9ad8fc);
     outline: none;
     border-radius: 30px;
     border: 0;
@@ -130,3 +128,4 @@ span{
 #register{
     left: 450%
 }
+
