@@ -25,7 +25,7 @@ PDApp.controller("patientController", function($scope, $http) {
             });
         };*/
 
-    //Inserting a new doctors availalbility to the table
+    //Inserting new patient's symptoms to the table
     //
     $scope.updatePatient = function() {
         $http.put("/patients", $scope.patient).then(function(response) {
@@ -36,16 +36,14 @@ PDApp.controller("patientController", function($scope, $http) {
 
     //Sends a delete message to the server
     $scope.deletePatient = function(code) {
-            //sends a delete message to /module/code
+            //sends a delete message to /patient/code
     $http.delete('/patient/' + code).then(function(response) {
-                //when request completes, refresh list of modules
+                //when request completes, refresh list of patients
         $http.get('/patients').then(function(response) {
             $scope.patients = response.data;
             });
         });
     };
-
-    //$scope.new_patient = new Module("","","","","","");
         
     //Inserting a new patients medical records to the table
         // This code will send a put notification to the server

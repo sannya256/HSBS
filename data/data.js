@@ -261,7 +261,7 @@ exports.getPatient = function(code, callback) {
         //This code will create a patient object
         var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
         
-        //now get the diagnostics for patient
+        //Now get the diagnostics for patient
         var sql =`
                 SELECT Diagnostics.Diagnosis, Diagnotics.Drug_name
                 FROM Diagnostics, Patients
@@ -276,16 +276,16 @@ exports.getPatient = function(code, callback) {
             if (err) {
                 return console.error(err.message);
             }
-          // Loop through each row and create a module object and attach a grade
+          // Loop through each row and create a patient object and add a diagnostic
             for (var row of rows) {
-              // Create module object
+              // Create patient object
               //var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
-              // Create a module combined with grade
+              // Create a patient combined with diagnostic
               var diag = new planetdoctor.Diagnostic(row.Diagnosis, row.Drug_name);
-              // Add module and grade to student
+              // Add diagnostic to a patient
                 pat.diagnostics.push(diag);
             }
-          // Return student
+          // Return patient
             callback(pat);
         });
     });
@@ -328,10 +328,10 @@ exports.updatePatient = function(patient, callback) {
         });
     };
 
-    exports.updateDoctorAvailability = function(doctor, callback) {
-        var sql = `UPDATE Doctors 
-        SET Availability="${doctor.Availability}"
-        WHERE Doctor_ID="${doctor.Doctor_ID}"`;
+    exports.updatePatient = function(patient, callback) {
+        var sql = `UPDATE Patient 
+        SET Symptoms="${patient.Symptoms}"
+        WHERE Patient_ID="${patient.Patient_ID}"`;
         // Execute SQL update statement
         db.exec(sql, function(err) {
           // Once completed, execute callback function
