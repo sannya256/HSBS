@@ -22,6 +22,16 @@ PDApp.controller("diagnosticController", function($scope, $http) {
             //document.getElementById("selected").style.display = "block";
         });
     };*/
+
+    $scope.updateDiagnostic = function(code) {
+        $http.update("/diagnostic/" + code).then(function(response) {
+            $scope.new_diagnostic = new Diagnostics("", "", "", "", "", "", "", "");
+            $http.get("/diagnostics/").then(function(response) {
+                $scope.diagnostics = response.data;
+            });
+        });
+    };
+
     //This code will send delete request to the server
     $scope.deleteDiagnostic = function(code) {
         //sending a delete request to the server using node

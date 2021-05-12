@@ -207,6 +207,13 @@ exports.addDiagnostic = function(diagnostic, callback) {
     });
 };
 
+exports.updateDiagnostic = function(Drug_ID, callback) {
+    var sql = `UPDATE diagnostics SET ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}') WHERE Patient_ID='${Drug_ID}'`;
+    db.exec(sql, function(err) {
+        callback();
+    });
+};
+
 // Diagnostics data broadcasting ends here
 
 
@@ -254,7 +261,7 @@ exports.getPatient = function(code, callback) {
         //This code will create a patient object
         var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
         
-        //now get the diagnostics for patient
+        //Now get the diagnostics for patient
         var sql =`
                 SELECT Diagnostics.Diagnosis, Diagnotics.Drug_name
                 FROM Diagnostics, Patients
@@ -269,16 +276,16 @@ exports.getPatient = function(code, callback) {
             if (err) {
                 return console.error(err.message);
             }
-          // Loop through each row and create a module object and attach a grade
+          // Loop through each row and create a patient object and add a diagnostic
             for (var row of rows) {
-              // Create module object
+              // Create patient object
               //var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
-              // Create a module combined with grade
+              // Create a patient combined with diagnostic
               var diag = new planetdoctor.Diagnostic(row.Diagnosis, row.Drug_name);
-              // Add module and grade to student
+              // Add diagnostic to a patient
                 pat.diagnostics.push(diag);
             }
-          // Return student
+          // Return patient
             callback(pat);
         });
     });
@@ -309,22 +316,10 @@ exports.addPatient = function(patient, callback) {
     });
 };
 
-//Adding  a deletePatient function
-// This code will delete a patient from the database
-exports.updatePatient = function(patient, callback) {
-    // Create SQL delete statement
-    var sql = `UPDATE Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
-    // This code will execute the SQL delete statement
-    db.exec(sql, function(err) {
-      // After the SQL statement, a callback function will be executed
-        callback();
-        });
-    };
-
-    exports.updateDoctorAvailability = function(doctor, callback) {
-        var sql = `UPDATE Doctors 
-        SET Availability="${doctor.Availability}"
-        WHERE Doctor_ID="${doctor.Doctor_ID}"`;
+    exports.updatePatient = function(patient, callback) {
+        var sql = `UPDATE Patients
+        SET Symptoms="${patient.Symptoms}"
+        WHERE Patient_ID="${patient.Patient_ID}"`;
         // Execute SQL update statement
         db.exec(sql, function(err) {
           // Once completed, execute callback function
