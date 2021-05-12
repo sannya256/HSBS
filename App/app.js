@@ -230,6 +230,15 @@ app.put("/volunteer/:ID", function(req, res) {
   });
 });
 
+// Add a /doctor delete endpoint
+app.put("/volunteers", function(req, res) {
+  // This will call deleteVolunteer on the data
+  data.updateVolunteer(req.body, function() {
+    // After deletion send OK response to the browser
+    res.send("OK");
+  });
+});
+
 
 // To start the server
 // This code will allow the application layer to listen communication from the front end on port 3000
