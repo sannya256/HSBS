@@ -10,20 +10,19 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     </head>
     <body>
-<h1>Patients<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
-        <h1>Patient Medical Records</h1>
-            <a href="Menu.html" class="btn btn-primary" style="width:140px", style='position:absolute; right: 200px;'> Homepage</a>    
+<h1>Patient Medical Records<img src='planetdoctor1.png' style='position:absolute; left: 600px;'></h1>
+        <h1></h1>
         <div ng-app="PDApp" ng-controller="patientController">
 
             <table class=customTable>
                 <thead>
                 <tr>
-                    <th>Patient_ID</th>
-                    <th>P_First_Name</th>
-                    <th>P_Last_Name</th>
-                    <th>DOB</th>
+                    <th>Patient ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
                     <th>Gender</th>
-                    <th>Symptoms</th>
+                    <th>Current Symptoms</th>
                 </tr>
             </thead>
                 <tr ng-repeat = "patient in patients">
@@ -37,14 +36,15 @@
                     <td><input type="button" ng-click="updatePatient()" value="Update"></td>
                     <td><input type="button" ng-click="deletePatient(patient.Patient_ID)" value="Delete"></td>
                 <tr>
-                    <td><input type="text" ng-model="new_patient.Patient_ID"></td>
-                    <td><input type="text" ng-model="new_patient.P_First_Name"></td>
-                    <td><input type="text" ng-model="new_patient.P_Last_Name"></td>
-                    <td><input type="text" ng-model="new_patient.DOB"></td>
-                    <td><input type="text" ng-model="new_patient.Gender"></td>
-                    <td><input type="text" ng-model="new_patient.Symptoms"></td>
+                    <td><input type="text" ng-model="new_patient.Patient_ID" placeholder='Patient ID'></td>
+                    <td><input type="text" ng-model="new_patient.P_First_Name" placeholder='First Name'></td>
+                    <td><input type="text" ng-model="new_patient.P_Last_Name" placeholder= 'Last Name'></td>
+                    <td><input type="text" ng-model="new_patient.DOB" placeholder='Date of Birth'></td>
+                    <td><input type="text" ng-model="new_patient.Gender" placeholder='Gender'></td>
+                    <td><input type="text" ng-model="new_patient.Symptoms" placeholder='Current Symptoms'></td>
                     <td><input type="button" ng-click="createPatient()" value="Create"></td>
                 </tr>
+            
             </table>
         </div>
 
@@ -62,5 +62,12 @@
             </tr>
             </table>
         </div>
+
+        <a href="index.html" class= "logout" style="color: white; background-color: #248FD6; font: sans-serif; font-weight: 100; font-size: 15px; border: solid #248FD6;
+        border-radius: 2px; padding: 2px 8px; transition-duration: 20ms; text-decoration: none; margin: 90%; margin-top: 300px; position:absolute; left: 200px">Logout</a>
+
+        <a href="doc_dashboard.html" class= "dashboard" style="color: white; background-color: #248FD6; font: sans-serif; font-weight: 100; font-size: 15px; border: solid #248FD6;
+        border-radius: 2px; padding: 2px 8px; transition-duration: 0.5ms; text-decoration: none; margin: 80%; margin-top: 300px; position:absolute; left: 400px">Dashboard</a>
+
     </body>
 </html>
