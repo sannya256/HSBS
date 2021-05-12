@@ -316,18 +316,6 @@ exports.addPatient = function(patient, callback) {
     });
 };
 
-//Adding  a deletePatient function
-// This code will delete a patient from the database
-exports.updatePatient = function(patient, callback) {
-    // Create SQL delete statement
-    var sql = `UPDATE Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
-    // This code will execute the SQL delete statement
-    db.exec(sql, function(err) {
-      // After the SQL statement, a callback function will be executed
-        callback();
-        });
-    };
-
     exports.updatePatient = function(patient, callback) {
         var sql = `UPDATE Patient 
         SET Symptoms="${patient.Symptoms}"
