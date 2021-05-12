@@ -37,6 +37,7 @@ mainApp.controller("volunteerController", function($scope, $http) {
     };
     $scope.selectVolunteer = function(code) {
         // Get student by id
+        console.log(code)
         $http.get("/volunteer/" + code).then(function(response) {
         $scope.Volunteer = response.data;
           // Show the selected element
@@ -55,6 +56,36 @@ mainApp.controller("volunteerController", function($scope, $http) {
          //       });
      //       });
      //   };
+
+
+     $scope.updateVolunteer = function(code) {
+    
+     $http.put('/volunteer/'+code).then(function(response) {
+      
+       $scope.camp_locs = response.data;
+       
+        console.log(response)
+    });
+     };
+
+
+
+   
+  // $scope.createVolunteer= function() {
+  //  $http.post("/volunteers", $scope.new_volunteer).then(function(response) {
+  //   $scope.new_volunteer = new Volunteers("", "","","", "", "");
+  //     $http.get("/volunteers").then(function(response) {
+  //        $scope.volunteers = response.data;
+  //        });
+  //    });
+  
+
+
+
+
+
+
+
     });
 
 

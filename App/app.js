@@ -218,9 +218,9 @@ app.delete("/volunteer/:ID", function(req, res) {
 // Add a /doctor delete endpoint
 app.put("/volunteer/:ID", function(req, res) {
   // This will call deleteVolunteer on the data
-  data.alterVolunteer(req.params.ID, function() {
+  data.alterVolunteer(req.params.ID, function(volunteer) {
     // After deletion send OK response to the browser
-    res.send("OK");
+    res.json(volunteer);
   });
 });
 
