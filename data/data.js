@@ -317,7 +317,7 @@ exports.addPatient = function(patient, callback) {
 };
 
     exports.updatePatient = function(patient, callback) {
-        var sql = `UPDATE Patient 
+        var sql = `UPDATE Patients
         SET Symptoms="${patient.Symptoms}"
         WHERE Patient_ID="${patient.Patient_ID}"`;
         // Execute SQL update statement
