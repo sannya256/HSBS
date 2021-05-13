@@ -290,7 +290,7 @@ exports.addPatient = function(patient, callback) {
 };
 
     exports.updatePatient = function(patient, callback) {
-        var sql = `UPDATE Patient 
+        var sql = `UPDATE Patients
         SET Symptoms="${patient.Symptoms}"
         WHERE Patient_ID="${patient.Patient_ID}"`;
         // Execute SQL update statement
@@ -367,9 +367,9 @@ exports.deleteVolunteer = function(ID, callback) {
     };
 
     // This code will delete a volunteer from db
-exports.alterVolunteer = function(ID, callback) {
+exports.alterVolunteer = function(volunteer, callback) {
     // SQL delete statement
-    var sql = `UPDATE volunteers SET First_Name= ${First_Name}  WHERE ID='${ID}'`;
+    var sql = `UPDATE volunteers SET camp_loc= '${volunteer.camp_loc}'  WHERE ID='${volunteer.ID}'`;
     // This code will execute the above SQL delete statement
     db.exec(sql, function(err) {
       // After the SQL statement, a callback function will be executed

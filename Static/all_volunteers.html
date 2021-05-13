@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="data_style.css">
   </head>
   <body>
-    <h1>Volunteers<img src='planetdoctor1.png' style='position:absolute; left: 200px;'></h1>
+    <h1>Volunteers</h1>
 
     <div ng-app="mainApp" ng-controller="volunteerController">     
       <table class="customTable">
@@ -28,7 +28,8 @@
           <td>{{ volunteer.Nationality }}</td>
           <td> {{ volunteer.camp_loc }}</td>
           <td><input type="button" ng-click="deleteVolunteer(volunteer.ID)" value="delete"></td>
-          <td><input type="button" ng-click="selectVolunteer(volunteer.ID)" value="select"></td>
+         
+          <td><input type="button" ng-click="selectVolunteer(volunteer.ID)" value="change camp"></td>
           
         </tr>
         <tr>
@@ -41,15 +42,25 @@
           <td><input type="button" ng-click="createVolunteer()" value='create'></td>
         </tr>
       </table>
+      
       <div id="selected">
+<<<<<<< HEAD
         <h2>Current Location: {{Volunteer.camp_loc}}</h2>
           <input type="text" ng-model="ud_First_Name">    
           <input type="button" ng-click="updateVolunteer()" value="update">
+=======
+        <h2>ID: {{Volunteer.ID}}</h2>
+        <h2>Current Location: <span>{{camp_locs}}</span></h2>
+      
+        <input type="text" id='camp_loca' ng-model='camp_locs' value=qq/>
+          <!--<input type="text" ng-model="ud_camp_loc"> -->   
+        <input type="button" ng-click='updateVolunteer(Volunteer.ID )' value="update">
+>>>>>>> cf64dafab41e384894f7b0243807285bbd5c7240
           
-        
-        <h2>New location: <span ng-bind='ud_First_Name'></span></h2>    
-        
+      
+        <h2>New location: <span ng-bind='camp_locs'></span></h2>    
       </div>
+      
 
     </div>
   </body>
