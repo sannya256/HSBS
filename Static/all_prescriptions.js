@@ -27,14 +27,14 @@ PDApp.controller("prescriptionController", function($scope, $http) {
         // This code will send post a message the to prescriptions endpoint
             $http.post("/prescriptions", $scope.new_prescription).then(function(response) {
             // This will reset new_patient to empty to accept new entry 
-                $scope.new_prescription = new Prescription("", "","","");
+                $scope.new_prescription = new Prescriptions("", "","","");
             // This code will refresh the list after successfull addition
             $http.get("/prescriptions").then(function(response) {
                 $scope.prescriptions = response.data;
             });
         });
     };
-//This code will select a prescription
+/*//This code will select a prescription
     $scope.selectPrescription= function(code) {
         //get specific prescription by drug name
        $http.get("/prescription/" + code).then(function(response){
@@ -42,7 +42,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             //show the 'selected element'
            document.getElementBycode("selected").style.display="block";
         });
-    }; 
+    };*/ 
 });
 
   
