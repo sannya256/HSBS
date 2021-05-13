@@ -13,6 +13,21 @@ PDApp.controller("patientController", function($scope, $http) {
         $scope.patients = response.data;
     });
 
+//This code will select a patient
+    $scope.selectPatient= function(code) {
+    //get specific patient by ID
+        $http.get("/patient/" + code).then(function(response){
+            $scope.selectedPatient= response.data;
+        //show the 'selected element'
+            document.getElementById("selected").style.display="block";
+            $http.get("/diagnostic/" + code).then(function(response){
+                $scope.selectedDiagnostic= response.data;//
+        });
+        
+    
+        });
+    };
+
 
     // This code will send a delete message to the server
     /*$scope.updatePatient = function(Patient_ID) {
@@ -37,10 +52,10 @@ PDApp.controller("patientController", function($scope, $http) {
     //Sends a delete message to the server
     $scope.deletePatient = function(code) {
             //sends a delete message to /patient/code
-    $http.delete('/patient/' + code).then(function(response) {
+        $http.delete('/patient/' + code).then(function(response) {
                 //when request completes, refresh list of patients
-        $http.get('/patients').then(function(response) {
-            $scope.patients = response.data;
+            $http.get('/patients').then(function(response) {
+                $scope.patients = response.data;
             });
         });
     };
@@ -58,14 +73,10 @@ PDApp.controller("patientController", function($scope, $http) {
             });
         });
     };
-;
-//This code will select a patient
-    $scope.selectPatient= function(code) {
-        //get specific patient by ID
-        $http.get("/patient/" + code).then(function(response){
-        $scope.selectpatient= response.data;
-            //show the 'selected element'
-        document.getElementById("selected").style.display="block";
-        });
-    };
+
+
 });
+
+
+
+
