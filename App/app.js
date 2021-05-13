@@ -206,27 +206,31 @@ app.get("/volunteer/:code", function(req, res) {
 
 
 app.post("/volunteers", function(req,res){
+  console.log('app.js - in the app.post function')
   //call addVolunteer on data 
   data.addVolunteer(req.body, function(){
+    console.log('app.js in the addvolunteer function call')
     res.send("OK");
   });
 });
 
 // Add a /doctor delete endpoint
 app.delete("/volunteer/:ID", function(req, res) {
+  console.log('app.js - in the app.del function')
   // This will call deleteVolunteer on the data
   data.deleteVolunteer(req.params.ID, function() {
+    console.log('app.js in the deletevolunteer function call')
     // After deletion send OK response to the browser
     res.send("OK");
   });
 });
 
-// Add a /doctor delete endpoint
+// Add a /doctor alter endpoint
 app.put("/volunteer/:ID", function(req, res) {
-  // This will call deleteVolunteer on the data
-  data.alterVolunteer(req.params.ID, function(volunteer) {
+  // This will call alterVolunteer on the data
+  data.alterVolunteer(req.body, function(Volunteer) {
     // After deletion send OK response to the browser
-    res.json(volunteer);
+    res.send(Volunteer);
   });
 });
 

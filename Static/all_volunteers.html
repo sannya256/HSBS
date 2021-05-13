@@ -44,15 +44,15 @@
       </table>
       
       <div id="selected">
-        <h2>ID: {{Volunteer.ID}}</h2>
-        <h2>Current Location: <span>{{camp_locs}}</span></h2>
+        <h2>ID: {{  Volunteer.ID}}</h2>
+        <h2>Current Location: <span>{{Volunteer.camp_loc}}</span></h2>
       
-        <input type="text" id='camp_loca' ng-model='camp_locs' value=qq/>
+        <input type="text" id='camp_loca' ng-model='Volunteer.camp_loc' value=Volunteer.camp_loc/>
           <!--<input type="text" ng-model="ud_camp_loc"> -->   
-        <input type="button" ng-click='updateVolunteer(Volunteer.ID )' value="update">
+        <input type="button" ng-click='updateVolunteer(Volunteer)' value="update">
           
       
-        <h2>New location: <span ng-bind='camp_locs'></span></h2>    
+        <h2>New location: <span ng-bind='Volunteer.camp_loc'></span></h2>   
       </div>
       
 

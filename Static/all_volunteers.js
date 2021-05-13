@@ -6,16 +6,21 @@ mainApp.controller("volunteerController", function($scope, $http) {
     //hides the 'selected' element first of all
     document.getElementById("selected").style.display="none";
 
-    $http.get('/volunteers').then(function(response) {  
+    $http.get('/volunteers').then(function(response) { 
+        console.log('after initial get from loading page - response paramter:', response, 'response.dat:',response.data)
         $scope.volunteers = response.data;
     });
 
     //Sends a delete message to the server
     $scope.deleteVolunteer = function(code) {
+        console.log('av.js  deleteVolunteer function parameter', code)
        //sends a delete message to /module/code
     $http.delete('/volunteer/' + code).then(function(response) {
+        console.log( 'av.js del respsonse after delete',response, 'response.data:', response.data)
            //when request completes, refresh list of modules
         $http.get('/volunteers').then(function(response) {
+            console.log( 'av.js get after del respsonse',response,'repsonse.data:' ,response.data)
+
             $scope.volunteers = response.data;
             });
         });
@@ -36,56 +41,26 @@ mainApp.controller("volunteerController", function($scope, $http) {
         });
     };
     $scope.selectVolunteer = function(code) {
+        console.log('av.js  selectVolunteer function parameter', code)
         // Get student by id
-        console.log(code)
         $http.get("/volunteer/" + code).then(function(response) {
         $scope.Volunteer = response.data;
+        console.log( 'av.js get after select respsonse',response)
           // Show the selected element
-        document.getElementById("selected").style.display="block";
+       document.getElementById("selected").style.display="block";
         });
     }
 
-     //Sends an update message to the server
-   // $scope.updateVolunteer = function() {
-        //sends a delete message to /module/code
-   // $http.put('/volunteers', $scope.ud_volunteer).then(function(response) {
-            //when request completes, refresh list of modules
-    //$http.get('/volunteers').then(function(response) 
-    //.then(function(response){
-   // $scope.volunteers = response.data;
-         //       });
-     //       });
-     //   };
-
-
      $scope.updateVolunteer = function(code) {
-    
-     $http.put('/volunteer/'+code).then(function(response) {
-      
-       $scope.camp_locs = response.data;
-       
-        console.log(response)
+        //var codey = new Volunteers($scope.Volunteer.ID, $scope.Volunteer.First_Name,$scope.Volunteer.Last_Name,$scope.Volunteer.Nationality, $scope.Volunteer.Profession, $scope.Volunteer.camp_loc);
+     $http.put('/volunteer/3', code).then(function(response) { 
+      //  var codey = new Volunteers($scope.Volunteer.ID, $scope.Volunteer.First_Name,$scope.Volunteer.Last_Name,$scope.Volunteer.Nationality, $scope.Volunteer.Profession, $scope.Volunteer.camp_loc);
+        $scope.Volunteer = new Volunteers($scope.Volunteer.ID, $scope.Volunteer.First_Name,$scope.Volunteer.Last_Name,$scope.Volunteer.Nationality, $scope.Volunteer.Profession, $scope.Volunteer.camp_loc);
+        $http.get("/volunteer/3").then(function(response) {
+        $scope.Volunteer = response.data;
+        });
     });
      };
-
-
-
-   
-  // $scope.createVolunteer= function() {
-  //  $http.post("/volunteers", $scope.new_volunteer).then(function(response) {
-  //   $scope.new_volunteer = new Volunteers("", "","","", "", "");
-  //     $http.get("/volunteers").then(function(response) {
-  //        $scope.volunteers = response.data;
-  //        });
-  //    });
-  
-
-
-
-
-
-
-
     });
 
 
