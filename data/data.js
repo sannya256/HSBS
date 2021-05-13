@@ -175,17 +175,20 @@ db.all(sql, function(err, rows) {
 // This code will export getDiagnostic function
 exports.getDiagnostic = function(code, callback) {
     // This code will allow to create SQL statements
+   console.log('in data.js code parameter', code)
     var sql = `
         SELECT * FROM Diagnostics
         WHERE Patient_ID = '${code}'`;
     // This code will execute return of only one row from the sql query
     db.get(sql, function(err, row) {
+        console.log('row in data.js:', row)
         if (err) {
             return console.error(err.message);
         }
         // This code will create a diagnostic object
         var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
         // This code will return diagnostics
+        console.log('data.js, getdiagnostic, callback function diagnostic argument', diagnostic)
         callback(diagnostic);
     });
 };
@@ -335,6 +338,7 @@ exports.getVolunteer = function(code, callback) {
         WHERE ID = '${code}'`;
     // Execute query. Only one row returned.
     db.get(sql, function(err, row) {
+        console.log('row in data.js:', row)
         if (err) {
             return console.error(err.message);
         }
@@ -386,4 +390,5 @@ exports.alterVolunteer = function(volunteer, callback) {
             callback();
             });
         };
+
 

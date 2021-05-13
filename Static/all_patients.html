@@ -30,7 +30,7 @@
                     <td>{{ patient.DOB }}</td>
                     <td>{{ patient.Gender}}</td>
                     <td><input type="text" ng-model="patient.Symptoms"></td>
-                    <td><input type="button" ng-click="selectPatient(Patient_ID)" value="Select"></td>
+                    <td><input type="button" ng-click="selectPatient(patient)" value="Select"></td>
                     <td><input type="button" ng-click="updatePatient()" value="Update"></td>
                     <td><input type="button" ng-click="deletePatient(patient.Patient_ID)" value="Delete"></td>
                 <tr>
@@ -44,21 +44,36 @@
                 </tr>
             
             </table>
-        </div>
-
+        
         <div id="selected">
-            <h2>{{ selectedDiagnostic.Diagnosis }} {{ selectedDiagnostic.Drug_name }}</h2>
-            <h3>Diagnostic Information</h3>
+            <h2>Patient ID: {{ Patient.Patient_ID}} 
+                <br>
+                <br>
+                Patient Referral:{{Patient.Referal}}
+                <br>
+                <br>
+                Diagnosis: {{Patient.Diagnosis}}    
+                <br>
+                <br>
+                Drug: {{Patient.Drug_name}}
+                <br>
+                <br>
+                Drug ID: {{Patient.Drug_ID}}
+                <br>
+                <br>
+                Tests: {{Patient.Tests}}</h2>
+           <!-- <h3>Diagnostic Information</h3>
             <table class=customTable></table>
             <tr>
                 <th>Diagnosis</th>
                 <th>Drug_name</th>
             </tr>
-            <tr ng-repeat="diagnostic in selectedPatient.diagnostics">
-                <td>{{ Diagnostic.Diagnosis }}</td>
-                <td>{{ Diagnostic.Drug_name }}</td>
+          <tr ng-repeat="diagnostic in selectedPatient.diagnostics">
+                <td></td>
+                <td>{{Diagnostic.Drug_name }}</td>
             </tr>
-            </table>
+            </table>-->
+        </div>
         </div>
 
         <a href="admin_dashboard.html" class= "dashboard" style="color: white; background-color: #248FD6; font: sans-serif; font-weight: 100; font-size: 15px; border: solid #248FD6;

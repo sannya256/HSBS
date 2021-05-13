@@ -131,7 +131,9 @@ app.put("/doctors", function(req, res) {
 
 // This code will add /diagnostics endpoint
 app.get("/diagnostic/:code", function(req, res) {
+  console.log('in app.js get diagnostic req:', req.params)
   // This code will call getDiagnostics on data
+  console.log('in app.js get diagnostic req.params.code:',req.params.code)
   data.getDiagnostic(req.params.code, function(diagnostic) {
       res.json(diagnostic);
   });

@@ -14,17 +14,27 @@ PDApp.controller("patientController", function($scope, $http) {
     });
 
 //This code will select a patient
-    $scope.selectPatient= function(code) {
+   // $scope.selectPatient= function(code) {
     //get specific patient by ID
-        $http.get("/patient/" + code).then(function(response){
-            $scope.selectedPatient= response.data;
+      //  $http.get("/patient/" + code).then(function(response){
+     //       $scope.selectedPatient= response.data;
         //show the 'selected element'
-            document.getElementById("selected").style.display="block";
-            $http.get("/diagnostic/" + code).then(function(response){
-                $scope.selectedDiagnostic= response.data;//
-        });
+     //       document.getElementById("selected").style.display="block";
+      //      $http.get("/diagnostic/" + code).then(function(response){
+      //          $scope.selectedDiagnostic= response.data;//
+      //  });
         
     
+     //   });
+   // };
+
+    
+    $scope.selectPatient = function(patient) {
+        console.log('all_patients.js selectPatient:', patient)
+        $http.get("/diagnostic/" + patient['Patient_ID']).then(function(response) {
+            $scope.Patient = response.data;
+            console.log('all_patients.js, response.data:', response.data, '$scope.Patient', $scope.Patient, '$scope.Patient.Patient_ID:',$scope.Patient.Patient_ID)
+            document.getElementById("selected").style.display = "block";
         });
     };
 
@@ -39,6 +49,11 @@ PDApp.controller("patientController", function($scope, $http) {
                 });
             });
         };*/
+
+
+
+
+
 
     //Inserting new patient's symptoms to the table
     //
