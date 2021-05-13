@@ -34,7 +34,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             });
         });
     };
-//This code will select a prescription
+/*//This code will select a prescription
     $scope.selectPrescription= function(code) {
         //get specific prescription by drug name
        $http.get("/prescription/" + code).then(function(response){
@@ -42,7 +42,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             //show the 'selected element'
            document.getElementBycode("selected").style.display="block";
         });
-    }; 
+    };*/ 
 });
 
   
