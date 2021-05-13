@@ -44,10 +44,7 @@ exports.Patients = class {
   Gender;
   //This will show Patient's current symptoms 
   Symptoms;
-  
-
-
- 
+   
   constructor(Patient_ID, P_First_Name, P_Last_Name, DOB, Gender, Symptoms) {
     this.Patient_ID = Patient_ID;
     this.P_First_Name = P_First_Name;
@@ -57,6 +54,7 @@ exports.Patients = class {
     this.Symptoms = Symptoms;
   }
 }
+
 
 exports.Prescriptions = class {
   // Name of medications

@@ -177,7 +177,7 @@ exports.getDiagnostic = function(code, callback) {
     // This code will allow to create SQL statements
     var sql = `
         SELECT * FROM Diagnostics
-        WHERE Drug_ID = '${code}'`;
+        WHERE Patient_ID = '${code}'`;
     // This code will execute return of only one row from the sql query
     db.get(sql, function(err, row) {
         if (err) {
@@ -244,11 +244,11 @@ exports.getPatients = function(callback) {
 };
 
 //This code will export getPatient function
-exports.getPatient = function(code, callback) {
+exports.getPatient = function(id, callback) {
     // This code will create SQL statement
     var sql =`
             SELECT * FROM Patients
-            WHERE Patient_ID ='${code}'
+            WHERE Patient_ID ='${id}'
     `;
     //This code will execute query and only one row
     db.get(sql, function(err, row) {
@@ -259,37 +259,10 @@ exports.getPatient = function(code, callback) {
         //var diag = new planetdoctor.Diagnostics(row.Diagnosis, row.Drug_name);
          
         //This code will create a patient object
-        var pat = new planetdoctor.Patient(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
-        
-        //Now get the diagnostics for patient
-        var sql =`
-                SELECT Diagnostics.Diagnosis, Diagnotics.Drug_name
-                FROM Diagnostics, Patients
-                WHERE
-                    Diagnotics.Patient_ID ='${code}'
-                    AND
-                    Patient.Patient_ID=Diagnotics.Patient_ID
-                `;
-
-        // Execute query. Multiple rows returned.
-        db.all(sql, function(err, rows) {
-            if (err) {
-                return console.error(err.message);
-            }
-          // Loop through each row and create a patient object and add a diagnostic
-            for (var row of rows) {
-              // Create patient object
-              //var pat = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms, pres);
-              // Create a patient combined with diagnostic
-              var diag = new planetdoctor.Diagnostic(row.Diagnosis, row.Drug_name);
-              // Add diagnostic to a patient
-                pat.diagnostics.push(diag);
-            }
-          // Return patient
-            callback(pat);
-        });
+        var patient = new planetdoctor.Patients(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.DOB, row.Gender, row.Symptoms);
+        callback(patient)
     });
-}; 
+};
 
 
 //Adding  a deletePatient function
@@ -403,7 +376,17 @@ exports.alterVolunteer = function(volunteer, callback) {
         callback();
         });
     };
-
+   
+    exports.updateVolunteer = function(volunteer, callback) {
+        // SQL delete statement
+        var sql = `UPDATE volunteers SET First_Name= ${volunteer.First_Name}  WHERE ID='${volunteer.ID}'`;
+        // This code will execute the above SQL delete statement
+        db.exec(sql, function(err) {
+          // After the SQL statement, a callback function will be executed
+            callback();
+            });
+        };
+       
 
    // UPDATE volunteers SET First_Name = 'jan' WHERE ID= '1' //successful SQL query
   // UPDATE volunteers SET First_Name = 'jan' WHERE First_Name= '1' //successful SQL query 
