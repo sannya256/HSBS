@@ -376,7 +376,7 @@ exports.alterVolunteer = function(volunteer, callback) {
         callback();
         });
     };
-   
+
     exports.updateVolunteer = function(volunteer, callback) {
         // SQL delete statement
         var sql = `UPDATE volunteers SET First_Name= ${volunteer.First_Name}  WHERE ID='${volunteer.ID}'`;
@@ -386,7 +386,4 @@ exports.alterVolunteer = function(volunteer, callback) {
             callback();
             });
         };
-       
 
-   // UPDATE volunteers SET First_Name = 'jan' WHERE ID= '1' //successful SQL query
-  // UPDATE volunteers SET First_Name = 'jan' WHERE First_Name= '1' //successful SQL query 

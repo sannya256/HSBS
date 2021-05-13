@@ -199,27 +199,23 @@ app.get("/volunteers", function(req, res) {
 app.get("/volunteer/:code", function(req, res) {
   // Call getVolunteer on data
   data.getVolunteer(req.params.code, function(volunteer) {
-      res.json(volunteer);
+    res.json(volunteer);
   });
 });
 
 
 
 app.post("/volunteers", function(req,res){
-  console.log('app.js - in the app.post function')
   //call addVolunteer on data 
   data.addVolunteer(req.body, function(){
-    console.log('app.js in the addvolunteer function call')
     res.send("OK");
   });
 });
 
 // Add a /doctor delete endpoint
 app.delete("/volunteer/:ID", function(req, res) {
-  console.log('app.js - in the app.del function')
   // This will call deleteVolunteer on the data
   data.deleteVolunteer(req.params.ID, function() {
-    console.log('app.js in the deletevolunteer function call')
     // After deletion send OK response to the browser
     res.send("OK");
   });
@@ -233,16 +229,6 @@ app.put("/volunteer/:ID", function(req, res) {
     res.send(Volunteer);
   });
 });
-
-// Add a /doctor delete endpoint
-//app.put("/volunteers", function(req, res) {
-  // This will call deleteVolunteer on the data
-  //data.updateVolunteer(req.body, function() {
-    // After deletion send OK response to the browser
-  //  res.send("OK");
-  //});
-//});
-
 
 // To start the server
 // This code will allow the application layer to listen communication from the front end on port 3000
