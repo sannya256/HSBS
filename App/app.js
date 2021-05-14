@@ -214,7 +214,7 @@ app.post("/volunteers", function(req,res){
   });
 });
 
-// Add a /doctor delete endpoint
+// Add a /volunteer delete endpoint
 app.delete("/volunteer/:ID", function(req, res) {
   // This will call deleteVolunteer on the data
   data.deleteVolunteer(req.params.ID, function() {
@@ -223,7 +223,7 @@ app.delete("/volunteer/:ID", function(req, res) {
   });
 });
 
-// Add a /doctor alter endpoint
+// Add a /volunteer alter endpoint
 app.put("/volunteer/:ID", function(req, res) {
   // This will call alterVolunteer on the data
   data.alterVolunteer(req.body, function(Volunteer) {

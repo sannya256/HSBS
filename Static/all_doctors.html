@@ -6,17 +6,15 @@
         <script src="planetdoctor.js"></script>
         <script src="all_doctors.js"></script>
         <link rel="stylesheet" href="data_style.css">
-        
-        
     </head>
     <body>
-        <h1>Doctors Availability</h1>
+        <h1>Doctors Availability<img src='planetdoctor1.png' style='position:absolute; left: 600px;'></h1>
         <div ng-app="PDapp" ng-controller="doctorController">
             <table class="customTable">
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Doctor_ID</th>
+                    <th>DoctorID</th>
                     <th>Gender</th>
                     <th>Availability</th>
                 </tr>
@@ -28,15 +26,21 @@
                     <td><input type="text" ng-model="doctor.Availability"></td>
                 
                     <td><input type="button" ng-click="deleteDoctor(doctor.Doctor_ID)" value="Delete"></td> 
-                    <td><input type="button" ng-click="updateDoctor()" value="Update"></td>                   
+                    <td><input type="button" ng-click="updateDoctor()" value="Edit Availability"></td>                   
                 </tr>
                 <tr>
-                    <td><input type="text" ng-model="new_doctor.Name"></td>
-                    <td><input type="text" ng-model="new_doctor.Doctor_ID"></td>
-                    <td><input type="text" ng-model="new_doctor.Gender"></td>
-                    <td><input type="text" ng-model="new_doctor.Availability"></td>
+                    <td><input type="text" ng-model="new_doctor.Name" placeholder='Name'></td>
+                    <td><input type="text" ng-model="new_doctor.Doctor_ID" placeholder='DoctorID'></td>
+                    <td><input type="text" ng-model="new_doctor.Gender" placeholder='Gender'></td>
+                    <td><input type="text" ng-model="new_doctor.Availability"placeholder='Availability'></td>
                     <td><input type="button" ng-click="createDoctor()" value="Create"></td>
                 </tr>
+                <div id="selected">
+                    <h2>Current Availability: {{Availability}}</h2>
+                    <h2>New Availability: <span>{{Doctor.Availability}}</span></h2>
+                    <input type="text" ng-model='Doctor.Availability' value=Doctor.Availability/>
+                    <input type="button" ng-click='updateDoctor(Doctor)' value="update">
+                </div>
             </table>
         </div>
 

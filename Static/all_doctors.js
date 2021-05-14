@@ -1,7 +1,5 @@
 "use strict";
 
-//const { Doctors } = require("../planetdoctor");
-
 // This code will get the PDapp
 var  PDapp= angular.module("PDapp", []);
 
@@ -27,7 +25,7 @@ PDapp.controller("doctorController", function($scope, $http) {
     //
     $scope.updateDoctor = function() {
         $http.put("/doctors", $scope.doctor).then(function(response) {
-            // Alert user
+            // Alert user of succefull update
             window.alert("Entry updated.");
         });
     };
@@ -44,6 +42,26 @@ PDapp.controller("doctorController", function($scope, $http) {
             // This code will refresh the list after successfull addition
             $http.get("/doctors").then(function(response) {
                 $scope.doctors = response.data;
+            });
+        });
+    };
+
+
+
+    $scope.selectDoctor = function(code) {
+    // Get student by id
+        $http.get("/doctor/" + code).then(function(response) {
+            $scope.Doctor = response.data;
+      // Show the selected element
+            document.getElementById("selected").style.display="block";
+        });
+    }
+
+    $scope.updateDoctor = function(code) {
+        $http.put('/doctor/'+ code['ID'], code).then(function(response) { 
+            $scope.Doctor = new Doctors($scope.Doctor.Name,$scope.Doctor.Doctor_ID,$scope.Doctor.Gender,$scope.Doctor.Availability );
+            $http.get("/Doctors").then(function(response) {
+                $scope.Doctor = response.data;
             });
         });
     };
