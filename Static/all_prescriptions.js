@@ -26,7 +26,7 @@ PDApp.controller("prescriptionController", function($scope, $http) {
         $scope.createPrescription = function() {
         // This code will send post a message the to prescriptions endpoint
             $http.post("/prescriptions", $scope.new_prescription).then(function(response) {
-            // This will reset new_patient to empty to accept new entry 
+            // This will reset new_prescription to empty to accept new entry 
                 $scope.new_prescription = new Prescriptions("", "","","");
             // This code will refresh the list after successfull addition
             $http.get("/prescriptions").then(function(response) {
@@ -34,15 +34,6 @@ PDApp.controller("prescriptionController", function($scope, $http) {
             });
         });
     };
-/*//This code will select a prescription
-    $scope.selectPrescription= function(code) {
-        //get specific prescription by drug name
-       $http.get("/prescription/" + code).then(function(response){
-           $scope.selectprescription= response.data;
-            //show the 'selected element'
-           document.getElementBycode("selected").style.display="block";
-        });
-    };*/ 
 });
 
   
