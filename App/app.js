@@ -153,7 +153,7 @@ app.post("/diagnostics", function(req, res){
 });
 
 app.put("/diagnostic/:Drug_ID", function(req, res) {
-  data.updateDiagnostic(req.params.Drug_ID, function() {
+  data.alterDiagnostic(req.params.Drug_ID, function() {
     res.send("OK");
   });
 });

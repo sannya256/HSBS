@@ -22,10 +22,11 @@ PDApp.controller("diagnosticController", function($scope, $http) {
             //document.getElementById("selected").style.display = "block";
         });
     };*/
-
+    // This code will send a update message to the server
     $scope.updateDiagnostic = function(code) {
+        // This code will send update message to Diagnostics endpoint
         $http.update("/diagnostic/" + code).then(function(response) {
-            $scope.new_diagnostic = new Diagnostics("", "", "", "", "", "", "", "");
+            // This code will refresh the list of Diagnostics after the request is completed
             $http.get("/diagnostics/").then(function(response) {
                 $scope.diagnostics = response.data;
             });
@@ -34,7 +35,7 @@ PDApp.controller("diagnosticController", function($scope, $http) {
 
     //This code will send delete request to the server
     $scope.deleteDiagnostic = function(code) {
-        //sending a delete request to the server using node
+        //sending a delete request to the server endpoint
         $http.delete("/diagnostic/" + code).then(function(response) {
             // this code will refresh the diagnostics list
             $http.get("/diagnostics/").then(function(response) {
@@ -44,6 +45,7 @@ PDApp.controller("diagnosticController", function($scope, $http) {
     }; 
     //this code will send create request to the server
     $scope.createDiagnostic = function() {
+        //sending a create request to the server endpoint
         $http.post("/diagnostics", $scope.new_diagnostic).then(function(response) {
             $scope.new_diagnostic = new Diagnostics("", "", "", "", "", "", "", "");
             $http.get("/diagnostics").then(function(response) { 
