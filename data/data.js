@@ -186,7 +186,7 @@ exports.getDiagnostic = function(code, callback) {
             return console.error(err.message);
         }
         // This code will create a diagnostic object
-        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_Name, row.P_Last_Name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
+        var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
         // This code will return diagnostics
         console.log('data.js, getdiagnostic, callback function diagnostic argument', diagnostic)
         callback(diagnostic);

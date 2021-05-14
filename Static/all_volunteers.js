@@ -44,7 +44,6 @@ mainApp.controller("volunteerController", function($scope, $http) {
     }
 
     $scope.updateVolunteer = function(code) {
-        console.log(code)
         $http.put('/volunteer/'+ code['ID'], code).then(function(response) { 
             $scope.Volunteer = new Volunteers($scope.Volunteer.ID, $scope.Volunteer.First_Name,$scope.Volunteer.Last_Name,$scope.Volunteer.Nationality, $scope.Volunteer.Profession, $scope.Volunteer.camp_loc);
                 $http.get("/volunteers").then(function(response) {
