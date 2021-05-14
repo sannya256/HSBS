@@ -225,7 +225,7 @@ exports.updateDiagnostic = function(Drug_ID, callback) {
 // Update diagnostics data to the database
 exports.alterDiagnostic = function(Drug_ID, callback) {
     // Create SQL update query
-    var sql = `UPDATE diagnostics SET diagnosis= '${diagnostic.Diagnosis}'  WHERE Drug_ID='${diagnostic,Drug_ID}'`;
+    var sql = `UPDATE diagnostics SET Diagnosis= '${diagnostic.Diagnosis}'  WHERE Drug_ID='${diagnostic,Drug_ID}'`;
     db.exec(sql, function(err) {
         callback();
     });
