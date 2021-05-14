@@ -45,24 +45,4 @@ PDapp.controller("doctorController", function($scope, $http) {
             });
         });
     };
-
-
-
-    $scope.selectDoctor = function(code) {
-    // Get student by id
-        $http.get("/doctor/" + code).then(function(response) {
-            $scope.Doctor = response.data;
-      // Show the selected element
-            document.getElementById("selected").style.display="block";
-        });
-    }
-
-    $scope.updateDoctor = function(code) {
-        $http.put('/doctor/'+ code['ID'], code).then(function(response) { 
-            $scope.Doctor = new Doctors($scope.Doctor.Name,$scope.Doctor.Doctor_ID,$scope.Doctor.Gender,$scope.Doctor.Availability );
-            $http.get("/Doctors").then(function(response) {
-                $scope.Doctor = response.data;
-            });
-        });
-    };
 });
