@@ -212,10 +212,20 @@ exports.addDiagnostic = function(diagnostic, callback) {
     });
 };
 
+exports.updateDiagnostic = function(Drug_ID, callback) {
+    // SQL update statement
+    var sql = `UPDATE Diagnostics SET Diagnosis= ${diagnostic.Diagnosis}  WHERE Drug_ID='${diagnostic.Drug_ID}'`;
+    // This code will execute the above SQL update statement
+    db.exec(sql, function(err) {
+      // After the SQL statement, a callback function will be executed
+        callback();
+        });
+    };
+
 // Update diagnostics data to the database
 exports.alterDiagnostic = function(Drug_ID, callback) {
     // Create SQL update query
-    var sql = `UPDATE diagnostics SET ('${diagnostic.Patient_ID}', '${diagnostic.P_First_Name}', '${diagnostic.P_Last_Name}', '${diagnostic.Diagnosis}', '${diagnostic.Drug_ID}', '${diagnostic.Drug_name}', '${diagnostic.Tests}', '${diagnostic.Referal}') WHERE Patient_ID='${Drug_ID}'`;
+    var sql = `UPDATE diagnostics SET diagnosis= '${diagnostic.Diagnosis}'  WHERE Drug_ID='${diagnostic,Drug_ID}'`;
     db.exec(sql, function(err) {
         callback();
     });
@@ -374,9 +384,9 @@ exports.deleteVolunteer = function(ID, callback) {
         });
     };
 
-    // This code will delete a volunteer from db
+    // This code will alter a volunteer from db
 exports.alterVolunteer = function(volunteer, callback) {
-    // SQL delete statement
+    // SQL update statement
     var sql = `UPDATE volunteers SET camp_loc= '${volunteer.camp_loc}'  WHERE ID='${volunteer.ID}'`;
     // This code will execute the above SQL delete statement
     db.exec(sql, function(err) {
