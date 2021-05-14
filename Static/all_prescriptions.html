@@ -26,7 +26,7 @@
             <td> {{ prescription.Stock }}</td>
             <td> {{ prescription.Drug_ID }}</td>
             <td> {{ prescription.Patient_ID }}</td> 
-           <!-- <td><input type="button" ng-click="selectPrescription(prescription.Patient_ID)" value="Select"></td>-->
+           
                     <td><input type="button" ng-click="updatePrescription(prescription.Patient_ID)" value="Edit"></td>
                 <tr>
                     <td><input type="text" ng-model="new_prescription.Drug_name"></td>
@@ -36,8 +36,7 @@
                     <td><input type="button" ng-click="createPrescription()" value="Create"></td>
                 </tr>
               </table>
-      <!-- <div Drug_name = "selected">
-          <h2>{{ selectedprescription.Drug_name }} {{ selectedprescription.Stock }} {{ selectedprescription.Drug_ID }} {{ selectedprescription.Patient_ID }} </h2>-->
+      
             
         </div> 
 

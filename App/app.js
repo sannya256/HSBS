@@ -176,12 +176,12 @@ app.get("/prescription/:code", function(req, res) {
   });
 }); 
 app.post("/prescriptions", function(req,res){
-  //call addsingleprescription on data 
+  //call addprescription on data 
   data.addPrescription(req.body, function(){
     res.send("OK");
   });
 }); 
-// This code will update a single /patient endpoint
+// This code will update a single /prescription endpoint
 app.put("/prescriptions/:code", function(req, res) {
   data.updatePrescriptions(req.body, function() {
       res.send("OK");
