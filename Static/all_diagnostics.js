@@ -26,7 +26,7 @@ PDApp.controller("diagnosticController", function($scope, $http) {
     $scope.updateDiagnostic = function(code) {
         // This code will send update message to Diagnostics endpoint
         $http.put("/diagnostic/" + code).then(function(response) {
-            $scope.Volunteer = new Volunteers($scope.dianostic.Patient_ID, $scope.diagnostic.P_First_Name,$scope.diagnostic,P_Last_Name,$scope.diagnostic.Diagnosis, $scope.diagnostic.Drug_ID, $scope.diagnostic.Tests, $scope.diagnostic.Referal);
+            $scope.diagnostic = new Diagnostics($scope.dianostic.Patient_ID, $scope.diagnostic.P_First_Name,$scope.diagnostic,P_Last_Name,$scope.diagnostic.Diagnosis, $scope.diagnostic.Drug_ID, $scope.diagnostic.Tests, $scope.diagnostic.Referal);
             // This code will refresh the list of Diagnostics after the request is completed
             $http.get("/diagnostics/").then(function(response) {
                 $scope.diagnostics = response.data;
