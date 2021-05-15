@@ -46,8 +46,9 @@ app.get("/patient/:code", function(req, res) {
 
 // This code will update a single /patient endpoint
 app.put("/patient/:code", function(req, res) {
-  data.updatePatient(req.body, function() {
-      res.send("OK");
+    data.updatePatient(req.body, function(Patient) {
+    console.log('app.js- req.body', req.body )
+    res.send(Patient);
   });
 });
 
@@ -225,6 +226,7 @@ app.delete("/volunteer/:ID", function(req, res) {
 
 // Add a /volunteer alter endpoint
 app.put("/volunteer/:ID", function(req, res) {
+  console.log(req, 'a-------------------------',res)
   // This will call alterVolunteer on the data
   data.alterVolunteer(req.body, function(Volunteer) {
     // After deletion send OK response to the browser

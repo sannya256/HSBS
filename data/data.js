@@ -188,7 +188,6 @@ exports.getDiagnostic = function(code, callback) {
         // This code will create a diagnostic object
         var diagnostic = new planetdoctor.Diagnostics(row.Patient_ID, row.P_First_name, row.P_Last_name, row.Diagnosis, row.Drug_ID, row.Drug_name, row.Tests, row.Referal);
         // This code will return diagnostics
-        console.log('data.js, getdiagnostic, callback function diagnostic argument', diagnostic)
         callback(diagnostic);
     });
 };
@@ -301,18 +300,19 @@ exports.addPatient = function(patient, callback) {
     var sql = `INSERT INTO Patients VALUES ('${patient.Patient_ID}', '${patient.P_First_Name}','${patient.P_Last_Name}','${patient.Gender}','${patient.DOB}','${patient.Symptoms}')`;
     // Execute SQL insert statement
     db.exec(sql, function(err) {
-      // Once completed, execute callback function
-        callback();
+    // Once completed, execute callback function
+     callback();
     });
 };
 
-    exports.updatePatient = function(patient, callback) {
+exports.updatePatient = function(patient, callback) {
+        console.log('in data.js- update function:', patient)
         var sql = `UPDATE Patients
         SET Symptoms="${patient.Symptoms}"
         WHERE Patient_ID="${patient.Patient_ID}"`;
         // Execute SQL update statement
         db.exec(sql, function(err) {
-          // Once completed, execute callback function
+        // Once completed, execute callback function
         callback();
         });
     };
@@ -395,14 +395,6 @@ exports.alterVolunteer = function(volunteer, callback) {
         });
     };
 
-    exports.updateVolunteer = function(volunteer, callback) {
-        // SQL update statement
-        var sql = `UPDATE volunteers SET First_Name= ${volunteer.First_Name}  WHERE ID='${volunteer.ID}'`;
-        // This code will execute the above SQL update statement
-        db.exec(sql, function(err) {
-          // After the SQL statement, a callback function will be executed
-            callback();
-            });
-        };
+
 
 

@@ -13,61 +13,31 @@ PDApp.controller("patientController", function($scope, $http) {
         $scope.patients = response.data;
     });
 
-//This code will select a patient
-   // $scope.selectPatient= function(code) {
-    //get specific patient by ID
-      //  $http.get("/patient/" + code).then(function(response){
-     //       $scope.selectedPatient= response.data;
-        //show the 'selected element'
-     //       document.getElementById("selected").style.display="block";
-      //      $http.get("/diagnostic/" + code).then(function(response){
-      //          $scope.selectedDiagnostic= response.data;//
-      //  });
-        
-    
-     //   });
-   // };
-
     
     $scope.selectPatient = function(patient) {
-        console.log('all_patients.js selectPatient:', patient)
+       // console.log('all_patients.js selectPatient:', patient)
         $http.get("/diagnostic/" + patient['Patient_ID']).then(function(response) {
             $scope.Patient = response.data;
-            console.log('all_patients.js, response.data:', response.data, '$scope.Patient', $scope.Patient, '$scope.Patient.Patient_ID:',$scope.Patient.Patient_ID)
+           // console.log('all_patients.js, response.data:', response.data, '$scope.Patient', $scope.Patient, '$scope.atient.Patient_ID:',$scope.Patient.Patient_ID)
             document.getElementById("selected").style.display = "block";
         });
     };
 
-
-    // This code will send a delete message to the server
-    /*$scope.updatePatient = function(Patient_ID) {
-    // This code will send delete message to /patients/Patient_ID endpoint
-        $http.update("/patient/" + Patient_ID).then(function(response) {
-      // This code will refresh the list of patients after request is completed
-            $http.get("/patients").then(function(response) {
-                $scope.patients = response.data;
-                });
-            });
-        };*/
-
-
-
-
-
-
     //Inserting new patient's symptoms to the table
     //
-    $scope.updatePatient = function() {
-        $http.put("/patients", $scope.patient).then(function(response) {
-            // Alert user
-            window.alert("Entry updated.");
+    $scope.updatePatient = function(code, codey) {
+        $http.put("/patient/" + code['Patient_ID'], code).then(function(response) {
+            $scope.patient = new Patients($scope.patients.Patient_ID,$scope.patients.First_Name,$scope.patients.Last_Name,$scope.patients.DOB,$scope.patients.Gender,$scope.patients.Symptoms);
+            $http.get("/patient/"+code['Patient_ID']).then(function(response) {
+            $scope.patient = response.data;
+            });
         });
     };
 
     //Sends a delete message to the server
     $scope.deletePatient = function(code) {
             //sends a delete message to /patient/code
-        $http.delete('/patient/' + code).then(function(response) {
+        $http.delete('/patient/' + code, code).then(function(response) {
                 //when request completes, refresh list of patients
             $http.get('/patients').then(function(response) {
                 $scope.patients = response.data;

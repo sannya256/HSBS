@@ -29,9 +29,10 @@
                     <td>{{ patient.P_Last_Name }}</td>
                     <td>{{ patient.DOB }}</td>
                     <td>{{ patient.Gender}}</td>
+
                     <td><input type="text" ng-model="patient.Symptoms"></td>
                     <td><input type="button" ng-click="selectPatient(patient)" value="Select"></td>
-                    <td><input type="button" ng-click="updatePatient()" value="Update"></td>
+                    <td><input type="button" ng-click="updatePatient(patient)" value="Update"></td>
                     <td><input type="button" ng-click="deletePatient(patient.Patient_ID)" value="Delete"></td>
                 <tr>
                     <td><input type="text" ng-model="new_patient.Patient_ID" placeholder='Patient ID'></td>
@@ -48,9 +49,9 @@
         <div id="selected">
             <h2>Patient ID: {{ Patient.Patient_ID}} 
                 <br>
+                Name: {{Patient.P_First_Name}} {{Patient.P_}}
                 <br>
-                Name: {{Patient.P_First_Name}} {{Patient.P_Last_Name}}
-                <br>
+                
                 <br>
                 Patient Referral:{{Patient.Referal}}
                 <br>
