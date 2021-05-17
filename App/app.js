@@ -108,9 +108,11 @@ app.delete("/doctor/:Doctor_ID", function(req, res) {
   });
 });
 
-app.put("/doctors", function(req, res) {
+app.put("/doctor/:ID", function(req, res) {
+  console.log('req.body:', req.body, res)
   // Call function on data
-  data.updateDoctorAvailability(req.body, function() {
+  data.updateDoctor(req.body, function() {
+    console.log('req.body1:', req.body)
     res.send("OK");
   });
 });
@@ -226,7 +228,6 @@ app.delete("/volunteer/:ID", function(req, res) {
 
 // Add a /volunteer alter endpoint
 app.put("/volunteer/:ID", function(req, res) {
-  console.log(req, 'a-------------------------',res)
   // This will call alterVolunteer on the data
   data.alterVolunteer(req.body, function(Volunteer) {
     // After deletion send OK response to the browser

@@ -97,6 +97,7 @@ exports.getDoctors = function(callback) {
 
 // This code will export getDoctor function
 exports.getDoctor = function(doc, callback) {
+    console.log('data.js, get doctor:', doc)
     // SQL statement for showing a single doctor created
     var sql = `
         SELECT * FROM Doctors
@@ -137,10 +138,17 @@ exports.addDoctor = function(doctor, callback) {
         });
     };
     
-
-
-
-
+exports.updateDoctor =function(doctors, callback) { 
+console.log('data.js, updateDoctor:', doctors)
+    var sql = `UPDATE Doctors
+        SET Availability= "${doctors.Availability}"
+        WHERE Doctor_ID="${doctors.Doctor_ID}"`;
+        // Execute SQL update statement
+        db.exec(sql, function (err){
+            // Once completed, execute callback function
+            callback();
+        });
+    };
 
 // Communication with the doctors database stops here
 

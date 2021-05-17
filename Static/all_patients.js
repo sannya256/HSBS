@@ -25,7 +25,7 @@ PDApp.controller("patientController", function($scope, $http) {
 
     //Inserting new patient's symptoms to the table
     //
-    $scope.updatePatient = function(code, codey) {
+    $scope.updatePatient = function(code) {
         $http.put("/patient/" + code['Patient_ID'], code).then(function(response) {
             $scope.patient = new Patients($scope.patients.Patient_ID,$scope.patients.First_Name,$scope.patients.Last_Name,$scope.patients.DOB,$scope.patients.Gender,$scope.patients.Symptoms);
             $http.get("/patient/"+code['Patient_ID']).then(function(response) {

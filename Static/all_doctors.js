@@ -1,6 +1,5 @@
 "use strict";
 
-//const { Doctors } = require("../planetdoctor");
 
 // This code will get the PDapp
 var  PDapp= angular.module("PDapp", []);
@@ -25,13 +24,17 @@ PDapp.controller("doctorController", function($scope, $http) {
         };
     //Inserting a new doctors availalbility to the table
     //
-    $scope.updateDoctor = function() {
-        $http.put("/doctors", $scope.doctor).then(function(response) {
-            // Alert user
-            window.alert("Entry updated.");
+    $scope.updateDoctor = function(code) {
+        console.log('$scope:', $scope.doctors, 'code:',code)
+        $http.put("/doctor/" + code['Doctor_ID'], code).then(function(response) {
+            $scope.doctor = new Doctors ($scope.doctors.Name,$scope.doctors.Doctor_ID,$scope.doctors.Gender ,$scope.doctors.Availability);
+            console.log('what now', $scope.doctor)
+            console.log('$scope1:', $scope.doctor, 'code1:',code['Doctor_ID'])
+            $http.get("/doctor/"+code['Doctor_ID']).then(function(response) {
+            $scope.doctor = response.data;
+            });
         });
     };
-
 
 
     //$scope.new_doctor = new Doctor("", "","","");
