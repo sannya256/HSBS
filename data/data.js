@@ -41,7 +41,7 @@ exports.getPrescriptions = function(callback) {
     });
 };
 
-// Export getSinglePrescription function
+// Export getPrescription function
 exports.getPrescription = function(Meds, callback) {
     // Create SQL statement for prescriptions 
     var sql = `
@@ -52,9 +52,9 @@ exports.getPrescription = function(Meds, callback) {
         if (err) {
             return console.error(err.message);
         }
-        // Create a singleprescription object
+        // Create a prescription object
         var prescription = new planetdoctor.Prescriptions(row.Drug_name, row.Stock, row.Drug_ID, row.Patient_ID);
-        // Return singleprescription 
+        // Return prescription 
         callback(prescription);
     });
 };

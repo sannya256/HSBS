@@ -1,6 +1,5 @@
 "use strict";
 
-//const { Diagnostics } = require("../planetdoctor");
 
 //This code will get "PDApp" from the webpage
 var PDApp = angular.module("PDApp", []);
@@ -14,14 +13,6 @@ PDApp.controller("diagnosticController", function($scope, $http) {
         $scope.diagnostics = response.data; //linking the diagnostics json data
     });
     
-    /*//The following codes will add user interactions
-    //This code will send select request to the server
-    $scope.selectDiagnostic = function(Patient_ID) {
-        $http.get("/disgnostic/" + Patient_ID).then(function(response) {
-            $scope.selectDiagnostic = response.data;
-            //document.getElementById("selected").style.display = "block";
-        });
-    };*/
     // This code will send a update message to the server
     $scope.updateDiagnostic = function(code) {
         // This code will send update message to Diagnostics endpoint

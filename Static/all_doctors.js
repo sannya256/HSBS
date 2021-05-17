@@ -1,6 +1,9 @@
 "use strict";
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f0a6c070ffe2523fb8d8190e1afb3b1c0ff69a9
 // This code will get the PDapp
 var  PDapp= angular.module("PDapp", []);
 

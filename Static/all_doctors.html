@@ -14,7 +14,7 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Doctor_ID</th>
+                    <th>DoctorID</th>
                     <th>Gender</th>
                     <th>Availability</th>
                 </tr>
@@ -26,15 +26,16 @@
                     <td><input type="text" ng-model="doctor.Availability"></td>
                 
                     <td><input type="button" ng-click="deleteDoctor(doctor.Doctor_ID)" value="Delete"></td> 
-                    <td><input type="button" ng-click="updateDoctor(doctor)" value="Update"></td>                   
+                    <td><input type="button" ng-click="updateDoctor(doctor)" value="Edit Availability"></td>                                     
                 </tr>
                 <tr>
-                    <td><input type="text" ng-model="new_doctor.Name"></td>
-                    <td><input type="text" ng-model="new_doctor.Doctor_ID"></td>
-                    <td><input type="text" ng-model="new_doctor.Gender"></td>
-                    <td><input type="text" ng-model="new_doctor.Availability"></td>
+                    <td><input type="text" ng-model="new_doctor.Name" placeholder='Name'></td>
+                    <td><input type="text" ng-model="new_doctor.Doctor_ID" placeholder='DoctorID'></td>
+                    <td><input type="text" ng-model="new_doctor.Gender" placeholder='Gender'></td>
+                    <td><input type="text" ng-model="new_doctor.Availability"placeholder='Availability'></td>
                     <td><input type="button" ng-click="createDoctor()" value="Create"></td>
                 </tr>
+               
             </table>
         </div>
 
