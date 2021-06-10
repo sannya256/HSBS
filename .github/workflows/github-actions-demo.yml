@@ -15,5 +15,3 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - name: Super Duper Linter
-        uses: JustinGrote/Super-Duper-Linter@preview
