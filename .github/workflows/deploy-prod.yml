@@ -78,3 +78,5 @@ jobs:
       - name: Azure logout
         run: |
           az logout     
+
+#from the github-actions-continuous-delivery-azure
