@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node iha.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    // "build": "azure"
+    "build": "npm run-script build"
   },
   "repository": {
     "type": "git",
